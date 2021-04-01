@@ -295,7 +295,7 @@
                                     <constraint firstAttribute="height" constant="220" id="Me9-U7-ldj"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="character" rowHeight="102" id="uux-aT-28x">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="character2" rowHeight="102" id="uux-aT-28x" customClass="Character2TableViewCell" customModule="Project3" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="374" height="102"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uux-aT-28x" id="Z7t-5a-3L0">
@@ -327,6 +327,10 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="skV-A3-Y4k" secondAttribute="trailing" constant="10" id="blO-lf-Whd"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="characterName" destination="lvX-ux-S4P" id="5PV-S8-EPI"/>
+                                            <outlet property="characterRace" destination="nsO-SA-rdN" id="Azh-xe-6CS"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -391,6 +395,9 @@
                                     <constraint firstAttribute="height" constant="30" id="s6x-nW-26e"/>
                                 </constraints>
                                 <state key="normal" title="Validation du personnage"/>
+                                <connections>
+                                    <action selector="createCharacter:" destination="GTc-d6-V5D" eventType="touchUpInside" id="HZw-qR-tes"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m5J-lM-D7U">
                                 <rect key="frame" x="20" y="812" width="374" height="30"/>
@@ -398,6 +405,9 @@
                                     <constraint firstAttribute="height" constant="30" id="8vd-Bb-S1c"/>
                                 </constraints>
                                 <state key="normal" title="Validation du joueur"/>
+                                <connections>
+                                    <action selector="createPlayer:" destination="GTc-d6-V5D" eventType="touchUpInside" id="Thu-nT-sQK"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vMt-I8-LuG"/>
@@ -435,10 +445,35 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="NeK-hv-rHs"/>
+                    <connections>
+                        <outlet property="createCharacterButton" destination="y1v-yg-pDI" id="vXB-c6-CQN"/>
+                        <outlet property="createPlayerButton" destination="m5J-lM-D7U" id="SdA-hm-diM"/>
+                        <outlet property="nameCharacterTF" destination="VNr-55-7J3" id="tST-rH-SqY"/>
+                        <outlet property="namePlayer2TF" destination="43G-Zs-gzg" id="qOt-re-E6a"/>
+                        <outlet property="pickerView" destination="JHf-vG-o2m" id="BUT-qJ-BTI"/>
+                        <outlet property="tableView" destination="DB1-dR-waO" id="bxv-Ij-hIl"/>
+                        <segue destination="L6s-XJ-Zdp" kind="show" identifier="goToFight" id="YHL-MA-4N6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="POg-q0-jyd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2439.130434782609" y="93.75"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ZWz-NJ-twO">
+            <objects>
+                <viewController id="L6s-XJ-Zdp" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AgL-0k-1Oa">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="KSM-Eg-iPY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="C2H-Pq-jwe"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lDM-Uo-xgE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3132" y="94"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vyS-ds-w4w">
