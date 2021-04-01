@@ -35,24 +35,32 @@ class createPlayer1ViewController: UIViewController {
         let newCharacter = Character(name: nameCharacterTF.text!, race: characRace!)
         if nameCharacterTF.text!.count < 3 {
             alert(message: "Your Character's name must have 3 caracters mini")
-        } else {
+        }
+        else if player1.characters.count > 2 {
+            alert(message: "You can only have 3 characters, delete one before create an other")
+        }
+        else {
         player1.characters.append(newCharacter)
         nameCharacterTF.text = ""
         // actualisation de la tableView pour voir le personnage créé
         tableView.reloadData()
-        // autoriser la création de personnage jusqu'a 3, apres blocage du bouton
-        if player1.characters.count < 3 {
-            createCharacterButton.isUserInteractionEnabled = true
-        } else {
-            createCharacterButton.isUserInteractionEnabled = false
-            createPlayerButton.isUserInteractionEnabled = true
-        }
         }}
     
+
 // creation de la fonction pour ajouter un joueur
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToPlayer2" {
+            _ = segue.destination as! createPlayer2ViewController
+        }
+        }
+    
+    
     @IBAction func createPlayer(_ sender: Any) {
         player1.name = namePlayer1TF.text!
-        print(player1.name)
+        if player1.characters.count < 3 {
+            alert(message: "Your player must have 3 characters in his team")
+        }
+        performSegue(withIdentifier: "goToPlayer2", sender: Any?.self)
     }
     
 // attribuer la race par rapport a un string
@@ -86,13 +94,16 @@ class createPlayer1ViewController: UIViewController {
         super.viewDidLoad()
         viewSetup()
         characRace = elf
-        createPlayerButton.isUserInteractionEnabled = false
 }
 }
 
 // refermer le clavier après la touche retour
 extension createPlayer1ViewController : UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        player1.name = namePlayer1TF.text!
+        if namePlayer1TF.text!.count < 3 {
+            alert(message: "Your Player's name must have 3 caracters mini")
+        }
         view.endEditing(true)
         return true
     }

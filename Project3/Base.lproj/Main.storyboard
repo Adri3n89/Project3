@@ -54,13 +54,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Création de joueur 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nql-4H-W6P">
-                                <rect key="frame" x="131" y="64" width="152" height="20.5"/>
+                                <rect key="frame" x="131" y="108" width="152" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="gdb-aB-0OZ">
-                                <rect key="frame" x="20" y="104.5" width="374" height="34"/>
+                                <rect key="frame" x="20" y="148.5" width="374" height="34"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nom du joueur :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lwx-gH-qky">
                                         <rect key="frame" x="0.0" y="0.0" width="154" height="34"/>
@@ -82,7 +82,7 @@
                                 </subviews>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8PZ-Ls-CHQ">
-                                <rect key="frame" x="20" y="158.5" width="374" height="220"/>
+                                <rect key="frame" x="20" y="202.5" width="374" height="220"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="220" id="SZo-rF-dzj"/>
@@ -128,14 +128,14 @@
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vnT-Yw-4ts">
-                                <rect key="frame" x="20" y="388.5" width="374" height="1"/>
+                                <rect key="frame" x="20" y="432.5" width="374" height="1"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="luJ-o3-QAq"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Création du personnage de l'équipe" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3g7-Dn-Psg">
-                                <rect key="frame" x="62.5" y="399.5" width="289.5" height="45"/>
+                                <rect key="frame" x="62.5" y="443.5" width="289.5" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="GYy-NT-3IJ"/>
                                 </constraints>
@@ -144,7 +144,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="qko-7N-M0D">
-                                <rect key="frame" x="20" y="464.5" width="374" height="35"/>
+                                <rect key="frame" x="20" y="508.5" width="374" height="35"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nom du personnage :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2W-Qg-qk7">
                                         <rect key="frame" x="0.0" y="0.0" width="177" height="35"/>
@@ -166,7 +166,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="bHR-fs-xVv">
-                                <rect key="frame" x="20" y="519.5" width="374" height="100"/>
+                                <rect key="frame" x="20" y="563.5" width="374" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Race" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RnZ-pj-q6N">
                                         <rect key="frame" x="0.0" y="40" width="50" height="20.5"/>
@@ -186,7 +186,7 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6XO-vI-hlP">
-                                <rect key="frame" x="20" y="639.5" width="374" height="30"/>
+                                <rect key="frame" x="20" y="683.5" width="374" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="w5q-4Z-Hvt"/>
                                 </constraints>
@@ -200,7 +200,6 @@
                                 <state key="normal" title="Validation du joueur"/>
                                 <connections>
                                     <action selector="createPlayer:" destination="VB3-1h-XCt" eventType="touchUpInside" id="4BJ-WS-6eu"/>
-                                    <segue destination="GTc-d6-V5D" kind="show" id="ni7-JS-olX"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -246,11 +245,12 @@
                         <outlet property="namePlayer1TF" destination="dqr-kK-Cyp" id="Ikh-gB-Jgu"/>
                         <outlet property="pickerView" destination="v1z-vG-UqJ" id="db0-6s-ugL"/>
                         <outlet property="tableView" destination="8PZ-Ls-CHQ" id="d12-0c-a2R"/>
+                        <segue destination="GTc-d6-V5D" kind="show" identifier="goToPlayer2" id="7qJ-sd-s6X"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xpy-o5-4rR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1680" y="94"/>
+            <point key="canvasLocation" x="1684" y="94"/>
         </scene>
         <!--Create Player2 View Controller-->
         <scene sceneID="vis-GR-As9">
@@ -261,13 +261,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Création de joueur 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cBj-Ae-StH">
-                                <rect key="frame" x="130" y="64" width="154.5" height="20.5"/>
+                                <rect key="frame" x="130" y="108" width="154.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="1Vw-7G-3sW">
-                                <rect key="frame" x="20" y="104.5" width="374" height="34"/>
+                                <rect key="frame" x="20" y="148.5" width="374" height="34"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nom du joueur :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Alu-Ka-0B7">
                                         <rect key="frame" x="0.0" y="0.0" width="154" height="34"/>
@@ -289,7 +289,7 @@
                                 </subviews>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DB1-dR-waO">
-                                <rect key="frame" x="20" y="158.5" width="374" height="220"/>
+                                <rect key="frame" x="20" y="202.5" width="374" height="220"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="220" id="Me9-U7-ldj"/>
@@ -331,14 +331,14 @@
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4lc-y9-R9x">
-                                <rect key="frame" x="20" y="388.5" width="374" height="1"/>
+                                <rect key="frame" x="20" y="432.5" width="374" height="1"/>
                                 <color key="backgroundColor" systemColor="labelColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="hcS-8v-XAt"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Création du personnage de l'équipe" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SyK-MU-lCu">
-                                <rect key="frame" x="62.5" y="399.5" width="289.5" height="45"/>
+                                <rect key="frame" x="62.5" y="443.5" width="289.5" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="As5-Gf-R6m"/>
                                 </constraints>
@@ -347,7 +347,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="IWK-6W-DLA">
-                                <rect key="frame" x="20" y="464.5" width="374" height="35"/>
+                                <rect key="frame" x="20" y="508.5" width="374" height="35"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nom du personnage :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W2D-lG-T9q">
                                         <rect key="frame" x="0.0" y="0.0" width="177" height="35"/>
@@ -366,7 +366,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="rz6-BV-85w">
-                                <rect key="frame" x="20" y="519.5" width="374" height="100"/>
+                                <rect key="frame" x="20" y="563.5" width="374" height="100"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Race" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XtO-h2-tdO">
                                         <rect key="frame" x="0.0" y="40" width="50" height="20.5"/>
@@ -386,7 +386,7 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y1v-yg-pDI">
-                                <rect key="frame" x="20" y="639.5" width="374" height="30"/>
+                                <rect key="frame" x="20" y="683.5" width="374" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="s6x-nW-26e"/>
                                 </constraints>
@@ -443,9 +443,10 @@
         <!--Navigation Controller-->
         <scene sceneID="vyS-ds-w4w">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="h4w-t2-YXa" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="h4w-t2-YXa" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="i7C-42-8mg">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
