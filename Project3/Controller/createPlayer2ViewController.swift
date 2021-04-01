@@ -59,7 +59,7 @@ class createPlayer2ViewController: UIViewController {
 
     @IBAction func createPlayer(_ sender: Any) {
         player2.name = namePlayer2TF.text!
-        if player1.characters.count < 3 {
+        if player2.characters.count < 3 {
                     alert(message: "Your player must have 3 characters in his team")
                 }
                 performSegue(withIdentifier: "goToFight", sender: Any?.self)
@@ -96,13 +96,16 @@ class createPlayer2ViewController: UIViewController {
         super.viewDidLoad()
         viewSetup()
         characRace = elf
-        createPlayerButton.isUserInteractionEnabled = false
 }
 }
 
 // refermer le clavier après la touche retour
 extension createPlayer2ViewController : UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        player2.name = namePlayer2TF.text!
+        if namePlayer2TF.text!.count < 3 {
+            alert(message: "Your Player's name must have 3 caracters mini")
+        }
         view.endEditing(true)
         return true
     }
