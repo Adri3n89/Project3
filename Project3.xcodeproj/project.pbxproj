@@ -21,6 +21,7 @@
 		7A6B77A226149DED00565F71 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6B77A126149DED00565F71 /* Character.swift */; };
 		7A6B77A526149DF700565F71 /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6B77A426149DF700565F71 /* Weapon.swift */; };
 		7A6B77A826149EE600565F71 /* Race.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6B77A726149EE600565F71 /* Race.swift */; };
+		7A6B77AB2614E38600565F71 /* createPlayer2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6B77AA2614E38600565F71 /* createPlayer2ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		7A6B77A126149DED00565F71 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		7A6B77A426149DF700565F71 /* Weapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
 		7A6B77A726149EE600565F71 /* Race.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Race.swift; sourceTree = "<group>"; };
+		7A6B77AA2614E38600565F71 /* createPlayer2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = createPlayer2ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 			children = (
 				7A57FA532613ABB200BFC780 /* ViewController.swift */,
 				7A57FA6E2613B47E00BFC780 /* createPlayer1ViewController.swift */,
+				7A6B77AA2614E38600565F71 /* createPlayer2ViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 			files = (
 				7A6B77A826149EE600565F71 /* Race.swift in Sources */,
 				7A6B77A226149DED00565F71 /* Character.swift in Sources */,
+				7A6B77AB2614E38600565F71 /* createPlayer2ViewController.swift in Sources */,
 				7A57FA682613ACB300BFC780 /* CoreDataHelper.swift in Sources */,
 				7A57FA722613B67100BFC780 /* CharacterTableViewCell.swift in Sources */,
 				7A57FA6F2613B47E00BFC780 /* createPlayer1ViewController.swift in Sources */,
