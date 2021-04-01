@@ -459,10 +459,10 @@
             </objects>
             <point key="canvasLocation" x="2439.130434782609" y="93.75"/>
         </scene>
-        <!--View Controller-->
+        <!--Fight View Controller-->
         <scene sceneID="ZWz-NJ-twO">
             <objects>
-                <viewController id="L6s-XJ-Zdp" sceneMemberID="viewController">
+                <viewController id="L6s-XJ-Zdp" customClass="FightViewController" customModule="Project3" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AgL-0k-1Oa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

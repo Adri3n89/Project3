@@ -23,6 +23,7 @@
 		7A6B77A826149EE600565F71 /* Race.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6B77A726149EE600565F71 /* Race.swift */; };
 		7A6B77AB2614E38600565F71 /* createPlayer2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6B77AA2614E38600565F71 /* createPlayer2ViewController.swift */; };
 		7A6B77B02615F60400565F71 /* Character2TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6B77AF2615F60400565F71 /* Character2TableViewCell.swift */; };
+		7A6B77B52615FA1000565F71 /* FightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6B77B42615FA1000565F71 /* FightViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		7A6B77A726149EE600565F71 /* Race.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Race.swift; sourceTree = "<group>"; };
 		7A6B77AA2614E38600565F71 /* createPlayer2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = createPlayer2ViewController.swift; sourceTree = "<group>"; };
 		7A6B77AF2615F60400565F71 /* Character2TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character2TableViewCell.swift; sourceTree = "<group>"; };
+		7A6B77B42615FA1000565F71 /* FightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FightViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 				7A57FA532613ABB200BFC780 /* ViewController.swift */,
 				7A57FA6E2613B47E00BFC780 /* createPlayer1ViewController.swift */,
 				7A6B77AA2614E38600565F71 /* createPlayer2ViewController.swift */,
+				7A6B77B42615FA1000565F71 /* FightViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 				7A57FA6F2613B47E00BFC780 /* createPlayer1ViewController.swift in Sources */,
 				7A57FA542613ABB200BFC780 /* ViewController.swift in Sources */,
 				7A6B77A526149DF700565F71 /* Weapon.swift in Sources */,
+				7A6B77B52615FA1000565F71 /* FightViewController.swift in Sources */,
 				7A6B779F26149DE100565F71 /* Player.swift in Sources */,
 				7A57FA502613ABB200BFC780 /* AppDelegate.swift in Sources */,
 				7A57FA522613ABB200BFC780 /* SceneDelegate.swift in Sources */,

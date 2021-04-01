@@ -34,29 +34,36 @@ class createPlayer2ViewController: UIViewController {
     
     // creation de la fonction pour ajouter un personnage au tableau des personnages
     @IBAction func createCharacter(_ sender: Any) {
-        verif()
-        let newCharacter = Character(name: nameCharacterTF.text!, race: characRace!)
-        if nameCharacterTF.text!.count < 3 {
-            alert(message: "Your Character's name must have 3 caracters mini")
-        } else {
-        player2.characters.append(newCharacter)
-        nameCharacterTF.text = ""
-        // actualisation de la tableView pour voir le personnage créé
-        tableView.reloadData()
-        // autoriser la création de personnage jusqu'a 3, apres blocage du bouton
-        if player1.characters.count < 3 {
-            createCharacterButton.isUserInteractionEnabled = true
-        } else {
-            createCharacterButton.isUserInteractionEnabled = false
-            createPlayerButton.isUserInteractionEnabled = true
-        }
-        }}
+                verif()
+                let newCharacter = Character(name: nameCharacterTF.text!, race: characRace!)
+                if nameCharacterTF.text!.count < 3 {
+                    alert(message: "Your Character's name must have 3 caracters mini")
+                }
+                else if player2.characters.count > 2 {
+                    alert(message: "You can only have 3 characters, delete one before create an other")
+                }
+                else {
+                player2.characters.append(newCharacter)
+                nameCharacterTF.text = ""
+                // actualisation de la tableView pour voir le personnage créé
+                tableView.reloadData()
+                }}
+
     
 // creation de la fonction pour ajouter un joueur
+        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            if segue.identifier == "goToFight" {
+                _ = segue.destination as! FightViewController
+            }
+            }
+
     @IBAction func createPlayer(_ sender: Any) {
         player2.name = namePlayer2TF.text!
-        print(player2.name)
-    }
+        if player1.characters.count < 3 {
+                    alert(message: "Your player must have 3 characters in his team")
+                }
+                performSegue(withIdentifier: "goToFight", sender: Any?.self)
+            }
     
 // attribuer la race par rapport a un string
     func verif(){
