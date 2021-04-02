@@ -665,16 +665,59 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="4XL-3I-UqL">
+                                <rect key="frame" x="80" y="388" width="254" height="174"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="nnc-zI-90b">
+                                        <rect key="frame" x="0.0" y="0.0" width="254" height="75.5"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y8w-6d-W3g">
+                                                <rect key="frame" x="0.0" y="0.0" width="112" height="75.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                                <state key="normal" title="⚔️"/>
+                                                <connections>
+                                                    <action selector="pushAttackButton:" destination="L6s-XJ-Zdp" eventType="touchUpInside" id="gzJ-rh-4YD"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yWS-gn-Zgf">
+                                                <rect key="frame" x="142" y="0.0" width="112" height="75.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                                <state key="normal" title="🧪"/>
+                                                <connections>
+                                                    <action selector="pushHealButton:" destination="L6s-XJ-Zdp" eventType="touchUpInside" id="pD6-0o-vAt"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5rm-Bd-gY3">
+                                        <rect key="frame" x="104.5" y="98.5" width="45" height="75.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                        <state key="normal" title="❌"/>
+                                        <connections>
+                                            <action selector="pushCancelButton:" destination="L6s-XJ-Zdp" eventType="touchUpInside" id="Aqe-Ci-bDK"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="nnc-zI-90b" secondAttribute="trailing" id="Opr-nq-WdS"/>
+                                    <constraint firstItem="nnc-zI-90b" firstAttribute="leading" secondItem="4XL-3I-UqL" secondAttribute="leading" id="QGt-C2-pVa"/>
+                                    <constraint firstItem="nnc-zI-90b" firstAttribute="top" secondItem="4XL-3I-UqL" secondAttribute="top" id="TAm-iS-Pg1"/>
+                                    <constraint firstItem="5rm-Bd-gY3" firstAttribute="height" secondItem="nnc-zI-90b" secondAttribute="height" id="aAW-cS-Arr"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="KSM-Eg-iPY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="fjA-eL-nXl" firstAttribute="top" secondItem="j3I-su-IeG" secondAttribute="bottom" constant="20" id="2Rv-zU-FEe"/>
+                            <constraint firstItem="KSM-Eg-iPY" firstAttribute="trailing" secondItem="4XL-3I-UqL" secondAttribute="trailing" constant="80" id="3q1-w8-c8G"/>
                             <constraint firstItem="fjA-eL-nXl" firstAttribute="leading" secondItem="KSM-Eg-iPY" secondAttribute="leading" constant="20" id="44k-Jg-Rkl"/>
+                            <constraint firstItem="4XL-3I-UqL" firstAttribute="top" secondItem="fjA-eL-nXl" secondAttribute="bottom" constant="40" id="8NG-9J-NaI"/>
                             <constraint firstItem="fjA-eL-nXl" firstAttribute="centerX" secondItem="AgL-0k-1Oa" secondAttribute="centerX" id="DBO-MU-Sjs"/>
                             <constraint firstItem="ytS-31-wXB" firstAttribute="top" secondItem="Xnh-ln-pHP" secondAttribute="bottom" constant="20" id="L9L-bn-KDy"/>
                             <constraint firstItem="KSM-Eg-iPY" firstAttribute="trailing" secondItem="ytS-31-wXB" secondAttribute="trailing" constant="20" id="NKd-vv-jnf"/>
                             <constraint firstItem="KSM-Eg-iPY" firstAttribute="trailing" secondItem="fjA-eL-nXl" secondAttribute="trailing" constant="20" id="OH2-ZG-Y4r"/>
+                            <constraint firstItem="4XL-3I-UqL" firstAttribute="leading" secondItem="KSM-Eg-iPY" secondAttribute="leading" constant="80" id="V6H-YG-FrA"/>
                             <constraint firstItem="Xnh-ln-pHP" firstAttribute="leading" secondItem="KSM-Eg-iPY" secondAttribute="leading" constant="20" id="Wpq-KZ-2oV"/>
                             <constraint firstItem="j3I-su-IeG" firstAttribute="top" secondItem="KSM-Eg-iPY" secondAttribute="top" constant="20" id="hNO-1B-JTQ"/>
                             <constraint firstItem="KSM-Eg-iPY" firstAttribute="trailing" secondItem="j3I-su-IeG" secondAttribute="trailing" constant="20" id="hcd-Wf-ZVm"/>
@@ -682,6 +725,7 @@
                             <constraint firstItem="j3I-su-IeG" firstAttribute="leading" secondItem="KSM-Eg-iPY" secondAttribute="leading" constant="20" id="lH0-j6-brf"/>
                             <constraint firstItem="ytS-31-wXB" firstAttribute="leading" secondItem="KSM-Eg-iPY" secondAttribute="leading" constant="20" id="nrU-9n-HOb"/>
                             <constraint firstItem="KSM-Eg-iPY" firstAttribute="bottom" secondItem="ytS-31-wXB" secondAttribute="bottom" constant="20" id="obT-X1-PTV"/>
+                            <constraint firstItem="Xnh-ln-pHP" firstAttribute="top" secondItem="4XL-3I-UqL" secondAttribute="bottom" constant="40" id="tja-5s-skh"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="C2H-Pq-jwe">
@@ -690,6 +734,9 @@
                         </userDefinedRuntimeAttributes>
                     </navigationItem>
                     <connections>
+                        <outlet property="attackButton" destination="Y8w-6d-W3g" id="ZnW-tE-qUg"/>
+                        <outlet property="cancelButton" destination="5rm-Bd-gY3" id="F7c-ZR-yxm"/>
+                        <outlet property="healButton" destination="yWS-gn-Zgf" id="lUd-uI-B33"/>
                         <outlet property="player1Charac1Button" destination="5uf-zC-HUg" id="B0j-Rx-14p"/>
                         <outlet property="player1Charac1HPLabel" destination="rsE-M8-FBq" id="GuT-GG-bvV"/>
                         <outlet property="player1Charac1NameLabel" destination="4fo-Wx-vEi" id="2vy-fc-qKS"/>

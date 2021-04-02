@@ -24,6 +24,7 @@
 		7A6B77AB2614E38600565F71 /* createPlayer2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6B77AA2614E38600565F71 /* createPlayer2ViewController.swift */; };
 		7A6B77B02615F60400565F71 /* Character2TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6B77AF2615F60400565F71 /* Character2TableViewCell.swift */; };
 		7A6B77B52615FA1000565F71 /* FightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6B77B42615FA1000565F71 /* FightViewController.swift */; };
+		7A6B77BA2617158E00565F71 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6B77B92617158E00565F71 /* Game.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		7A6B77AA2614E38600565F71 /* createPlayer2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = createPlayer2ViewController.swift; sourceTree = "<group>"; };
 		7A6B77AF2615F60400565F71 /* Character2TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character2TableViewCell.swift; sourceTree = "<group>"; };
 		7A6B77B42615FA1000565F71 /* FightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FightViewController.swift; sourceTree = "<group>"; };
+		7A6B77B92617158E00565F71 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 				7A57FA672613ACB300BFC780 /* CoreDataHelper.swift */,
 				7A6B77A426149DF700565F71 /* Weapon.swift */,
 				7A6B77A726149EE600565F71 /* Race.swift */,
+				7A6B77B92617158E00565F71 /* Game.swift */,
 				7A6B77A126149DED00565F71 /* Character.swift */,
 				7A6B779E26149DE000565F71 /* Player.swift */,
 			);
@@ -195,6 +198,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A6B77B02615F60400565F71 /* Character2TableViewCell.swift in Sources */,
+				7A6B77BA2617158E00565F71 /* Game.swift in Sources */,
 				7A6B77A826149EE600565F71 /* Race.swift in Sources */,
 				7A6B77A226149DED00565F71 /* Character.swift in Sources */,
 				7A6B77AB2614E38600565F71 /* createPlayer2ViewController.swift in Sources */,
