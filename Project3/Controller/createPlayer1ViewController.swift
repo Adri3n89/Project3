@@ -36,15 +36,39 @@ class createPlayer1ViewController: UIViewController {
         if nameCharacterTF.text!.count < 3 {
             alert(message: "Your Character's name must have 3 caracters mini")
         }
-        else if player1.characters.count > 2 {
-            alert(message: "You can only have 3 characters, delete one before create an other")
+        else if player1.characters.count == 0 {
+            player1.characters.append(newCharacter)
+            nameCharacterTF.text = ""
+            // actualisation de la tableView pour voir le personnage créé
+            tableView.reloadData()
         }
-        else {
-        player1.characters.append(newCharacter)
-        nameCharacterTF.text = ""
-        // actualisation de la tableView pour voir le personnage créé
-        tableView.reloadData()
-        }}
+        else if player1.characters.count == 1  {
+            if player1.characters[0].name == newCharacter.name {
+                    alert(message: "You can't have 2 characters with the same name")
+            }else {
+            player1.characters.append(newCharacter)
+            nameCharacterTF.text = ""
+            // actualisation de la tableView pour voir le personnage créé
+            tableView.reloadData()
+        }
+        }
+        else if player1.characters.count == 2 {
+            if player1.characters[0].name == newCharacter.name {
+                alert(message: "You can't have 2 characters with the same name")
+            }
+            else if player1.characters[1].name == newCharacter.name {
+                alert(message: "You can't have 2 characters with the same name")
+            }
+            else {
+                player1.characters.append(newCharacter)
+                nameCharacterTF.text = ""
+                // actualisation de la tableView pour voir le personnage créé
+                tableView.reloadData()
+            }}
+        else if player1.characters.count > 2 {
+    alert(message: "You can only have 3 characters, delete one before create an other")
+}
+}
     
 
 // creation de la fonction pour ajouter un joueur
