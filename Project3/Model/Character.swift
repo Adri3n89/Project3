@@ -7,7 +7,12 @@
 
 import Foundation
 
-class Character {
+class Character: Equatable {
+    static func == (lhs: Character, rhs: Character) -> Bool {
+        return lhs.name == rhs.name
+    }
+    
+    
     var name:String
     var race:Race
     

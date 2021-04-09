@@ -8,8 +8,7 @@
 import UIKit
 
 class createPlayer2ViewController: UIViewController {
-
-    
+// creation des outlets
     @IBOutlet weak var namePlayer2TF: UITextField!
     @IBOutlet weak var nameCharacterTF: UITextField!
     @IBOutlet weak var tableView: UITableView!
@@ -17,10 +16,14 @@ class createPlayer2ViewController: UIViewController {
     @IBOutlet weak var createCharacterButton: UIButton!
     @IBOutlet weak var createPlayerButton: UIButton!
     
-    
-    
     var characRace:Race?
     var characRaceString:String?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        viewSetup()
+        characRace = elf
+}
     
 // creation fonction pour les messages d'alerte
     func alert(message:String){
@@ -31,8 +34,7 @@ class createPlayer2ViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
-    
-    // creation de la fonction pour ajouter un personnage au tableau des personnages
+// creation de la fonction pour ajouter un personnage au tableau des personnages
     @IBAction func createCharacter(_ sender: Any) {
                 verif()
                 let newCharacter = Character(name: nameCharacterTF.text!, race: characRace!)
@@ -73,15 +75,12 @@ class createPlayer2ViewController: UIViewController {
         }
     }
     
-
-
-    
 // creation de la fonction pour ajouter un joueur
-        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            if segue.identifier == "goToFight" {
-                _ = segue.destination as! FightViewController
-            }
-            }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToFight" {
+            _ = segue.destination as! FightViewController
+        }
+        }
 
     @IBAction func createPlayer(_ sender: Any) {
         player2.name = namePlayer2TF.text!
@@ -107,7 +106,6 @@ class createPlayer2ViewController: UIViewController {
         }
     }
     
-
 // fonction pour initialiser les parametres des vues
     func viewSetup(){
         namePlayer2TF.delegate = self
@@ -117,12 +115,6 @@ class createPlayer2ViewController: UIViewController {
         pickerView.dataSource = self
         pickerView.delegate = self
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        viewSetup()
-        characRace = elf
-}
 }
 
 // refermer le clavier après la touche retour
@@ -136,6 +128,7 @@ extension createPlayer2ViewController : UITextFieldDelegate{
         return true
     }
 }
+
 // parametrage de la tableView
 extension createPlayer2ViewController : UITableViewDataSource, UITableViewDelegate {
     // nombre de rangées du tableview egale au count du tableau de personnages

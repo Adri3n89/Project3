@@ -16,10 +16,14 @@ class createPlayer1ViewController: UIViewController {
     @IBOutlet weak var createPlayerButton: UIButton!
     @IBOutlet weak var createCharacterButton: UIButton!
     
-// creation de la fonction pour ajouter un personnage au tableau des personnages
-    
     var characRace:Race?
     var characRaceString:String?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        viewSetup()
+        characRace = elf
+}
     
 // creation fonction pour les messages d'alerte
     func alert(message:String){
@@ -30,6 +34,7 @@ class createPlayer1ViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
+// creation de la fonction pour ajouter un personnage au tableau des personnages
     @IBAction func createCharacter(_ sender: Any) {
         verif()
         let newCharacter = Character(name: nameCharacterTF.text!, race: characRace!)
@@ -70,14 +75,12 @@ class createPlayer1ViewController: UIViewController {
 }
 }
     
-
 // creation de la fonction pour ajouter un joueur
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToPlayer2" {
             _ = segue.destination as! createPlayer2ViewController
         }
         }
-    
     
     @IBAction func createPlayer(_ sender: Any) {
         player1.name = namePlayer1TF.text!
@@ -103,7 +106,6 @@ class createPlayer1ViewController: UIViewController {
         }
     }
     
-
 // fonction pour initialiser les parametres des vues
     func viewSetup(){
         namePlayer1TF.delegate = self
@@ -113,12 +115,6 @@ class createPlayer1ViewController: UIViewController {
         pickerView.dataSource = self
         pickerView.delegate = self
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        viewSetup()
-        characRace = elf
-}
 }
 
 // refermer le clavier après la touche retour
@@ -132,6 +128,7 @@ extension createPlayer1ViewController : UITextFieldDelegate{
         return true
     }
 }
+
 // parametrage de la tableView
 extension createPlayer1ViewController : UITableViewDataSource, UITableViewDelegate {
     // nombre de rangées du tableview egale au count du tableau de personnages
