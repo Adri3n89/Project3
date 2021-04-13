@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7A49A6B8261F2645006F48AD /* WinViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A49A6B7261F2645006F48AD /* WinViewViewController.swift */; };
+		7A49A6E4262393A2006F48AD /* bounceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A49A6E3262393A2006F48AD /* bounceButton.swift */; };
 		7A57FA502613ABB200BFC780 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A57FA4F2613ABB200BFC780 /* AppDelegate.swift */; };
 		7A57FA522613ABB200BFC780 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A57FA512613ABB200BFC780 /* SceneDelegate.swift */; };
 		7A57FA542613ABB200BFC780 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A57FA532613ABB200BFC780 /* ViewController.swift */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		7A49A6B7261F2645006F48AD /* WinViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinViewViewController.swift; sourceTree = "<group>"; };
+		7A49A6E3262393A2006F48AD /* bounceButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bounceButton.swift; sourceTree = "<group>"; };
 		7A57FA4C2613ABB200BFC780 /* Project3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A57FA4F2613ABB200BFC780 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A57FA512613ABB200BFC780 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				7A57FA672613ACB300BFC780 /* CoreDataHelper.swift */,
+				7A49A6E3262393A2006F48AD /* bounceButton.swift */,
 				7A6B77A426149DF700565F71 /* Weapon.swift */,
 				7A6B77A726149EE600565F71 /* Race.swift */,
 				7A6B77B92617158E00565F71 /* Game.swift */,
@@ -215,6 +218,7 @@
 				7A57FA502613ABB200BFC780 /* AppDelegate.swift in Sources */,
 				7A57FA522613ABB200BFC780 /* SceneDelegate.swift in Sources */,
 				7A49A6B8261F2645006F48AD /* WinViewViewController.swift in Sources */,
+				7A49A6E4262393A2006F48AD /* bounceButton.swift in Sources */,
 				7A57FA5A2613ABB200BFC780 /* Project3.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

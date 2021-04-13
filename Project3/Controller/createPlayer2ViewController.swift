@@ -85,8 +85,11 @@ class createPlayer2ViewController: UIViewController {
     @IBAction func createPlayer(_ sender: Any) {
         player2.name = namePlayer2TF.text!
         if player2.characters.count < 3 {
-                    alert(message: "Your player must have 3 characters in his team")
-                }
+                alert(message: "Your player must have 3 characters in his team")
+            }
+        if player2.name.capitalized == player1.name.capitalized {
+            alert(message: "Your player can't have the same playerOne's name")
+        }
                 performSegue(withIdentifier: "goToFight", sender: Any?.self)
             }
     

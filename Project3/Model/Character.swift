@@ -15,6 +15,7 @@ class Character: Equatable {
     
     var name:String
     var race:Race
+    var canPlay = true
     
     func attack(ennemy:Character){
         ennemy.race.health -= race.weapon.damage

@@ -15,21 +15,20 @@ class WinViewViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        victoryLabel.text = "Congratulation \(game.winner!.name)\nyou win the fight !"
+        victoryLabel.text = """
+Congratulation \(game.winner!.name.capitalized) you win the fight !
+\(game.winner!.characters[0].name) have \(game.winner!.characters[0].race.health) pv left
+\(game.winner!.characters[1].name) have \(game.winner!.characters[1].race.health) pv left
+\(game.winner!.characters[2].name) have \(game.winner!.characters[2].race.health) pv left
+you win in \(game.totalTurn) turns
+"""
         self.navigationItem.hidesBackButton = true
         self.navigationController?.isNavigationBarHidden = true
         // Do any additional setup after loading the view.
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToHome" {
-            _ = segue.destination as! UINavigationController
-        }
-        }
     
     @IBAction func pushHomeButton(_ sender: Any) {
-        performSegue(withIdentifier: "goToHome", sender: Any?.self)
         // POUR LE BOUTON HOME : supprimer les variable des joueurs/character
-
     }
     
     @IBAction func pushReplayButton(_ sender: Any) {

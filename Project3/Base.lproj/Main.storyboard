@@ -874,7 +874,6 @@
                         <outlet property="homeButton" destination="F41-f7-KtR" id="BHn-9k-ds0"/>
                         <outlet property="replayButton" destination="AeI-gF-peo" id="q3Q-vs-aEu"/>
                         <outlet property="victoryLabel" destination="E0h-5d-Lv5" id="XDu-4K-o5X"/>
-                        <segue destination="h4w-t2-YXa" kind="show" identifier="goToHome" id="dy6-99-8m0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MCb-K6-NZD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -91,7 +91,7 @@ class createPlayer1ViewController: UIViewController {
     }
     
 // attribuer la race par rapport a un string
-    func verif(){
+    func verif() {
         if characRaceString == "elf" {
             characRace = elf
         }
