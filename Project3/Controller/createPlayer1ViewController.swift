@@ -28,8 +28,8 @@ class createPlayer1ViewController: UIViewController {
 // creation fonction pour les messages d'alerte
     func alert(message:String){
         let message = message
-        let alertController = UIAlertController(title: "Wait a minute", message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        let alertController = UIAlertController(title: titleAlert, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: ok, style: .default, handler: nil)
         alertController.addAction(okAction)
         self.present(alertController, animated: true, completion: nil)
     }
@@ -39,55 +39,44 @@ class createPlayer1ViewController: UIViewController {
         verif()
         let newCharacter = Character(name: nameCharacterTF.text!, race: characRace!)
         if nameCharacterTF.text!.count < 3 {
-            alert(message: "Your Character's name must have 3 caracters mini")
-        }
-        else if player1.characters.count == 0 {
+            alert(message: character3Letters)
+        } else if player1.characters.count == 0 {
             player1.characters.append(newCharacter)
             nameCharacterTF.text = ""
             // actualisation de la tableView pour voir le personnage créé
             tableView.reloadData()
-        }
-        else if player1.characters.count == 1  {
+        } else if player1.characters.count == 1  {
             if player1.characters[0].name == newCharacter.name {
-                    alert(message: "You can't have 2 characters with the same name")
-            }else {
+                    alert(message: character2Names)
+            } else {
             player1.characters.append(newCharacter)
             nameCharacterTF.text = ""
             // actualisation de la tableView pour voir le personnage créé
             tableView.reloadData()
-        }
-        }
-        else if player1.characters.count == 2 {
+            }
+        } else if player1.characters.count == 2 {
             if player1.characters[0].name == newCharacter.name {
-                alert(message: "You can't have 2 characters with the same name")
-            }
-            else if player1.characters[1].name == newCharacter.name {
-                alert(message: "You can't have 2 characters with the same name")
-            }
-            else {
+                alert(message: character2Names)
+            } else if player1.characters[1].name == newCharacter.name {
+                alert(message: character2Names)
+            } else {
                 player1.characters.append(newCharacter)
                 nameCharacterTF.text = ""
                 // actualisation de la tableView pour voir le personnage créé
                 tableView.reloadData()
-            }}
-        else if player1.characters.count > 2 {
-    alert(message: "You can only have 3 characters, delete one before create an other")
-}
-}
+                }
+        } else if player1.characters.count > 2 {
+            alert(message: character3Max)
+            }
+    }
     
 // creation de la fonction pour ajouter un joueur
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToPlayer2" {
-            _ = segue.destination as! createPlayer2ViewController
-        }
-        }
-    
     @IBAction func createPlayer(_ sender: Any) {
         player1.name = namePlayer1TF.text!
         if player1.characters.count < 3 {
-            alert(message: "Your player must have 3 characters in his team")
+            alert(message: characterTeamMini)
         } else if player1.name.count < 3 {
-            alert(message: "Your Player's name must have 3 letters mini")
+            alert(message: player3Letters)
         } else {
             performSegue(withIdentifier: "goToPlayer2", sender: Any?.self)
         }
@@ -125,7 +114,7 @@ extension createPlayer1ViewController : UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         player1.name = namePlayer1TF.text!
         if namePlayer1TF.text!.count < 3 {
-            alert(message: "Your Player's name must have 3 caracters mini")
+            alert(message: characterTeamMini)
         }
         view.endEditing(true)
         return true

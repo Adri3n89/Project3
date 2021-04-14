@@ -28,8 +28,8 @@ class createPlayer2ViewController: UIViewController {
 // creation fonction pour les messages d'alerte
     func alert(message:String){
         let message = message
-        let alertController = UIAlertController(title: "Wait a minute", message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        let alertController = UIAlertController(title: titleAlert, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: ok, style: .default, handler: nil)
         alertController.addAction(okAction)
         self.present(alertController, animated: true, completion: nil)
     }
@@ -39,7 +39,7 @@ class createPlayer2ViewController: UIViewController {
                 verif()
                 let newCharacter = Character(name: nameCharacterTF.text!, race: characRace!)
                 if nameCharacterTF.text!.count < 3 {
-                    alert(message: "Your Character's name must have 3 caracters mini")
+                    alert(message: character3Letters)
                 }
                 else if player2.characters.count == 0 {
                     player2.characters.append(newCharacter)
@@ -49,7 +49,7 @@ class createPlayer2ViewController: UIViewController {
                 }
                 else if player2.characters.count == 1  {
                     if player2.characters[0].name == newCharacter.name {
-                            alert(message: "You can't have 2 characters with the same name")
+                            alert(message: character2Names)
                     }else {
                     player2.characters.append(newCharacter)
                     nameCharacterTF.text = ""
@@ -59,10 +59,10 @@ class createPlayer2ViewController: UIViewController {
                 }
                 else if player2.characters.count == 2 {
                     if player2.characters[0].name == newCharacter.name {
-                        alert(message: "You can't have 2 characters with the same name")
+                        alert(message: character2Names)
                     }
                     else if player2.characters[1].name == newCharacter.name {
-                        alert(message: "You can't have 2 characters with the same name")
+                        alert(message: character2Names)
                     }
                     else {
                         player2.characters.append(newCharacter)
@@ -71,25 +71,18 @@ class createPlayer2ViewController: UIViewController {
                         tableView.reloadData()
                     }}
                 else if player2.characters.count > 2 {
-            alert(message: "You can only have 3 characters, delete one before create an other")
+            alert(message: character3Max)
         }
     }
-    
-// creation de la fonction pour ajouter un joueur
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "goToFight" {
-//            _ = segue.destination as! FightViewController
-//        }
-//        }
 
     @IBAction func createPlayer(_ sender: Any) {
         player2.name = namePlayer2TF.text!
         if player2.characters.count < 3 {
-                alert(message: "Your player must have 3 characters in his team")
+                alert(message: characterTeamMini)
         } else if player2.name.capitalized == player1.name.capitalized {
-            alert(message: "Your player can't have the same playerOne's name")
+            alert(message: player2Names)
         } else if player2.name.count < 3 {
-            alert(message: "Your Player's name must have 3 letters mini")
+            alert(message: player3Letters)
         } else {
         performSegue(withIdentifier: "goToFight", sender: Any?.self)
         }
@@ -127,7 +120,7 @@ extension createPlayer2ViewController : UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         player2.name = namePlayer2TF.text!
         if namePlayer2TF.text!.count < 3 {
-            alert(message: "Your Player's name must have 3 letters mini")
+            alert(message: player3Letters)
         }
         view.endEditing(true)
         return true

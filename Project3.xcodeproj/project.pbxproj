@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A146B7326272A5C0057635B /* StringManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A146B7226272A5C0057635B /* StringManager.swift */; };
 		7A49A6B8261F2645006F48AD /* WinViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A49A6B7261F2645006F48AD /* WinViewViewController.swift */; };
 		7A49A6E4262393A2006F48AD /* bounceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A49A6E3262393A2006F48AD /* bounceButton.swift */; };
 		7A57FA502613ABB200BFC780 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A57FA4F2613ABB200BFC780 /* AppDelegate.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7A146B7226272A5C0057635B /* StringManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringManager.swift; sourceTree = "<group>"; };
 		7A49A6B7261F2645006F48AD /* WinViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinViewViewController.swift; sourceTree = "<group>"; };
 		7A49A6E3262393A2006F48AD /* bounceButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bounceButton.swift; sourceTree = "<group>"; };
 		7A57FA4C2613ABB200BFC780 /* Project3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project3.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,6 +106,7 @@
 				7A57FA672613ACB300BFC780 /* CoreDataHelper.swift */,
 				7A49A6E3262393A2006F48AD /* bounceButton.swift */,
 				7A6B77A426149DF700565F71 /* Weapon.swift */,
+				7A146B7226272A5C0057635B /* StringManager.swift */,
 				7A6B77A726149EE600565F71 /* Race.swift */,
 				7A6B77B92617158E00565F71 /* Game.swift */,
 				7A6B77A126149DED00565F71 /* Character.swift */,
@@ -215,6 +218,7 @@
 				7A6B77A526149DF700565F71 /* Weapon.swift in Sources */,
 				7A6B77B52615FA1000565F71 /* FightViewController.swift in Sources */,
 				7A6B779F26149DE100565F71 /* Player.swift in Sources */,
+				7A146B7326272A5C0057635B /* StringManager.swift in Sources */,
 				7A57FA502613ABB200BFC780 /* AppDelegate.swift in Sources */,
 				7A57FA522613ABB200BFC780 /* SceneDelegate.swift in Sources */,
 				7A49A6B8261F2645006F48AD /* WinViewViewController.swift in Sources */,
