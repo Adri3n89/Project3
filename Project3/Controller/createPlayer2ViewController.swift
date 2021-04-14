@@ -76,22 +76,24 @@ class createPlayer2ViewController: UIViewController {
     }
     
 // creation de la fonction pour ajouter un joueur
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToFight" {
-            _ = segue.destination as! FightViewController
-        }
-        }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "goToFight" {
+//            _ = segue.destination as! FightViewController
+//        }
+//        }
 
     @IBAction func createPlayer(_ sender: Any) {
         player2.name = namePlayer2TF.text!
         if player2.characters.count < 3 {
                 alert(message: "Your player must have 3 characters in his team")
-            }
-        if player2.name.capitalized == player1.name.capitalized {
+        } else if player2.name.capitalized == player1.name.capitalized {
             alert(message: "Your player can't have the same playerOne's name")
+        } else if player2.name.count < 3 {
+            alert(message: "Your Player's name must have 3 letters mini")
+        } else {
+        performSegue(withIdentifier: "goToFight", sender: Any?.self)
         }
-                performSegue(withIdentifier: "goToFight", sender: Any?.self)
-            }
+    }
     
 // attribuer la race par rapport a un string
     func verif(){
@@ -125,7 +127,7 @@ extension createPlayer2ViewController : UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         player2.name = namePlayer2TF.text!
         if namePlayer2TF.text!.count < 3 {
-            alert(message: "Your Player's name must have 3 caracters mini")
+            alert(message: "Your Player's name must have 3 letters mini")
         }
         view.endEditing(true)
         return true

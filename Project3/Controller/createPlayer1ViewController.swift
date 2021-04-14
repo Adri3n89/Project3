@@ -86,8 +86,11 @@ class createPlayer1ViewController: UIViewController {
         player1.name = namePlayer1TF.text!
         if player1.characters.count < 3 {
             alert(message: "Your player must have 3 characters in his team")
+        } else if player1.name.count < 3 {
+            alert(message: "Your Player's name must have 3 letters mini")
+        } else {
+            performSegue(withIdentifier: "goToPlayer2", sender: Any?.self)
         }
-        performSegue(withIdentifier: "goToPlayer2", sender: Any?.self)
     }
     
 // attribuer la race par rapport a un string
