@@ -26,7 +26,7 @@ class createPlayer2ViewController: UIViewController {
 }
     
 // creation fonction pour les messages d'alerte
-    func alert(message:String){
+    private func alert(message:String){
         let message = message
         let alertController = UIAlertController(title: titleAlert, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: ok, style: .default, handler: nil)
@@ -89,23 +89,18 @@ class createPlayer2ViewController: UIViewController {
     }
     
 // attribuer la race par rapport a un string
-    func verif(){
-        if characRaceString == "elf" {
-            characRace = elf
-        }
-        if characRaceString == "human" {
-            characRace = human
-        }
-        if characRaceString == "wizzard" {
-            characRace = wizzard
-        }
-        if characRaceString == "dwarf" {
-            characRace = dwarf
+    private func verif(){
+        switch characRaceString {
+            case "elf" : characRace = elf
+            case "human" : characRace = human
+            case "wizzard" : characRace = wizzard
+            case "dwarf" : characRace = dwarf
+            default : characRace = elf
         }
     }
     
 // fonction pour initialiser les parametres des vues
-    func viewSetup(){
+    private func viewSetup(){
         namePlayer2TF.delegate = self
         nameCharacterTF.delegate = self
         tableView.delegate = self

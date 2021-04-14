@@ -15,8 +15,6 @@ struct Race {
     var type: String
 }
 
-
-
 // creation des 4 race de personnage
 var elf = Race(weapon: baseBow, health: 300, healthMax: 300, type: "elf")
 var human = Race(weapon: baseSword, health: 200, healthMax: 200, type: "human")

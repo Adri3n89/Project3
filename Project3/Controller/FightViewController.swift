@@ -88,25 +88,25 @@ class FightViewController: UIViewController {
     }
     
     func checkTurn(){
-        var characterPlayed = 0
-        for character in characterArray {
-            if character.canPlay == false {
-                characterPlayed += 1
-            }
+    var characterPlayed = 0
+    for character in characterArray {
+        if character.canPlay == false {
+            characterPlayed += 1
         }
-        if characterPlayed == 6 {
-            game.totalTurn += 1
-            currentPlayerIndex = 0
-            for character in characterArray {
-                if character.race.health > 0 {
-                    character.canPlay = true
-                }
+    }
+    if characterPlayed == 6 {
+        game.totalTurn += 1
+        currentPlayerIndex = 0
+        for character in characterArray {
+            if character.race.health > 0 {
+                character.canPlay = true
             }
         }
     }
+}
     
     // convert the type race of characters to an emoji for the label button
-    func convertRace(charac:Character) -> String {
+    private func convertRace(charac:Character) -> String {
         var race = ""
         if charac.race.type == "elf" {
             race = "🧝"
@@ -124,7 +124,7 @@ class FightViewController: UIViewController {
     }
     
     // set all the button disable et alpha 0.2 before the current character was enable
-    func disableAllButton() {
+    private func disableAllButton() {
         activeButton(button: player1Charac1Button, active: false, alpha: 0.2)
         activeButton(button: player1Charac2Button, active: false, alpha: 0.2)
         activeButton(button: player1Charac3Button, active: false, alpha: 0.2)
@@ -134,13 +134,13 @@ class FightViewController: UIViewController {
     }
     
     // function for enable/disable a button
-    func activeButton(button:UIButton, active:Bool, alpha:Double){
+    private func activeButton(button:UIButton, active:Bool, alpha:Double){
         button.isEnabled = active
         button.alpha = CGFloat(alpha)
     }
     
     // set alpha 1 to the button of the currrent character
-    func activateCharacterButton(character:Character){
+    private func activateCharacterButton(character:Character){
         if character == player1.characters[0] {
             activeButton(button: player1Charac1Button, active: true, alpha: 1)
         } else if character == player1.characters[1] {
@@ -156,7 +156,7 @@ class FightViewController: UIViewController {
         }
     }
     
-    func characterIsDead(character:Character){
+    private func characterIsDead(character:Character){
         if character.race.health == 0 {
             character.canPlay = false
         if character == player1.characters[0] {
@@ -175,12 +175,12 @@ class FightViewController: UIViewController {
         }
     }
     
-    func letsBounce(button:UIButton) {
+    private func letsBounce(button:UIButton) {
         button.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 5, options: .allowUserInteraction, animations: {button.transform = CGAffineTransform.identity}, completion: nil)
     }
     
-    func chooseCharacterOrTarget(choice:Character){
+    private func chooseCharacterOrTarget(choice:Character){
         if currentAction == "" {
             currentCharacter = choice
         } else {
@@ -272,20 +272,20 @@ class FightViewController: UIViewController {
     
     // function for refresh the health of all characters
     func refresh(){
-        player1Charac1HPLabel.text = "\(player1.characters[0].race.health)"
-        player1Charac2HPLabel.text = "\(player1.characters[1].race.health)"
-        player1Charac3HPLabel.text = "\(player1.characters[2].race.health)"
-        player2Charac1HPLabel.text = "\(player2.characters[0].race.health)"
-        player2Charac2HPLabel.text = "\(player2.characters[1].race.health)"
-        player2Charac3HPLabel.text = "\(player2.characters[2].race.health)"
-        currentAction = ""
-        currentTarget = nil
-        currentCharacter = nil
-        for i in 0...2 {
-            characterIsDead(character: player1.characters[i])
-            characterIsDead(character: player2.characters[i])
-        }
+    player1Charac1HPLabel.text = "\(player1.characters[0].race.health)"
+    player1Charac2HPLabel.text = "\(player1.characters[1].race.health)"
+    player1Charac3HPLabel.text = "\(player1.characters[2].race.health)"
+    player2Charac1HPLabel.text = "\(player2.characters[0].race.health)"
+    player2Charac2HPLabel.text = "\(player2.characters[1].race.health)"
+    player2Charac3HPLabel.text = "\(player2.characters[2].race.health)"
+    currentAction = ""
+    currentTarget = nil
+    currentCharacter = nil
+    for i in 0...2 {
+        characterIsDead(character: player1.characters[i])
+        characterIsDead(character: player2.characters[i])
     }
+}
     
     // set the currentAction to Attack
     @IBAction func pushAttackButton(_ sender: Any) {
@@ -362,41 +362,41 @@ class FightViewController: UIViewController {
 //        }
 //    }
     
-    func action(){
-        if currentAction == "attack" {
-            currentCharacter!.attack(ennemy: currentTarget!)
-            // set life on 0 ( cannot be negative )
-            if (currentTarget?.race.health)! < 0 {
-                currentTarget?.race.health = 0
-            }
-        }
-        if currentAction == "heal" {
-            currentCharacter!.heal(ally: currentTarget!)
-            // set life on max even if it heal more
-            if (currentTarget?.race.health)! > (currentTarget?.race.healthMax)! {
-                currentTarget?.race.health = (currentTarget?.race.healthMax)!
-            }
-        }
-        isGameOver()
-        if game.state == .isOver {
-            performSegue(withIdentifier: "winView", sender: Any?.self)
-        } else {
-        currentCharacter!.canPlay = false
-        currentPlayerIndex += 1
-        checkTurn()
-        disableAllButton()
-        // change the index to go to the next character of the array
-        // if the last character play, go back to the first and increase a turn.
-        if currentPlayerArray.count == currentPlayerIndex {
-            currentPlayerIndex = 0
-        }
-        currentPlayer = currentPlayerArray[currentPlayerIndex]
-        print(currentPlayer!.name)
-        print(currentTarget!.race.health)
-        refresh()
-        turn()
+    private func action(){
+    if currentAction == "attack" {
+        currentCharacter!.attack(ennemy: currentTarget!)
+        // set life on 0 ( cannot be negative )
+        if (currentTarget?.race.health)! < 0 {
+            currentTarget?.race.health = 0
         }
     }
+    if currentAction == "heal" {
+        currentCharacter!.heal(ally: currentTarget!)
+        // set life on max even if it heal more
+        if (currentTarget?.race.health)! > (currentTarget?.race.healthMax)! {
+            currentTarget?.race.health = (currentTarget?.race.healthMax)!
+        }
+    }
+    isGameOver()
+    if game.state == .isOver {
+        performSegue(withIdentifier: "winView", sender: Any?.self)
+    } else {
+    currentCharacter!.canPlay = false
+    currentPlayerIndex += 1
+    checkTurn()
+    disableAllButton()
+    // change the index to go to the next character of the array
+    // if the last character play, go back to the first and increase a turn.
+    if currentPlayerArray.count == currentPlayerIndex {
+        currentPlayerIndex = 0
+    }
+    currentPlayer = currentPlayerArray[currentPlayerIndex]
+    print(currentPlayer!.name)
+    print(currentTarget!.race.health)
+    refresh()
+    turn()
+    }
+}
     
     // perform current action on current target
     func doAction() {
