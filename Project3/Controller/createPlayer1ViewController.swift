@@ -16,12 +16,10 @@ class createPlayer1ViewController: UIViewController {
     @IBOutlet weak var createPlayerButton: UIButton!
     @IBOutlet weak var createCharacterButton: UIButton!
     
-    var characRace:Race?
-    var characRaceString:String?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewSetup()
+        characRaceSelected = characRace[0]
 }
     
 // creation fonction pour les messages d'alerte
@@ -35,8 +33,7 @@ class createPlayer1ViewController: UIViewController {
     
 // creation de la fonction pour ajouter un personnage au tableau des personnages
     @IBAction func createCharacter(_ sender: Any) {
-        verif()
-        let newCharacter = Character(name: nameCharacterTF.text!, race: characRace!)
+        let newCharacter = Character(name: nameCharacterTF.text!, race: characRaceSelected!)
         if nameCharacterTF.text!.count < 3 {
             alert(message: character3Letters)
         } else if player1.characters.count == 0 {
@@ -78,17 +75,6 @@ class createPlayer1ViewController: UIViewController {
             alert(message: player3Letters)
         } else {
             performSegue(withIdentifier: "goToPlayer2", sender: Any?.self)
-        }
-    }
-    
-// attribuer la race par rapport a un string
-    private func verif(){
-        switch characRaceString {
-            case "elf" : characRace = elf
-            case "human" : characRace = human
-            case "wizzard" : characRace = wizzard
-            case "dwarf" : characRace = dwarf
-            default : characRace = elf
         }
     }
     
@@ -149,16 +135,16 @@ extension createPlayer1ViewController : UIPickerViewDelegate, UIPickerViewDataSo
     }
     // initiliation du nombre de rangées par rapport au nombre de race
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return race.count
+        return characRace.count
     }
     
     //initialisation  du titre des rangées du pickerView
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return race[row]
+        return characRace[row].type
     }
     
     // renvoi de la race selectionnée au personnage
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        characRaceString = race[row]
+        characRaceSelected = characRace[row]
     }
 }

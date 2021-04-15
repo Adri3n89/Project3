@@ -362,6 +362,16 @@ class FightViewController: UIViewController {
 //        }
 //    }
     
+    // perform current action on current target
+    func doAction() {
+//        let randomNumber: Int = .random(in: 0...3)
+//        if randomNumber == 2 {
+//            alert()
+//        } else {
+           action()
+//        }
+    }
+    
     private func action(){
     if currentAction == "attack" {
         currentCharacter!.attack(ennemy: currentTarget!)
@@ -391,22 +401,10 @@ class FightViewController: UIViewController {
         currentPlayerIndex = 0
     }
     currentPlayer = currentPlayerArray[currentPlayerIndex]
-    print(currentPlayer!.name)
-    print(currentTarget!.race.health)
     refresh()
     turn()
     }
 }
-    
-    // perform current action on current target
-    func doAction() {
-//        let randomNumber: Int = .random(in: 0...3)
-//        if randomNumber == 2 {
-//            alert()
-//        } else {
-           action()
-//        }
-    }
   
     // set the current action to heal
     @IBAction func pushHealButton(_ sender: Any) {
