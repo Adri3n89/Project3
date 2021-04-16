@@ -63,6 +63,13 @@ class FightViewController: UIViewController {
         self.navigationItem.hidesBackButton = true
         self.navigationController?.isNavigationBarHidden = true
         //  initialise all labels on the view
+        game.state = .isOngoing
+        currentPlayerIndex = 0
+        game.totalTurn = 0
+        for character in characterArray {
+            character.race.health = character.race.healthMax
+            character.canPlay = true
+        }
         player1NameLabel.text = "⚔️ \(player1.name.capitalized) ⚔️"
         player1Charac1HPLabel.text = String(player1.characters[0].race.health)
         player1Charac1NameLabel.text = player1.characters[0].name.capitalized
@@ -221,16 +228,10 @@ class FightViewController: UIViewController {
     }
     
     func turn(){
-        // print pour check les bugs
+        if currentPlayerIndex == currentPlayerArray.count {
+            currentPlayerIndex = 0
+        }
         currentPlayer = currentPlayerArray[currentPlayerIndex]
-        print(currentPlayer!)
-        print(player1.characters[0].canPlay)
-        print(player1.characters[1].canPlay)
-        print(player1.characters[2].canPlay)
-        print(player2.characters[0].canPlay)
-        print(player2.characters[1].canPlay)
-        print(player2.characters[2].canPlay)
-        print(game.totalTurn)
         disableAllButton()
         activeButton(button: cancelButton, active: false, alpha: 0.2)
         activeButton(button: attackButton, active: false, alpha: 0.2)
@@ -333,34 +334,32 @@ class FightViewController: UIViewController {
 //    func alert(){
 //        let randomNumber: Int = .random(in: 0...2)
 //        var randomWeapon:Weapon?
-//        if randomNumber == 2 {
-//            if currentCharacter?.race.type == "elf" {
-//                randomWeapon = arrayBow[randomNumber]
-//            }
-//            if currentCharacter?.race.type == "dwarf" {
-//                randomWeapon = arrayAxe[randomNumber]
-//            }
-//            if currentCharacter?.race.type == "wizzard" {
-//                randomWeapon = arrayStick[randomNumber]
-//            }
-//            if currentCharacter?.race.type == "human" {
-//                randomWeapon = arraySword[randomNumber]
-//            }
-//            let message = "A treasure chest appears with a \(currentCharacter!.race.weapon.name) inside"
-//            let alertController = UIAlertController(title: "🎁", message: "\(message)\ndamage : \(randomWeapon!.damage) heal : \(randomWeapon!.heal)", preferredStyle: .alert)
-//            let equipAction = UIAlertAction(title: "Equip", style: .default, handler: { action in
-//                self.currentCharacter!.race.weapon = randomWeapon!
-//                self.action()
-//
-//            })
-//            let dontEquipAction = UIAlertAction(title: "Don't equip", style: .default, handler: { action in
-//                self.action()
-//            })
-//            alertController.addAction(equipAction)
-//            alertController.addAction(dontEquipAction)
-//            self.present(alertController, animated: true)
+//        if currentCharacter?.race.type == "elf" {
+//            randomWeapon = arrayBow[randomNumber]
 //        }
-//    }
+//        if currentCharacter?.race.type == "dwarf" {
+//            randomWeapon = arrayAxe[randomNumber]
+//        }
+//        if currentCharacter?.race.type == "wizzard" {
+//            randomWeapon = arrayStick[randomNumber]
+//        }
+//        if currentCharacter?.race.type == "human" {
+//            randomWeapon = arraySword[randomNumber]
+//        }
+//        let message = "A treasure chest appears with a \(currentCharacter!.race.weapon.name) inside"
+//        let alertController = UIAlertController(title: "🎁", message: "\(message)\ndamage : \(randomWeapon!.damage) heal : \(randomWeapon!.heal)", preferredStyle: .alert)
+//        let equipAction = UIAlertAction(title: "Equip", style: .default, handler: { action in
+//            self.currentCharacter!.race.weapon = randomWeapon!
+//            self.action()
+//        })
+//        let dontEquipAction = UIAlertAction(title: "Don't equip", style: .default, handler: { action in
+//            self.action()
+//        })
+//        alertController.addAction(equipAction)
+//        alertController.addAction(dontEquipAction)
+//        self.present(alertController, animated: true)
+//        }
+    
     
     // perform current action on current target
     func doAction() {
@@ -368,7 +367,7 @@ class FightViewController: UIViewController {
 //        if randomNumber == 2 {
 //            alert()
 //        } else {
-           action()
+            action()
 //        }
     }
     

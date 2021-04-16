@@ -28,11 +28,16 @@ you win in \(game.totalTurn) turns
     }
     
     @IBAction func pushHomeButton(_ sender: Any) {
-        // POUR LE BOUTON HOME : supprimer les variable des joueurs/character
+        let startController = self.storyboard?.instantiateViewController(identifier: "mainMenu")
+        self.view.window?.rootViewController = startController
+        player1.name = ""
+        player2.name = ""
+        player1.characters = []
+        player2.characters = []
     }
     
     @IBAction func pushReplayButton(_ sender: Any) {
-        // POUR LE BOUTON REPLAY remettre la vie des perso a la vie max pour le bouton replay, remettre le total turn a 0 et remetre l'index sur 0
+        performSegue(withIdentifier: "fight", sender: Any?.self)
     }
 
 

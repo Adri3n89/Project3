@@ -15,7 +15,6 @@ class createPlayer2ViewController: UIViewController {
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var createCharacterButton: UIButton!
     @IBOutlet weak var createPlayerButton: UIButton!
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,6 +71,7 @@ class createPlayer2ViewController: UIViewController {
         }
     }
 
+// creation de la fonction pour ajouter un joueur
     @IBAction func createPlayer(_ sender: Any) {
         player2.name = namePlayer2TF.text!
         if player2.characters.count < 3 {
