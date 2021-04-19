@@ -9,7 +9,7 @@ import Foundation
 
 class Game {
     
-    enum State{
+    enum State {
         case isOngoing,isOver
     }
     var state:State = .isOngoing
@@ -20,7 +20,7 @@ class Game {
 
 var game = Game()
 
-func isGameOver(){
+func isGameOver() {
     if (player1.characters[0].race.health == 0 && player1.characters[1].race.health == 0 && player1.characters[2].race.health == 0) {
         game.winner = player2
         game.state = .isOver

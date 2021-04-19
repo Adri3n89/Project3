@@ -23,7 +23,7 @@ class createPlayer2ViewController: UIViewController {
 }
     
 // creation fonction pour les messages d'alerte
-    private func alert(message:String){
+    private func alert(message:String) {
         let message = message
         let alertController = UIAlertController(title: titleAlert, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: ok, style: .default, handler: nil)
@@ -33,41 +33,50 @@ class createPlayer2ViewController: UIViewController {
     
 // creation de la fonction pour ajouter un personnage au tableau des personnages
     @IBAction func createCharacter(_ sender: Any) {
-                let newCharacter = Character(name: nameCharacterTF.text!, race: characRaceSelected!)
-                if nameCharacterTF.text!.count < 3 {
-                    alert(message: character3Letters)
+        let newCharacter = Character(name: nameCharacterTF.text!, race: characRaceSelected!)
+        var sameName = 0
+        if nameCharacterTF.text!.count < 3 {
+            alert(message: character3Letters)
+        } else if player2.characters.count == 0 {
+            for i in 0...player1.characters.count-1 {
+                if newCharacter.name.capitalized == player1.characters[i].name.capitalized {
+                    sameName += 1
                 }
-                else if player2.characters.count == 0 {
-                    player2.characters.append(newCharacter)
-                    nameCharacterTF.text = ""
-                    // actualisation de la tableView pour voir le personnage créé
-                    tableView.reloadData()
-                }
-                else if player2.characters.count == 1  {
-                    if player2.characters[0].name == newCharacter.name {
-                            alert(message: character2Names)
-                    }else {
-                    player2.characters.append(newCharacter)
-                    nameCharacterTF.text = ""
-                    // actualisation de la tableView pour voir le personnage créé
-                    tableView.reloadData()
-                }
-                }
-                else if player2.characters.count == 2 {
-                    if player2.characters[0].name == newCharacter.name {
-                        alert(message: character2Names)
-                    }
-                    else if player2.characters[1].name == newCharacter.name {
-                        alert(message: character2Names)
-                    }
-                    else {
-                        player2.characters.append(newCharacter)
-                        nameCharacterTF.text = ""
-                        // actualisation de la tableView pour voir le personnage créé
-                        tableView.reloadData()
-                    }}
-                else if player2.characters.count > 2 {
+            }
+            if sameName > 0 {
+                alert(message: characterP2P1)
+                sameName = 0
+            } else {
+                player2.characters.append(newCharacter)
+                nameCharacterTF.text = ""
+                tableView.reloadData()
+            }
+        } else if player2.characters.count > 2 {
             alert(message: character3Max)
+        } else {
+            for i in 0...player2.characters.count-1 {
+                if newCharacter.name.capitalized == player2.characters[i].name.capitalized {
+                    sameName += 1
+                }
+            }
+            if sameName > 0 {
+                alert(message: character2Names)
+                sameName = 0
+            } else {
+                for i in 0...player1.characters.count-1 {
+                    if newCharacter.name.capitalized == player1.characters[i].name.capitalized {
+                        sameName += 1
+                    }
+                }
+                if sameName > 0 {
+                    alert(message: characterP2P1)
+                    sameName = 0
+                } else {
+                    player2.characters.append(newCharacter)
+                    nameCharacterTF.text = ""
+                    tableView.reloadData()
+                }
+            }
         }
     }
 
@@ -75,7 +84,7 @@ class createPlayer2ViewController: UIViewController {
     @IBAction func createPlayer(_ sender: Any) {
         player2.name = namePlayer2TF.text!
         if player2.characters.count < 3 {
-                alert(message: characterTeamMini)
+            alert(message: characterTeamMini)
         } else if player2.name.capitalized == player1.name.capitalized {
             alert(message: player2Names)
         } else if player2.name.count < 3 {
@@ -97,7 +106,7 @@ class createPlayer2ViewController: UIViewController {
 }
 
 // refermer le clavier après la touche retour
-extension createPlayer2ViewController : UITextFieldDelegate{
+extension createPlayer2ViewController : UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         player2.name = namePlayer2TF.text!
         if namePlayer2TF.text!.count < 3 {
@@ -128,10 +137,9 @@ extension createPlayer2ViewController : UITableViewDataSource, UITableViewDelega
         let action = UIContextualAction(style: .destructive, title: "Delete") {(action, view, completionHandler) in
             player2.characters.remove(at: indexPath.row)
             tableView.reloadData()
+            }
+        return UISwipeActionsConfiguration(actions: [action])
     }
-    return UISwipeActionsConfiguration(actions: [action])
-}
-    
 }
 
 // parametrage du pickerView

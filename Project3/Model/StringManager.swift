@@ -15,4 +15,5 @@ let character3Max = "You can only have 3 characters, delete one before create an
 let characterTeamMini = "Your player must have 3 characters in his team"
 let player3Letters = "your Player's name must have 3 letters mini"
 let player2Names = "Your player can't have the same playerOne's name"
+let characterP2P1 = "You can't have the same character's name that Player 1"
 

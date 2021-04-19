@@ -23,7 +23,7 @@ class createPlayer1ViewController: UIViewController {
 }
     
 // creation fonction pour les messages d'alerte
-    private func alert(message:String){
+    private func alert(message:String) {
         let message = message
         let alertController = UIAlertController(title: titleAlert, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: ok, style: .default, handler: nil)
@@ -41,19 +41,19 @@ class createPlayer1ViewController: UIViewController {
             nameCharacterTF.text = ""
             // actualisation de la tableView pour voir le personnage créé
             tableView.reloadData()
-        } else if player1.characters.count == 1  {
-            if player1.characters[0].name == newCharacter.name {
-                    alert(message: character2Names)
+        } else if player1.characters.count == 1 {
+            if player1.characters[0].name.capitalized == newCharacter.name.capitalized {
+                alert(message: character2Names)
             } else {
-            player1.characters.append(newCharacter)
-            nameCharacterTF.text = ""
-            // actualisation de la tableView pour voir le personnage créé
-            tableView.reloadData()
+                player1.characters.append(newCharacter)
+                nameCharacterTF.text = ""
+                // actualisation de la tableView pour voir le personnage créé
+                tableView.reloadData()
             }
         } else if player1.characters.count == 2 {
-            if player1.characters[0].name == newCharacter.name {
+            if player1.characters[0].name.capitalized == newCharacter.name.capitalized {
                 alert(message: character2Names)
-            } else if player1.characters[1].name == newCharacter.name {
+            } else if player1.characters[1].name.capitalized == newCharacter.name.capitalized {
                 alert(message: character2Names)
             } else {
                 player1.characters.append(newCharacter)
@@ -63,7 +63,7 @@ class createPlayer1ViewController: UIViewController {
                 }
         } else if player1.characters.count > 2 {
             alert(message: character3Max)
-            }
+        }
     }
     
 // creation de la fonction pour ajouter un joueur
@@ -79,7 +79,7 @@ class createPlayer1ViewController: UIViewController {
     }
     
 // fonction pour initialiser les parametres des vues
-    private func viewSetup(){
+    private func viewSetup() {
         namePlayer1TF.delegate = self
         nameCharacterTF.delegate = self
         tableView.delegate = self
@@ -90,7 +90,7 @@ class createPlayer1ViewController: UIViewController {
 }
 
 // refermer le clavier après la touche retour
-extension createPlayer1ViewController : UITextFieldDelegate{
+extension createPlayer1ViewController : UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         player1.name = namePlayer1TF.text!
         if namePlayer1TF.text!.count < 3 {
@@ -121,10 +121,9 @@ extension createPlayer1ViewController : UITableViewDataSource, UITableViewDelega
         let action = UIContextualAction(style: .destructive, title: "Delete") {(action, view, completionHandler) in
             player1.characters.remove(at: indexPath.row)
             tableView.reloadData()
+        }
+        return UISwipeActionsConfiguration(actions: [action])
     }
-    return UISwipeActionsConfiguration(actions: [action])
-}
-    
 }
 
 // parametrage du pickerView
