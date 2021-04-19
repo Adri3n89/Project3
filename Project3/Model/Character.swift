@@ -12,23 +12,21 @@ class Character: Equatable {
     static func == (lhs: Character, rhs: Character) -> Bool {
         return lhs.name == rhs.name
     }
-    
-    
-    var name:String
-    var race:Race
+
+    var name: String
+    var race: Race
     var canPlay = true
-    
-    func attack(ennemy:Character) {
+
+    func attack(ennemy: Character) {
         ennemy.race.health -= race.weapon.damage
     }
-    
-    func heal(ally:Character) {
+
+    func heal(ally: Character) {
         ally.race.health += race.weapon.heal
     }
-    
-    init(name: String, race:Race) {
+
+    init(name: String, race: Race) {
         self.name = name
         self.race = race
     }
 }
-

@@ -9,9 +9,9 @@ import Foundation
 import UIKit
 
 struct Race {
-    var weapon:Weapon
-    var health:Int
-    let healthMax : Int
+    var weapon: Weapon
+    var health: Int
+    let healthMax: Int
     var type: String
 }
 var characRaceSelected: Race?

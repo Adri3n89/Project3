@@ -12,7 +12,7 @@ class WinViewViewController: UIViewController {
     @IBOutlet weak var victoryLabel: UILabel!
     @IBOutlet weak var replayButton: UIButton!
     @IBOutlet weak var homeButton: UIButton!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         victoryLabel.text = """
@@ -26,7 +26,7 @@ you win in \(game.totalTurn) turns
         self.navigationController?.isNavigationBarHidden = true
         // Do any additional setup after loading the view.
     }
-    
+
     @IBAction func pushHomeButton(_ sender: Any) {
         let startController = self.storyboard?.instantiateViewController(identifier: "mainMenu")
         self.view.window?.rootViewController = startController
@@ -35,11 +35,10 @@ you win in \(game.totalTurn) turns
         player1.characters = []
         player2.characters = []
     }
-    
+
     @IBAction func pushReplayButton(_ sender: Any) {
         performSegue(withIdentifier: "fight", sender: Any?.self)
     }
-
 
     /*
     // MARK: - Navigation

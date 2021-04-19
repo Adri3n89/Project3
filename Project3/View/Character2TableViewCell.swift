@@ -9,8 +9,7 @@ import UIKit
 
 class Character2TableViewCell: UITableViewCell {
 
-
     @IBOutlet weak var characterName: UILabel!
     @IBOutlet weak var characterRace: UILabel!
-    
+
 }

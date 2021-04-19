@@ -7,7 +7,7 @@
 
 import UIKit
 
-class createPlayer2ViewController: UIViewController {
+class CreatePlayer2ViewController: UIViewController {
 // creation des outlets
     @IBOutlet weak var namePlayer2TF: UITextField!
     @IBOutlet weak var nameCharacterTF: UITextField!
@@ -15,22 +15,22 @@ class createPlayer2ViewController: UIViewController {
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var createCharacterButton: UIButton!
     @IBOutlet weak var createPlayerButton: UIButton!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         viewSetup()
         characRaceSelected = characRace[0]
 }
-    
+
 // creation fonction pour les messages d'alerte
-    private func alert(message:String) {
+    private func alert(message: String) {
         let message = message
         let alertController = UIAlertController(title: titleAlert, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: ok, style: .default, handler: nil)
+        let okAction = UIAlertAction(title: okString, style: .default, handler: nil)
         alertController.addAction(okAction)
         self.present(alertController, animated: true, completion: nil)
     }
-    
+
 // creation de la fonction pour ajouter un personnage au tableau des personnages
     @IBAction func createCharacter(_ sender: Any) {
         let newCharacter = Character(name: nameCharacterTF.text!, race: characRaceSelected!)
@@ -38,10 +38,8 @@ class createPlayer2ViewController: UIViewController {
         if nameCharacterTF.text!.count < 3 {
             alert(message: character3Letters)
         } else if player2.characters.count == 0 {
-            for i in 0...player1.characters.count-1 {
-                if newCharacter.name.capitalized == player1.characters[i].name.capitalized {
-                    sameName += 1
-                }
+            for index in 0...player1.characters.count-1 where newCharacter.name.capitalized == player1.characters[index].name.capitalized {
+                sameName += 1
             }
             if sameName > 0 {
                 alert(message: characterP2P1)
@@ -54,19 +52,15 @@ class createPlayer2ViewController: UIViewController {
         } else if player2.characters.count > 2 {
             alert(message: character3Max)
         } else {
-            for i in 0...player2.characters.count-1 {
-                if newCharacter.name.capitalized == player2.characters[i].name.capitalized {
-                    sameName += 1
-                }
+            for index in 0...player2.characters.count-1 where newCharacter.name.capitalized == player2.characters[index].name.capitalized {
+                sameName += 1
             }
             if sameName > 0 {
                 alert(message: character2Names)
                 sameName = 0
             } else {
-                for i in 0...player1.characters.count-1 {
-                    if newCharacter.name.capitalized == player1.characters[i].name.capitalized {
-                        sameName += 1
-                    }
+                for index in 0...player1.characters.count-1 where newCharacter.name.capitalized == player1.characters[index].name.capitalized {
+                    sameName += 1
                 }
                 if sameName > 0 {
                     alert(message: characterP2P1)
@@ -93,9 +87,9 @@ class createPlayer2ViewController: UIViewController {
         performSegue(withIdentifier: "goToFight", sender: Any?.self)
         }
     }
-    
+
 // fonction pour initialiser les parametres des vues
-    private func viewSetup(){
+    private func viewSetup() {
         namePlayer2TF.delegate = self
         nameCharacterTF.delegate = self
         tableView.delegate = self
@@ -106,7 +100,7 @@ class createPlayer2ViewController: UIViewController {
 }
 
 // refermer le clavier après la touche retour
-extension createPlayer2ViewController : UITextFieldDelegate {
+extension CreatePlayer2ViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         player2.name = namePlayer2TF.text!
         if namePlayer2TF.text!.count < 3 {
@@ -118,23 +112,29 @@ extension createPlayer2ViewController : UITextFieldDelegate {
 }
 
 // parametrage de la tableView
-extension createPlayer2ViewController : UITableViewDataSource, UITableViewDelegate {
+extension CreatePlayer2ViewController: UITableViewDataSource, UITableViewDelegate {
     // nombre de rangées du tableview egale au count du tableau de personnages
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return player2.characters.count
     }
-    
+
     // renvoi des données dans les labels de la cell de la tableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // swiftlint:disable force_cast
+        // swiftlint:disable line_length
         let cell = tableView.dequeueReusableCell(withIdentifier: "character2", for: indexPath) as! Character2TableViewCell
+        // swiftlint:enable force_cast
+        // swiftlint:enable line_length
         cell.characterName.text = player2.characters[indexPath.row].name
         cell.characterRace.text = player2.characters[indexPath.row].race.type
         return cell
     }
-    
-    // ajout de d'un swipe dans la tableView pour supprimer un personnage a son index dans la tableview et du tableau de personnage
+
+    // ajout de d'un swipe dans la tableView pour supprimer un personnage
+    // swiftlint:disable line_length
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let action = UIContextualAction(style: .destructive, title: "Delete") {(action, view, completionHandler) in
+    // swiftlint:enable line_length
+        let action = UIContextualAction(style: .destructive, title: "Delete") {(_, _, _) in
             player2.characters.remove(at: indexPath.row)
             tableView.reloadData()
             }
@@ -142,8 +142,8 @@ extension createPlayer2ViewController : UITableViewDataSource, UITableViewDelega
     }
 }
 
-// parametrage du pickerView
-extension createPlayer2ViewController : UIPickerViewDelegate, UIPickerViewDataSource {
+    // parametrage du pickerView
+extension CreatePlayer2ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     // initialisation du nombre de colonnes
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -152,12 +152,12 @@ extension createPlayer2ViewController : UIPickerViewDelegate, UIPickerViewDataSo
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return characRace.count
     }
-    
-    //initialisation  du titre des rangées du pickerView
+
+    // initialisation  du titre des rangées du pickerView
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return characRace[row].type
     }
-    
+
     // renvoi de la race selectionnée au personnage
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         characRaceSelected = characRace[row]

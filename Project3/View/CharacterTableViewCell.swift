@@ -12,6 +12,5 @@ class CharacterTableViewCell: UITableViewCell {
 // creation des outlets
     @IBOutlet weak var characterName: UILabel!
     @IBOutlet weak var characterRace: UILabel!
-    
 
 }
