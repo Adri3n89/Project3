@@ -7,10 +7,16 @@
 
 import Foundation
 
-struct Weapon {
-    let name: String
-    let damage: Int
-    let heal: Int
+class Weapon {
+    var name: String
+    var damage: Int
+    var heal: Int
+    
+    init(name: String, damage:Int, heal:Int) {
+        self.name = name
+        self.damage = damage
+        self.heal = heal
+    }
 }
 
 // creation des 3 types d'arcs

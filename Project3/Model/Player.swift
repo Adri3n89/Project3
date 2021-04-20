@@ -11,6 +11,3 @@ struct Player {
     var name = ""
     var characters = [Character]()
 }
-
-var player1 = Player()
-var player2 = Player()

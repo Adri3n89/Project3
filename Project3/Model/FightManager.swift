@@ -19,6 +19,28 @@ var currentTarget: Character?
 var currentAction = ""
 let randomNumber: Int = .random(in: 0...2)
 var randomWeapon: Weapon?
+let game = Game()
+var player1 = Player()
+var player2 = Player()
+var characRaceSelected: Race?
+// creation des 4 race de personnage
+var characRace: [Race] = [
+Race(weapon: baseBow, health: 300, healthMax: 300, type: "elf"),
+Race(weapon: baseSword, health: 200, healthMax: 200, type: "human"),
+Race(weapon: baseStick, health: 250, healthMax: 250, type: "wizzard"),
+Race(weapon: baseAxe, health: 275, healthMax: 275, type: "dwarf")
+]
+
+func isGameOver() {
+    if checkHealth(player1, 0) == 0 && checkHealth(player1, 1) == 0 && checkHealth(player1, 2) == 0 {
+        game.winner = player2
+        game.state = .isOver
+    }
+    if checkHealth(player2, 0) == 0 && checkHealth(player2, 1) == 0 && checkHealth(player2, 2) == 0 {
+        game.state = .isOver
+        game.winner = player1
+    }
+}
 
 func attack() {
     currentC!.attack(ennemy: currentTarget!)
@@ -36,6 +58,10 @@ func heal() {
     }
 }
 
+func checkHealth(_ player: Player, _ index: Int) -> Int {
+    return player.characters[index].race.health
+}
+
 // function for enable/disable a button
 func activeButton(button: UIButton, active: Bool, alpha: Double) {
     button.isEnabled = active
@@ -45,7 +71,7 @@ func activeButton(button: UIButton, active: Bool, alpha: Double) {
 // convert the type race of characters to an emoji for the label button
 func convertRace(charac: Character) -> String {
         var race = ""
-        if charac.race.type == "elf" {
+        if charac.race.type == "elfe" {
             race = "🧝"
         }
         if charac.race.type == "human" {

@@ -289,6 +289,7 @@ class FightViewController: UIViewController {
     }
 
     func randomChest() {
+        let randomNumber: Int = .random(in: 0...3)
         if currentC?.race.type == "elf" {
             randomWeapon = arrayBow[randomNumber]
         }

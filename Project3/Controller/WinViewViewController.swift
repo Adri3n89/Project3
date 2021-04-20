@@ -22,7 +22,7 @@ you win in \(game.totalTurn) turns
 """
         self.navigationItem.hidesBackButton = true
         self.navigationController?.isNavigationBarHidden = true
-        
+
     }
     /*
     // MARK: - Navigation
