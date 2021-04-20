@@ -110,18 +110,16 @@ extension CreatePlayer1ViewController: UITableViewDataSource, UITableViewDelegat
 
     // renvoi des données dans les labels de la cell de la tableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // swiftlint:disable force_cast
+        // swiftlint:disable:next force_cast
         let cell = tableView.dequeueReusableCell(withIdentifier: "character", for: indexPath) as! CharacterTableViewCell
-        // swiftlint:enable force_cast
         cell.characterName.text = player1.characters[indexPath.row].name
         cell.characterRace.text = player1.characters[indexPath.row].race.type
         return cell
     }
 
 // ajout de d'un swipe dans la tableView pour supprimer un perso
-    // swiftlint:disable line_length
+    // swiftlint:disable:next line_length
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        // swiftlint:enable line_length
         let action = UIContextualAction(style: .destructive, title: "Delete") {(_, _, _) in
             player1.characters.remove(at: indexPath.row)
             tableView.reloadData()
@@ -141,7 +139,7 @@ extension CreatePlayer1ViewController: UIPickerViewDelegate, UIPickerViewDataSou
         return characRace.count
     }
 
-// initialisation  du titre des rangées du pickerView
+// initialisation du titre des rangées du pickerView
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return characRace[row].type
     }

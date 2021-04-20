@@ -9,6 +9,7 @@ import UIKit
 
 class Character2TableViewCell: UITableViewCell {
 
+    // creation des outlets
     @IBOutlet weak var characterName: UILabel!
     @IBOutlet weak var characterRace: UILabel!
 

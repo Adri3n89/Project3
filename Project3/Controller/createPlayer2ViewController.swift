@@ -31,6 +31,10 @@ class CreatePlayer2ViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
 
+    func checkName(_ newCharac: Character, _ player: Player, _ index: Int) -> Bool {
+        return newCharac.name.capitalized == player.characters[index].name.capitalized
+    }
+
 // creation de la fonction pour ajouter un personnage au tableau des personnages
     @IBAction func createCharacter(_ sender: Any) {
         let newCharacter = Character(name: nameCharacterTF.text!, race: characRaceSelected!)
@@ -38,7 +42,7 @@ class CreatePlayer2ViewController: UIViewController {
         if nameCharacterTF.text!.count < 3 {
             alert(message: character3Letters)
         } else if player2.characters.count == 0 {
-            for index in 0...player1.characters.count-1 where newCharacter.name.capitalized == player1.characters[index].name.capitalized {
+            for index in 0...player1.characters.count-1 where checkName(newCharacter, player1, index) {
                 sameName += 1
             }
             if sameName > 0 {
@@ -52,14 +56,14 @@ class CreatePlayer2ViewController: UIViewController {
         } else if player2.characters.count > 2 {
             alert(message: character3Max)
         } else {
-            for index in 0...player2.characters.count-1 where newCharacter.name.capitalized == player2.characters[index].name.capitalized {
+            for index in 0...player2.characters.count-1 where checkName(newCharacter, player2, index) {
                 sameName += 1
             }
             if sameName > 0 {
                 alert(message: character2Names)
                 sameName = 0
             } else {
-                for index in 0...player1.characters.count-1 where newCharacter.name.capitalized == player1.characters[index].name.capitalized {
+                for index in 0...player1.characters.count-1 where checkName(newCharacter, player1, index) {
                     sameName += 1
                 }
                 if sameName > 0 {
@@ -120,20 +124,17 @@ extension CreatePlayer2ViewController: UITableViewDataSource, UITableViewDelegat
 
     // renvoi des données dans les labels de la cell de la tableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // swiftlint:disable force_cast
-        // swiftlint:disable line_length
+
+        // swiftlint:disable:next line_length force_cast
         let cell = tableView.dequeueReusableCell(withIdentifier: "character2", for: indexPath) as! Character2TableViewCell
-        // swiftlint:enable force_cast
-        // swiftlint:enable line_length
         cell.characterName.text = player2.characters[indexPath.row].name
         cell.characterRace.text = player2.characters[indexPath.row].race.type
         return cell
     }
 
     // ajout de d'un swipe dans la tableView pour supprimer un personnage
-    // swiftlint:disable line_length
+    // swiftlint:disable:next line_length
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-    // swiftlint:enable line_length
         let action = UIContextualAction(style: .destructive, title: "Delete") {(_, _, _) in
             player2.characters.remove(at: indexPath.row)
             tableView.reloadData()

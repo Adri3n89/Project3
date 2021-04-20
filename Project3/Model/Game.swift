@@ -28,7 +28,7 @@ func isGameOver() {
         game.winner = player2
         game.state = .isOver
     }
-    if checkHealth(player2, 0) == 0 && checkHealth(player2, 1) == 0 && checkHealth(player2, 0) == 0 {
+    if checkHealth(player2, 0) == 0 && checkHealth(player2, 1) == 0 && checkHealth(player2, 2) == 0 {
         game.state = .isOver
         game.winner = player1
 }

@@ -9,7 +9,7 @@ import UIKit
 
 class CharacterTableViewCell: UITableViewCell {
 
-// creation des outlets
+    // creation des outlets
     @IBOutlet weak var characterName: UILabel!
     @IBOutlet weak var characterRace: UILabel!
 

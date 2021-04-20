@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+// swiftlint:disable:next type_body_length
 class FightViewController: UIViewController {
     // initialisation des outlets du player1
     @IBOutlet weak var player1NameLabel: UILabel!
@@ -36,18 +36,9 @@ class FightViewController: UIViewController {
     @IBOutlet weak var attackButton: UIButton!
     @IBOutlet weak var healButton: UIButton!
     @IBOutlet weak var cancelButton: UIButton!
-    @IBOutlet weak var currentCAttackLabel: UILabel!
-    @IBOutlet weak var currentCHealLabel: UILabel!
-    @IBOutlet weak var currentCLabel: UILabel!
-
-    // décarations des variables d'action en cours
-    var currentP: Player?
-    var currentPArray: [Player] = [player1, player2]
-    let characterArray: [Character] = [player1.characters[0], player1.characters[1], player1.characters[2], player2.characters[0], player2.characters[1], player2.characters[2]]
-    var currentPIndex = 0
-    var currentC: Character?
-    var currentTarget: Character?
-    var currentAction = ""
+    @IBOutlet weak var currentCharacterAttackLabel: UILabel!
+    @IBOutlet weak var currentCharacterHealLabel: UILabel!
+    @IBOutlet weak var currentCharacterLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +48,6 @@ class FightViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = true
         //  initialise all labels on the view
         game.state = .isOngoing
-        currentPIndex = 0
         game.totalTurn = 0
         for character in characterArray {
             character.race.health = character.race.healthMax
@@ -87,7 +77,7 @@ class FightViewController: UIViewController {
         turn()
     }
 
-    func checkTurn() {
+    private func checkTurn() {
     var characterPlayed = 0
     for character in characterArray where character.canPlay == false {
         characterPlayed += 1
@@ -101,24 +91,6 @@ class FightViewController: UIViewController {
     }
 }
 
-// convert the type race of characters to an emoji for the label button
-    private func convertRace(charac: Character) -> String {
-        var race = ""
-        if charac.race.type == "elf" {
-            race = "🧝"
-        }
-        if charac.race.type == "human" {
-            race = "👨"
-        }
-        if charac.race.type == "wizzard" {
-            race = "🧙‍♂️"
-        }
-        if charac.race.type == "dwarf" {
-            race = "🎅"
-        }
-        return race
-    }
-
     // set all the button disable et alpha 0.2 before the current character was enable
     private func disableAllButton() {
         activeButton(button: player1Charac1Button, active: false, alpha: 0.2)
@@ -127,12 +99,6 @@ class FightViewController: UIViewController {
         activeButton(button: player2Charac1Button, active: false, alpha: 0.2)
         activeButton(button: player2Charac2Button, active: false, alpha: 0.2)
         activeButton(button: player2Charac3Button, active: false, alpha: 0.2)
-    }
-
-    // function for enable/disable a button
-    private func activeButton(button: UIButton, active: Bool, alpha: Double) {
-        button.isEnabled = active
-        button.alpha = CGFloat(alpha)
     }
 
     // set alpha 1 to the button of the currrent character
@@ -155,27 +121,25 @@ class FightViewController: UIViewController {
     private func characterIsDead(character: Character) {
         if character.race.health == 0 {
             character.canPlay = false
-        if character == player1.characters[0] {
-            player1Charac1Button.setTitle("💀", for: .normal)
-        } else if character == player1.characters[1] {
-            player1Charac2Button.setTitle("💀", for: .normal)
-        } else if character == player1.characters[2] {
-            player1Charac3Button.setTitle("💀", for: .normal)
-        } else if character == player2.characters[0] {
-            player2Charac1Button.setTitle("💀", for: .normal)
-        } else if character == player2.characters[1] {
-            player2Charac2Button.setTitle("💀", for: .normal)
-        } else if character == player2.characters[2] {
-            player2Charac3Button.setTitle("💀", for: .normal)
-        }
+            if character == player1.characters[0] {
+                player1Charac1Button.setTitle("💀", for: .normal)
+            } else if character == player1.characters[1] {
+                player1Charac2Button.setTitle("💀", for: .normal)
+            } else if character == player1.characters[2] {
+                player1Charac3Button.setTitle("💀", for: .normal)
+            } else if character == player2.characters[0] {
+                player2Charac1Button.setTitle("💀", for: .normal)
+            } else if character == player2.characters[1] {
+                player2Charac2Button.setTitle("💀", for: .normal)
+            } else if character == player2.characters[2] {
+                player2Charac3Button.setTitle("💀", for: .normal)
+            }
         }
     }
 
     private func letsBounce(button: UIButton) {
         button.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
-        // swiftlint:disable line_length
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 5, options: .allowUserInteraction, animations: {button.transform = CGAffineTransform.identity}, completion: nil)
-        // swiftlint:enable line_length
+        UIView.animate(withDuration: 0.5) {button.transform = CGAffineTransform.identity}
     }
 
     private func chooseCharacterOrTarget(choice: Character) {
@@ -223,12 +187,14 @@ class FightViewController: UIViewController {
             currentPIndex = 0
         }
         currentP = currentPArray[currentPIndex]
+        print(currentP!.name)
         disableAllButton()
         activeButton(button: cancelButton, active: false, alpha: 0.2)
         activeButton(button: attackButton, active: false, alpha: 0.2)
         activeButton(button: healButton, active: false, alpha: 0.2)
         // set the current player
         currentP = currentPArray[currentPIndex]
+        // swiftlint:disable:next line_length
         if currentP?.characters[0].canPlay == false && currentP?.characters[1].canPlay == false && currentP?.characters[2].canPlay == false {
             currentPIndex += 1
             if currentPArray.count == currentPIndex {
@@ -243,7 +209,7 @@ class FightViewController: UIViewController {
         }
         // show who is the current character by showing his name
         if currentC == nil {
-            currentCLabel.text = "\(currentP!.name) choose a character"
+            currentCharacterLabel.text = "\(currentP!.name) choose a character"
         }
         // show to the user the damage and heal his player can make"
         if currentC != nil {
@@ -251,11 +217,11 @@ class FightViewController: UIViewController {
             if (currentC?.race.weapon.heal)! > 0 {
                 activeButton(button: healButton, active: true, alpha: 1)
             }
-            currentCHealLabel.text = "+ \(currentC!.race.weapon.heal)"
-            currentCAttackLabel.text = " - \(currentC!.race.weapon.damage)"
+            currentCharacterHealLabel.text = "+ \(currentC!.race.weapon.heal)"
+            currentCharacterAttackLabel.text = " - \(currentC!.race.weapon.damage)"
         } else {
-            currentCHealLabel.text = "-"
-            currentCAttackLabel.text = "-"
+            currentCharacterHealLabel.text = "-"
+            currentCharacterAttackLabel.text = "-"
         }
         if currentAction != "" && currentTarget != nil {
             doAction()
@@ -322,40 +288,37 @@ class FightViewController: UIViewController {
         }
     }
 
-//    func alert(){
-//        let randomNumber: Int = .random(in: 0...2)
-//        var randomWeapon:Weapon?
-//        if currentC?.race.type == "elf" {
-//            randomWeapon = arrayBow[randomNumber]
-//        }
-//        if currentC?.race.type == "dwarf" {
-//            randomWeapon = arrayAxe[randomNumber]
-//        }
-//        if currentC?.race.type == "wizzard" {
-//            randomWeapon = arrayStick[randomNumber]
-//        }
-//        if currentC?.race.type == "human" {
-//            randomWeapon = arraySword[randomNumber]
-//        }
-//        let message = "A treasure chest appears with a \(currentC!.race.weapon.name) inside"
-//        let alertController = UIAlertController(title: "🎁", message: "\(message)\ndamage : \(randomWeapon!.damage) heal : \(randomWeapon!.heal)", preferredStyle: .alert)
-//        let equipAction = UIAlertAction(title: "Equip", style: .default, handler: { action in
-//            self.currentC!.race.weapon = randomWeapon!
-//            self.action()
-//        })
-//        let dontEquipAction = UIAlertAction(title: "Don't equip", style: .default, handler: { action in
-//            self.action()
-//        })
-//        alertController.addAction(equipAction)
-//        alertController.addAction(dontEquipAction)
-//        self.present(alertController, animated: true)
-//        }
+    func randomChest() {
+        if currentC?.race.type == "elf" {
+            randomWeapon = arrayBow[randomNumber]
+        }
+        if currentC?.race.type == "dwarf" {
+            randomWeapon = arrayAxe[randomNumber]
+        }
+        if currentC?.race.type == "wizzard" {
+            randomWeapon = arrayStick[randomNumber]
+        }
+        if currentC?.race.type == "human" {
+            randomWeapon = arraySword[randomNumber]
+        }
+        let alertController = UIAlertController(title: "🎁", message: message, preferredStyle: .alert)
+        let equipAction = UIAlertAction(title: "Equip", style: .default, handler: { action in
+            currentC!.race.weapon = randomWeapon!
+            self.action()
+        })
+        let dontEquipAction = UIAlertAction(title: "Don't equip", style: .default, handler: { action in
+            self.action()
+        })
+        alertController.addAction(equipAction)
+        alertController.addAction(dontEquipAction)
+        self.present(alertController, animated: true)
+        }
 
     // perform current action on current target
     func doAction() {
 //        let randomNumber: Int = .random(in: 0...3)
 //        if randomNumber == 2 {
-//            alert()
+//            randomChest()
 //        } else {
             action()
 //        }
@@ -363,20 +326,13 @@ class FightViewController: UIViewController {
 
     private func action() {
     if currentAction == "attack" {
-        currentC!.attack(ennemy: currentTarget!)
-        // set life on 0 ( cannot be negative )
-        if (currentTarget?.race.health)! < 0 {
-            currentTarget?.race.health = 0
-        }
+       attack()
     }
     if currentAction == "heal" {
-        currentC!.heal(ally: currentTarget!)
-        // set life on max even if it heal more
-        if (currentTarget?.race.health)! > (currentTarget?.race.healthMax)! {
-            currentTarget?.race.health = (currentTarget?.race.healthMax)!
-        }
+        heal()
     }
     isGameOver()
+        print(game.state)
     if game.state == .isOver {
         performSegue(withIdentifier: "winView", sender: Any?.self)
     } else {
@@ -403,73 +359,14 @@ class FightViewController: UIViewController {
         currentAction = "heal"
         activeButton(button: cancelButton, active: true, alpha: 1)
         activeButton(button: attackButton, active: false, alpha: 0.2)
-        if currentC == player1.characters[0] {
-            if (currentC?.race.health)! < (currentC?.race.healthMax)! {
-            activeButton(button: player1Charac1Button, active: true, alpha: 1)
-            }
-            if checkHealth(player1, 1) > 0 && checkHealth(player1, 1) < player1.characters[1].race.healthMax {
-                activeButton(button: player1Charac2Button, active: true, alpha: 1)
-            }
-            if checkHealth(player1, 2) > 0 && checkHealth(player1, 2) < player1.characters[2].race.healthMax {
-                activeButton(button: player1Charac3Button, active: true, alpha: 1)
-            }
-
-        }
-        if currentC == player1.characters[1] {
-            if (currentC?.race.health)! < (currentC?.race.healthMax)! {
-                activeButton(button: player1Charac2Button, active: true, alpha: 1)
-            }
-            if checkHealth(player1, 0) > 0 && checkHealth(player1, 0) < player1.characters[0].race.healthMax {
-                activeButton(button: player1Charac1Button, active: true, alpha: 1)
-            }
-            if checkHealth(player1, 2) > 0 && checkHealth(player1, 2) < player1.characters[2].race.healthMax {
-                activeButton(button: player1Charac3Button, active: true, alpha: 1)
-            }
-        }
-        if currentC == player1.characters[2] {
-            if (currentC?.race.health)! < (currentC?.race.healthMax)! {
-                activeButton(button: player1Charac3Button, active: true, alpha: 1)
-            }
-            if checkHealth(player1, 1) > 0 && checkHealth(player1, 1) < player1.characters[1].race.healthMax {
-                activeButton(button: player1Charac2Button, active: true, alpha: 1)
-            }
-            if checkHealth(player1, 0) > 0 && checkHealth(player1, 0) < player1.characters[0].race.healthMax {
-                activeButton(button: player1Charac1Button, active: true, alpha: 1)
-            }
-        }
-        if currentC == player2.characters[0] {
-            if (currentC?.race.health)! < (currentC?.race.healthMax)! {
-                activeButton(button: player2Charac1Button, active: true, alpha: 1)
-            }
-            if checkHealth(player2, 1) > 0 && checkHealth(player2, 1) < player2.characters[1].race.healthMax {
-                activeButton(button: player2Charac2Button, active: true, alpha: 1)
-            }
-            if checkHealth(player2, 2) > 0 && checkHealth(player2, 2) < player2.characters[2].race.healthMax {
-                activeButton(button: player2Charac3Button, active: true, alpha: 1)
-            }
-        }
-        if currentC == player2.characters[1] {
-            if (currentC?.race.health)! < (currentC?.race.healthMax)! {
-                activeButton(button: player2Charac2Button, active: true, alpha: 1)
-            }
-            if checkHealth(player2, 0) > 0 && checkHealth(player2, 0) < player2.characters[0].race.healthMax {
-                activeButton(button: player2Charac1Button, active: true, alpha: 1)
-            }
-            if checkHealth(player2, 2) > 0 && checkHealth(player2, 2) < player2.characters[2].race.healthMax {
-                activeButton(button: player2Charac3Button, active: true, alpha: 1)
-            }
-        }
-        if currentC == player2.characters[2] {
-            if (currentC?.race.health)! < (currentC?.race.healthMax)! {
-            activeButton(button: player2Charac3Button, active: true, alpha: 1)
-            }
-            if checkHealth(player2, 1) > 0 && checkHealth(player2, 1) < player2.characters[1].race.healthMax {
-                activeButton(button: player2Charac2Button, active: true, alpha: 1)
-            }
-            if checkHealth(player2, 0) > 0 && checkHealth(player2, 0) < player2.characters[0].race.healthMax {
-                activeButton(button: player2Charac1Button, active: true, alpha: 1)
-            }
-        }
+        // swiftlint:disable line_length
+        checkHealCharacter(player: player1, indexCurrentCharac: 0, coop1: 1, coop2: 2, currentCharacButton: player1Charac1Button, coop1Button: player1Charac2Button, coop2Button: player1Charac3Button)
+        checkHealCharacter(player: player1, indexCurrentCharac: 1, coop1: 0, coop2: 2, currentCharacButton: player1Charac2Button, coop1Button: player1Charac1Button, coop2Button: player1Charac3Button)
+        checkHealCharacter(player: player1, indexCurrentCharac: 2, coop1: 0, coop2: 1, currentCharacButton: player1Charac3Button, coop1Button: player1Charac1Button, coop2Button: player1Charac2Button)
+        checkHealCharacter(player: player2, indexCurrentCharac: 0, coop1: 1, coop2: 2, currentCharacButton: player2Charac1Button, coop1Button: player2Charac2Button, coop2Button: player2Charac3Button)
+        checkHealCharacter(player: player2, indexCurrentCharac: 1, coop1: 0, coop2: 2, currentCharacButton: player2Charac2Button, coop1Button: player2Charac1Button, coop2Button: player2Charac3Button)
+        checkHealCharacter(player: player2, indexCurrentCharac: 2, coop1: 0, coop2: 1, currentCharacButton: player2Charac3Button, coop1Button: player2Charac1Button, coop2Button: player2Charac2Button)
+        // swiftlint:enable line_length
     }
 
     @IBAction func pushCancelButton(_ sender: Any) {

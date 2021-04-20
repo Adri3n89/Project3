@@ -17,7 +17,6 @@
 		7A57FA5A2613ABB200BFC780 /* Project3.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7A57FA582613ABB200BFC780 /* Project3.xcdatamodeld */; };
 		7A57FA5C2613ABB200BFC780 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A57FA5B2613ABB200BFC780 /* Assets.xcassets */; };
 		7A57FA5F2613ABB200BFC780 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A57FA5D2613ABB200BFC780 /* LaunchScreen.storyboard */; };
-		7A57FA682613ACB300BFC780 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A57FA672613ACB300BFC780 /* CoreDataHelper.swift */; };
 		7A57FA6F2613B47E00BFC780 /* createPlayer1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A57FA6E2613B47E00BFC780 /* createPlayer1ViewController.swift */; };
 		7A57FA722613B67100BFC780 /* CharacterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A57FA712613B67100BFC780 /* CharacterTableViewCell.swift */; };
 		7A6B779F26149DE100565F71 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6B779E26149DE000565F71 /* Player.swift */; };
@@ -44,7 +43,6 @@
 		7A57FA5B2613ABB200BFC780 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7A57FA5E2613ABB200BFC780 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7A57FA602613ABB200BFC780 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7A57FA672613ACB300BFC780 /* CoreDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		7A57FA6E2613B47E00BFC780 /* createPlayer1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = createPlayer1ViewController.swift; sourceTree = "<group>"; };
 		7A57FA712613B67100BFC780 /* CharacterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTableViewCell.swift; sourceTree = "<group>"; };
 		7A6B779E26149DE000565F71 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -105,7 +103,6 @@
 		7A57FA6A2613ACCF00BFC780 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				7A57FA672613ACB300BFC780 /* CoreDataHelper.swift */,
 				7A6B77A426149DF700565F71 /* Weapon.swift */,
 				7A146B7226272A5C0057635B /* StringManager.swift */,
 				7A146B772628717A0057635B /* FightManager.swift */,
@@ -236,7 +233,6 @@
 				7A6B77A826149EE600565F71 /* Race.swift in Sources */,
 				7A6B77A226149DED00565F71 /* Character.swift in Sources */,
 				7A6B77AB2614E38600565F71 /* createPlayer2ViewController.swift in Sources */,
-				7A57FA682613ACB300BFC780 /* CoreDataHelper.swift in Sources */,
 				7A57FA722613B67100BFC780 /* CharacterTableViewCell.swift in Sources */,
 				7A57FA6F2613B47E00BFC780 /* createPlayer1ViewController.swift in Sources */,
 				7A57FA542613ABB200BFC780 /* ViewController.swift in Sources */,
