@@ -113,7 +113,7 @@ extension CreatePlayer1ViewController: UITableViewDataSource, UITableViewDelegat
         // swiftlint:disable:next force_cast
         let cell = tableView.dequeueReusableCell(withIdentifier: "character", for: indexPath) as! CharacterTableViewCell
         cell.characterName.text = player1.characters[indexPath.row].name
-        cell.characterRace.text = player1.characters[indexPath.row].race.type
+        cell.characterRace.text = player1.characters[indexPath.row].race.type.rawValue
         return cell
     }
 
@@ -141,7 +141,7 @@ extension CreatePlayer1ViewController: UIPickerViewDelegate, UIPickerViewDataSou
 
 // initialisation du titre des rangées du pickerView
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return characRace[row].type
+        return characRace[row].type.rawValue
     }
 
 // renvoi de la race selectionnée au personnage

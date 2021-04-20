@@ -24,12 +24,7 @@ var player1 = Player()
 var player2 = Player()
 var characRaceSelected: Race?
 // creation des 4 race de personnage
-var characRace: [Race] = [
-Race(weapon: baseBow, health: 300, healthMax: 300, type: "elf"),
-Race(weapon: baseSword, health: 200, healthMax: 200, type: "human"),
-Race(weapon: baseStick, health: 250, healthMax: 250, type: "wizzard"),
-Race(weapon: baseAxe, health: 275, healthMax: 275, type: "dwarf")
-]
+var characRace: [Race] = [Elf(), Human(), Wizzard(), Dwarf()]
 
 func isGameOver() {
     if checkHealth(player1, 0) == 0 && checkHealth(player1, 1) == 0 && checkHealth(player1, 2) == 0 {
@@ -71,16 +66,16 @@ func activeButton(button: UIButton, active: Bool, alpha: Double) {
 // convert the type race of characters to an emoji for the label button
 func convertRace(charac: Character) -> String {
         var race = ""
-        if charac.race.type == "elfe" {
+    if charac.race.type.rawValue == "elf" {
             race = "🧝"
         }
-        if charac.race.type == "human" {
+    if charac.race.type.rawValue == "human" {
             race = "👨"
         }
-        if charac.race.type == "wizzard" {
+    if charac.race.type.rawValue == "wizzard" {
             race = "🧙‍♂️"
         }
-        if charac.race.type == "dwarf" {
+    if charac.race.type.rawValue == "dwarf" {
             race = "🎅"
         }
         return race

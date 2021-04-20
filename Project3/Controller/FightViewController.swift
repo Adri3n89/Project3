@@ -290,16 +290,16 @@ class FightViewController: UIViewController {
 
     func randomChest() {
         let randomNumber: Int = .random(in: 0...3)
-        if currentC?.race.type == "elf" {
+        if currentC?.race.type.rawValue == "elf" {
             randomWeapon = arrayBow[randomNumber]
         }
-        if currentC?.race.type == "dwarf" {
+        if currentC?.race.type.rawValue == "dwarf" {
             randomWeapon = arrayAxe[randomNumber]
         }
-        if currentC?.race.type == "wizzard" {
+        if currentC?.race.type.rawValue == "wizzard" {
             randomWeapon = arrayStick[randomNumber]
         }
-        if currentC?.race.type == "human" {
+        if currentC?.race.type.rawValue == "human" {
             randomWeapon = arraySword[randomNumber]
         }
         let alertController = UIAlertController(title: "🎁", message: message, preferredStyle: .alert)
