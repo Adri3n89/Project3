@@ -9,6 +9,6 @@ import Foundation
 
 class Wizzard: Race {
     init() {
-        super.init(weapon: baseStick, health: 250, healthMax: 250, type: .wizzard)
+        super.init(weapon: BaseStick(), health: 250, healthMax: 250, type: .wizzard)
     }
 }

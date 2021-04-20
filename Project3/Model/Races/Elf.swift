@@ -9,6 +9,6 @@ import Foundation
 
 class Elf: Race {
     init() {
-        super.init(weapon: baseBow, health: 300, healthMax: 300, type: .elf)
+        super.init(weapon: BaseBow(), health: 300, healthMax: 300, type: .elf)
     }
 }

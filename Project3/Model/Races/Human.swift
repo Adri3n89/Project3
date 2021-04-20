@@ -9,6 +9,6 @@ import Foundation
 
 class Human: Race {
     init() {
-        super.init(weapon: baseSword, health: 200, healthMax: 200, type: .human)
+        super.init(weapon: BaseSword(), health: 200, healthMax: 200, type: .human)
     }
 }
