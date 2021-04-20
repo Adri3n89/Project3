@@ -24,7 +24,7 @@ var player1 = Player()
 var player2 = Player()
 var characRaceSelected: Race?
 // creation des 4 race de personnage
-var characRace: [Race] = [Elf(), Human(), Wizzard(), Dwarf()]
+let characRace: [Race] = [Elf(), Human(), Wizzard(), Dwarf()]
 
 func isGameOver() {
     if checkHealth(player1, 0) == 0 && checkHealth(player1, 1) == 0 && checkHealth(player1, 2) == 0 {
