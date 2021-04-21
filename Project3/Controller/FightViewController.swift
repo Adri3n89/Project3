@@ -42,7 +42,6 @@ class FightViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         // hide the navigation bar on this view
         self.navigationItem.hidesBackButton = true
         self.navigationController?.isNavigationBarHidden = true

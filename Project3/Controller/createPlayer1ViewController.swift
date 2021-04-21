@@ -24,16 +24,21 @@ class CreatePlayer1ViewController: UIViewController {
 
 // creation fonction pour les messages d'alerte
     private func alert(message: String) {
-        let message = message
         let alertController = UIAlertController(title: titleAlert, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: okString, style: .default, handler: nil)
         alertController.addAction(okAction)
         self.present(alertController, animated: true, completion: nil)
     }
 
+// verification de 2 noms de personnages
+    func checkName(_ newCharac: Character, _ player: Player, _ index: Int) -> Bool {
+        return newCharac.name.capitalized == player.characters[index].name.capitalized
+    }
+
 // creation de la fonction pour ajouter un personnage au tableau des personnages
     @IBAction func createCharacter(_ sender: Any) {
         let newCharacter = Character(name: nameCharacterTF.text!, race: characRaceSelected!)
+        // verification si le nom du nouveau personnage a minimum 3 caracteres
         if nameCharacterTF.text!.count < 3 {
             alert(message: character3Letters)
         } else if player1.characters.count == 0 {

@@ -24,13 +24,13 @@ class CreatePlayer2ViewController: UIViewController {
 
 // creation fonction pour les messages d'alerte
     private func alert(message: String) {
-        let message = message
         let alertController = UIAlertController(title: titleAlert, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: okString, style: .default, handler: nil)
         alertController.addAction(okAction)
         self.present(alertController, animated: true, completion: nil)
     }
 
+// verification de 2 noms de personnages
     func checkName(_ newCharac: Character, _ player: Player, _ index: Int) -> Bool {
         return newCharac.name.capitalized == player.characters[index].name.capitalized
     }
@@ -39,22 +39,28 @@ class CreatePlayer2ViewController: UIViewController {
     @IBAction func createCharacter(_ sender: Any) {
         let newCharacter = Character(name: nameCharacterTF.text!, race: characRaceSelected!)
         var sameName = 0
+        // verification si le nom du nouveau personnage a minimum 3 caracteres
         if nameCharacterTF.text!.count < 3 {
             alert(message: character3Letters)
+        // si c'est le premier perso, verification si il a deja des personnages avec le meme nom chez le player1
         } else if player2.characters.count == 0 {
             for index in 0...player1.characters.count-1 where checkName(newCharacter, player1, index) {
                 sameName += 1
             }
+            // si oui faire l'alerte
             if sameName > 0 {
                 alert(message: characterP2P1)
                 sameName = 0
+            // sinon ajouter le personnage au tableau du joueur 2
             } else {
                 player2.characters.append(newCharacter)
                 nameCharacterTF.text = ""
                 tableView.reloadData()
             }
+        // si il y a deja 3 perso, alerter le joueur qu'il ne peut pas en avoir plus
         } else if player2.characters.count > 2 {
             alert(message: character3Max)
+        // sinon verifier parmis les premiers perso du player2
         } else {
             for index in 0...player2.characters.count-1 where checkName(newCharacter, player2, index) {
                 sameName += 1
@@ -62,6 +68,7 @@ class CreatePlayer2ViewController: UIViewController {
             if sameName > 0 {
                 alert(message: character2Names)
                 sameName = 0
+            // puis si il n'a pas de perso identique, verifier chez le player1
             } else {
                 for index in 0...player1.characters.count-1 where checkName(newCharacter, player1, index) {
                     sameName += 1
@@ -70,6 +77,7 @@ class CreatePlayer2ViewController: UIViewController {
                     alert(message: characterP2P1)
                     sameName = 0
                 } else {
+                    // si aucun identique, ajouter le personnage au tableau du joueur 2
                     player2.characters.append(newCharacter)
                     nameCharacterTF.text = ""
                     tableView.reloadData()
@@ -78,16 +86,20 @@ class CreatePlayer2ViewController: UIViewController {
         }
     }
 
-// creation de la fonction pour ajouter un joueur
+// creation de la fonction pour ajouter le joueur 2
     @IBAction func createPlayer(_ sender: Any) {
         player2.name = namePlayer2TF.text!
+        // verification que le nombre de personnage dans le tableau du player2 est de 3
         if player2.characters.count < 3 {
             alert(message: characterTeamMini)
+        // verification que le nom du joueur2 n'est pas le meme que le joueur 1
         } else if player2.name.capitalized == player1.name.capitalized {
             alert(message: player2Names)
+        // verification que le nombre de lettre dans le textfield est au minimum de 3
         } else if player2.name.count < 3 {
             alert(message: player3Letters)
         } else {
+        // si tout est réunis, on passe au combat
         performSegue(withIdentifier: "goToFight", sender: Any?.self)
         }
     }
