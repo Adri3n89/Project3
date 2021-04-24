@@ -42,7 +42,6 @@ class FightViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         // hide the navigation bar on this view
         self.navigationItem.hidesBackButton = true
         self.navigationController?.isNavigationBarHidden = true
@@ -290,17 +289,11 @@ class FightViewController: UIViewController {
 
     func randomChest() {
         let randomNumber: Int = .random(in: 0...3)
-        if currentC?.race.type == "elf" {
-            randomWeapon = arrayBow[randomNumber]
-        }
-        if currentC?.race.type == "dwarf" {
-            randomWeapon = arrayAxe[randomNumber]
-        }
-        if currentC?.race.type == "wizzard" {
-            randomWeapon = arrayStick[randomNumber]
-        }
-        if currentC?.race.type == "human" {
-            randomWeapon = arraySword[randomNumber]
+        switch currentC!.race.type {
+        case .elf : randomWeapon = arrayBow[randomNumber]
+        case .dwarf : randomWeapon = arrayAxe[randomNumber]
+        case .human : randomWeapon = arraySword[randomNumber]
+        case .wizzard : randomWeapon = arrayStick[randomNumber]
         }
         let alertController = UIAlertController(title: "🎁", message: message, preferredStyle: .alert)
         let equipAction = UIAlertAction(title: "Equip", style: .default, handler: { action in
