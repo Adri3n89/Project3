@@ -13,6 +13,7 @@ class WinViewViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        // show the winner, the number of turns and the PV left to the winner character's
         victoryLabel.text = """
 Congratulation \(game.winner!.name.capitalized) you win the fight !
 \(game.winner!.characters[0].name) have \(game.winner!.characters[0].race.health) pv left
@@ -24,13 +25,4 @@ you win in \(game.totalTurn) turns
         self.navigationController?.isNavigationBarHidden = true
 
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 }

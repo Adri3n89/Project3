@@ -143,10 +143,10 @@
 		7A57FA6B2613ACE900BFC780 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				7A57FA5D2613ABB200BFC780 /* LaunchScreen.storyboard */,
-				7A57FA712613B67100BFC780 /* CharacterTableViewCell.swift */,
 				7A57FA552613ABB200BFC780 /* Main.storyboard */,
+				7A57FA712613B67100BFC780 /* CharacterTableViewCell.swift */,
 				7A6B77AF2615F60400565F71 /* Character2TableViewCell.swift */,
+				7A57FA5D2613ABB200BFC780 /* LaunchScreen.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";

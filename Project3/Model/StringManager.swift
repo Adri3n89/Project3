@@ -17,6 +17,6 @@ let player3Letters = "your Player's name must have 3 letters mini"
 let player2Names = "Your player can't have the same playerOne's name"
 let characterP2P1 = "You can't have the same character's name that Player 1"
 let message = """
-A treasure chest appears with a \(currentC!.race.weapon.name) inside
+A treasure chest appears with a \(randomWeapon!.name) inside
 damage : \(randomWeapon!.damage) heal : \(randomWeapon!.heal)
 """

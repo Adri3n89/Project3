@@ -288,7 +288,7 @@ class FightViewController: UIViewController {
     }
 
     func randomChest() {
-        let randomNumber: Int = .random(in: 0...3)
+        let randomNumber: Int = .random(in: 0...2)
         switch currentC!.race.type {
         case .elf : randomWeapon = arrayBow[randomNumber]
         case .dwarf : randomWeapon = arrayAxe[randomNumber]
@@ -310,12 +310,12 @@ class FightViewController: UIViewController {
 
     // perform current action on current target
     func doAction() {
-//        let randomNumber: Int = .random(in: 0...3)
-//        if randomNumber == 2 {
-//            randomChest()
-//        } else {
+        let randomNumber: Int = .random(in: 0...4)
+        if randomNumber == 2 {
+            randomChest()
+        } else {
             action()
-//        }
+        }
     }
 
     private func action() {
