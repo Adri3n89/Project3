@@ -11,12 +11,6 @@ class Race {
     var weapon: Weapon
     var health: Int
     let healthMax: Int
-    enum `Type`: String {
-        case elf
-        case human
-        case wizzard
-        case dwarf
-    }
     var type: Type
 
     init(weapon: Weapon, health: Int, healthMax: Int, type: Type) {
@@ -25,4 +19,11 @@ class Race {
         self.healthMax = healthMax
         self.type = type
     }
+}
+
+enum `Type`: String {
+    case elf
+    case human
+    case wizzard
+    case dwarf
 }

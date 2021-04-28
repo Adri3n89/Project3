@@ -288,34 +288,30 @@ class FightViewController: UIViewController {
     }
 
     func randomChest() {
-        let randomNumber: Int = .random(in: 0...3)
+        let randomNumber: Int = .random(in: 0...2)
         switch currentC!.race.type {
         case .elf : randomWeapon = arrayBow[randomNumber]
         case .dwarf : randomWeapon = arrayAxe[randomNumber]
         case .human : randomWeapon = arraySword[randomNumber]
         case .wizzard : randomWeapon = arrayStick[randomNumber]
         }
+        currentC!.race.weapon = randomWeapon!
+        // probleme affiche les bons dégats dans la console mais pas dans l'alerte
+        print("\(randomWeapon!) + \(randomWeapon!.damage) + \(randomWeapon!.heal)")
         let alertController = UIAlertController(title: "🎁", message: message, preferredStyle: .alert)
-        let equipAction = UIAlertAction(title: "Equip", style: .default, handler: { action in
-            currentC!.race.weapon = randomWeapon!
-            self.action()
+        let presentChest = UIAlertAction(title: okString, style: .default, handler: { _ in
         })
-        let dontEquipAction = UIAlertAction(title: "Don't equip", style: .default, handler: { action in
-            self.action()
-        })
-        alertController.addAction(equipAction)
-        alertController.addAction(dontEquipAction)
+        alertController.addAction(presentChest)
         self.present(alertController, animated: true)
         }
 
     // perform current action on current target
     func doAction() {
-//        let randomNumber: Int = .random(in: 0...3)
-//        if randomNumber == 2 {
-//            randomChest()
-//        } else {
-            action()
-//        }
+        let randomNumber2: Int = .random(in: 0...4)
+        if randomNumber2 == 2 {
+            randomChest()
+        }
+        action()
     }
 
     private func action() {

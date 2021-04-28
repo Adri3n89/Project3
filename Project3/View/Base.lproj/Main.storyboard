@@ -516,7 +516,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="POg-q0-jyd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2439.130434782609" y="93.75"/>
+            <point key="canvasLocation" x="2433" y="94"/>
         </scene>
         <!--Fight View Controller-->
         <scene sceneID="ZWz-NJ-twO">

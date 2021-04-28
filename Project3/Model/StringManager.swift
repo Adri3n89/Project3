@@ -18,5 +18,5 @@ let player2Names = "Your player can't have the same playerOne's name"
 let characterP2P1 = "You can't have the same character's name that Player 1"
 let message = """
 A treasure chest appears with a \(currentC!.race.weapon.name) inside
-damage : \(randomWeapon!.damage) heal : \(randomWeapon!.heal)
+damage : \(currentC!.race.weapon.damage) heal : \(currentC!.race.weapon.heal)
 """

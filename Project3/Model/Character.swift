@@ -8,7 +8,7 @@
 import Foundation
 
 class Character: Equatable {
-    // ajout de la fonction pour pouvoir comparer les nom des character
+    // ajout de la fonction pour pouvoir comparer les noms des characters
     static func == (lhs: Character, rhs: Character) -> Bool {
         return lhs.name == rhs.name
     }
@@ -17,16 +17,16 @@ class Character: Equatable {
     var race: Race
     var canPlay = true
 
+    init(name: String, race: Race) {
+        self.name = name
+        self.race = race
+    }
+
     func attack(ennemy: Character) {
         ennemy.race.health -= race.weapon.damage
     }
 
     func heal(ally: Character) {
         ally.race.health += race.weapon.heal
-    }
-
-    init(name: String, race: Race) {
-        self.name = name
-        self.race = race
     }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A045E2D263979C000F66D63 /* CreatePlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A045E2C263979C000F66D63 /* CreatePlayerViewController.swift */; };
 		7A146B7326272A5C0057635B /* StringManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A146B7226272A5C0057635B /* StringManager.swift */; };
 		7A146B782628717A0057635B /* FightManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A146B772628717A0057635B /* FightManager.swift */; };
 		7A49A6B8261F2645006F48AD /* WinViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A49A6B7261F2645006F48AD /* WinViewViewController.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7A045E2C263979C000F66D63 /* CreatePlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePlayerViewController.swift; sourceTree = "<group>"; };
 		7A146B7226272A5C0057635B /* StringManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringManager.swift; sourceTree = "<group>"; };
 		7A146B772628717A0057635B /* FightManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FightManager.swift; sourceTree = "<group>"; };
 		7A49A6B7261F2645006F48AD /* WinViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinViewViewController.swift; sourceTree = "<group>"; };
@@ -143,10 +145,10 @@
 		7A57FA6B2613ACE900BFC780 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				7A57FA5D2613ABB200BFC780 /* LaunchScreen.storyboard */,
-				7A57FA712613B67100BFC780 /* CharacterTableViewCell.swift */,
 				7A57FA552613ABB200BFC780 /* Main.storyboard */,
+				7A57FA712613B67100BFC780 /* CharacterTableViewCell.swift */,
 				7A6B77AF2615F60400565F71 /* Character2TableViewCell.swift */,
+				7A57FA5D2613ABB200BFC780 /* LaunchScreen.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -160,6 +162,7 @@
 				7A57FA6E2613B47E00BFC780 /* createPlayer1ViewController.swift */,
 				7A6B77AA2614E38600565F71 /* createPlayer2ViewController.swift */,
 				7A6B77B42615FA1000565F71 /* FightViewController.swift */,
+				7A045E2C263979C000F66D63 /* CreatePlayerViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 				7A5FA46D262F1A0100519843 /* StrongBow.swift in Sources */,
 				7A5FA481262F1D7600519843 /* BaseStick.swift in Sources */,
 				7A5FA470262F1A2700519843 /* HealBow.swift in Sources */,
+				7A045E2D263979C000F66D63 /* CreatePlayerViewController.swift in Sources */,
 				7A6B77A226149DED00565F71 /* Character.swift in Sources */,
 				7A6B77AB2614E38600565F71 /* createPlayer2ViewController.swift in Sources */,
 				7A5FA47B262F1B4F00519843 /* HealAxe.swift in Sources */,
