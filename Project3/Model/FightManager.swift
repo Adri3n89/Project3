@@ -17,7 +17,7 @@ var currentPIndex = 0
 var currentC: Character?
 var currentTarget: Character?
 var currentAction = ""
-let randomNumber: Int = .random(in: 0...2)
+var randomNumber: Int = .random(in: 0...2)
 var randomWeapon: Weapon?
 let game = Game()
 var player1 = Player()

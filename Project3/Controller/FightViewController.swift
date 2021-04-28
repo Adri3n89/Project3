@@ -288,23 +288,18 @@ class FightViewController: UIViewController {
     }
 
     func randomChest() {
-        let randomNumber: Int = .random(in: 0...2)
         switch currentC!.race.type {
         case .elf : randomWeapon = arrayBow[randomNumber]
         case .dwarf : randomWeapon = arrayAxe[randomNumber]
         case .human : randomWeapon = arraySword[randomNumber]
         case .wizzard : randomWeapon = arrayStick[randomNumber]
         }
+        print("\(randomWeapon!.name) + \(randomWeapon!.damage) + \(randomWeapon!.heal)")
         let alertController = UIAlertController(title: "🎁", message: message, preferredStyle: .alert)
-        let equipAction = UIAlertAction(title: "Equip", style: .default, handler: { action in
-            currentC!.race.weapon = randomWeapon!
-            self.action()
+        currentC!.race.weapon = randomWeapon!
+        let presentChest = UIAlertAction(title: okString, style: .default, handler: { _ in
         })
-        let dontEquipAction = UIAlertAction(title: "Don't equip", style: .default, handler: { action in
-            self.action()
-        })
-        alertController.addAction(equipAction)
-        alertController.addAction(dontEquipAction)
+        alertController.addAction(presentChest)
         self.present(alertController, animated: true)
         }
 
@@ -313,9 +308,8 @@ class FightViewController: UIViewController {
         let randomNumber: Int = .random(in: 0...4)
         if randomNumber == 2 {
             randomChest()
-        } else {
-            action()
         }
+        action()
     }
 
     private func action() {
