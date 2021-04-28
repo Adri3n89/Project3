@@ -17,14 +17,13 @@ var currentPIndex = 0
 var currentC: Character?
 var currentTarget: Character?
 var currentAction = ""
-var randomNumber: Int = .random(in: 0...2)
 var randomWeapon: Weapon?
 let game = Game()
 var player1 = Player()
 var player2 = Player()
-var characRaceSelected: Race?
+var characRaceSelected: String?
 // creation des 4 race de personnage
-let characRace: [Race] = [Elf(), Human(), Wizzard(), Dwarf()]
+let characRace: [String] = ["Elf", "Human", "Wizzard", "Dwarf"]
 
 func isGameOver() {
     if checkHealth(player1, 0) == 0 && checkHealth(player1, 1) == 0 && checkHealth(player1, 2) == 0 {

@@ -36,8 +36,20 @@ class CreatePlayer2ViewController: UIViewController {
     }
 
 // creation de la fonction pour ajouter un personnage au tableau des personnages
+// swiftlint:disable:next cyclomatic_complexity function_body_length
     @IBAction func createCharacter(_ sender: Any) {
-        let newCharacter = Character(name: nameCharacterTF.text!, race: characRaceSelected!)
+        var race: Race?
+        switch characRaceSelected {
+        case "Human":
+            race = Human()
+        case "Dwarf":
+            race = Dwarf()
+        case "Wizzard":
+            race = Wizzard()
+        default:
+            race = Elf()
+        }
+        let newCharacter = Character(name: nameCharacterTF.text!, race: race!)
         var sameName = 0
         // verification si le nom du nouveau personnage a minimum 3 caracteres
         if nameCharacterTF.text!.count < 3 {
@@ -168,7 +180,7 @@ extension CreatePlayer2ViewController: UIPickerViewDelegate, UIPickerViewDataSou
 
     // initialisation  du titre des rangées du pickerView
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return characRace[row].type.rawValue
+        return characRace[row]
     }
 
     // renvoi de la race selectionnée au personnage

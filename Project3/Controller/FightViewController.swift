@@ -288,15 +288,17 @@ class FightViewController: UIViewController {
     }
 
     func randomChest() {
+        let randomNumber: Int = .random(in: 0...2)
         switch currentC!.race.type {
         case .elf : randomWeapon = arrayBow[randomNumber]
         case .dwarf : randomWeapon = arrayAxe[randomNumber]
         case .human : randomWeapon = arraySword[randomNumber]
         case .wizzard : randomWeapon = arrayStick[randomNumber]
         }
-        print("\(randomWeapon!.name) + \(randomWeapon!.damage) + \(randomWeapon!.heal)")
-        let alertController = UIAlertController(title: "🎁", message: message, preferredStyle: .alert)
         currentC!.race.weapon = randomWeapon!
+        // probleme affiche les bons dégats dans la console mais pas dans l'alerte
+        print("\(randomWeapon!) + \(randomWeapon!.damage) + \(randomWeapon!.heal)")
+        let alertController = UIAlertController(title: "🎁", message: message, preferredStyle: .alert)
         let presentChest = UIAlertAction(title: okString, style: .default, handler: { _ in
         })
         alertController.addAction(presentChest)
@@ -305,8 +307,8 @@ class FightViewController: UIViewController {
 
     // perform current action on current target
     func doAction() {
-        let randomNumber: Int = .random(in: 0...4)
-        if randomNumber == 2 {
+        let randomNumber2: Int = .random(in: 0...4)
+        if randomNumber2 == 2 {
             randomChest()
         }
         action()

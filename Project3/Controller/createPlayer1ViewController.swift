@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CreatePlayer1ViewController: UIViewController {
+class CreatePlayer1ViewController: CreatePlayerViewController {
 // MARK: - @IBOUTLET
     @IBOutlet weak var namePlayer1TF: UITextField!
     @IBOutlet weak var tableView: UITableView!
@@ -21,11 +21,24 @@ class CreatePlayer1ViewController: UIViewController {
         super.viewDidLoad()
         viewSetup()
         characRaceSelected = characRace[0]
-}
+    }
 // MARK: - @IBACTION
 // create character and add it to the player1 array if conditions are respected
+// swiftlint:disable:next cyclomatic_complexity
     @IBAction func createCharacter(_ sender: Any) {
-        let newCharacter = Character(name: nameCharacterTF.text!, race: characRaceSelected!)
+//       createNewCharacter()
+        var race: Race?
+        switch characRaceSelected {
+        case "Human":
+            race = Human()
+        case "Dwarf":
+            race = Dwarf()
+        case "Wizzard":
+            race = Wizzard()
+        default:
+            race = Elf()
+        }
+        let newCharacter = Character(name: nameCharacterTF.text!, race: race!)
         // check if the character's name have 3 letters
         if nameCharacterTF.text!.count < 3 {
             alert(message: character3Letters)
@@ -152,7 +165,7 @@ extension CreatePlayer1ViewController: UIPickerViewDelegate, UIPickerViewDataSou
 
 // init title of row with the Race RawValue
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return characRace[row].type.rawValue
+        return characRace[row]
     }
 
 // add the race of row to a variable to assign it to the new character

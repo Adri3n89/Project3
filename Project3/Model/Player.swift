@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Player {
+class Player {
     var name = ""
     var characters = [Character]()
 }
