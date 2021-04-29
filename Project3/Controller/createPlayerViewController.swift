@@ -9,7 +9,7 @@ import UIKit
 
 class CreatePlayerViewController: UIViewController {
 // MARK: - @IBOUTLET
-    @IBOutlet weak var namePlayer1TF: UITextField!
+    @IBOutlet weak var namePlayerTF: UITextField!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var nameCharacterTF: UITextField!
@@ -17,6 +17,7 @@ class CreatePlayerViewController: UIViewController {
     @IBOutlet weak var createCharacterButton: UIButton!
     @IBOutlet weak var createPlayerText: UILabel!
 
+// MARK: - VARIABLES
     var isPlayer2: Bool = false
 
 // MARK: - VIEWDIDLOAD
@@ -26,10 +27,8 @@ class CreatePlayerViewController: UIViewController {
         characRaceSelected = characRace[0]
     }
 // MARK: - @IBACTION
-// create character and add it to the player1 array if conditions are respected
-// swiftlint:disable:next cyclomatic_complexity
+// create character and add it to the player array if conditions are respected
     @IBAction func createCharacter(_ sender: Any) {
-//       createNewCharacter()
         var race: Race?
         switch characRaceSelected {
         case "Human":
@@ -42,124 +41,132 @@ class CreatePlayerViewController: UIViewController {
             race = Elf()
         }
         let newCharacter = Character(name: nameCharacterTF.text!, race: race!)
-        if isPlayer2 {
-            var sameName = 0
-            // verification si le nom du nouveau personnage a minimum 3 caracteres
-            if nameCharacterTF.text!.count < 3 {
-                alert(message: character3Letters)
-            // si c'est le premier perso, verification si il a deja des personnages avec le meme nom chez le player1
-            } else if player2.characters.count == 0 {
-                for index in 0...player1.characters.count-1 where checkName(newCharacter, player1, index) {
-                    sameName += 1
-                }
-                // si oui faire l'alerte
-                if sameName > 0 {
-                    alert(message: characterP2P1)
-                    sameName = 0
-                // sinon ajouter le personnage au tableau du joueur 2
-                } else {
-                    player2.characters.append(newCharacter)
-                    nameCharacterTF.text = ""
-                    tableView.reloadData()
-                }
-            // si il y a deja 3 perso, alerter le joueur qu'il ne peut pas en avoir plus
-            } else if player2.characters.count > 2 {
-                alert(message: character3Max)
-            // sinon verifier parmis les premiers perso du player2
-            } else {
-                for index in 0...player2.characters.count-1 where checkName(newCharacter, player2, index) {
-                    sameName += 1
-                }
-                if sameName > 0 {
-                    alert(message: character2Names)
-                    sameName = 0
-                // puis si il n'a pas de perso identique, verifier chez le player1
-                } else {
-                    for index in 0...player1.characters.count-1 where checkName(newCharacter, player1, index) {
-                        sameName += 1
-                    }
-                    if sameName > 0 {
-                        alert(message: characterP2P1)
-                        sameName = 0
-                    } else {
-                        // si aucun identique, ajouter le personnage au tableau du joueur 2
-                        player2.characters.append(newCharacter)
-                        nameCharacterTF.text = ""
-                        tableView.reloadData()
-                    }
-                }
-            }
-        } else {
-            // check if the character's name have 3 letters
-            if nameCharacterTF.text!.count < 3 {
-                alert(message: character3Letters)
-            // if it's the first character, no other check needed
-            } else if player1.characters.count == 0 {
-                player1.characters.append(newCharacter)
-                nameCharacterTF.text = ""
-                // refresh the tableview
-                tableView.reloadData()
-            // if there is 1 character in the array, check the name
-            } else if player1.characters.count == 1 {
-                if player1.characters[0].name.capitalized == newCharacter.name.capitalized {
-                    alert(message: character2Names)
-                } else {
-                    player1.characters.append(newCharacter)
-                    nameCharacterTF.text = ""
-                    // refresh the tableview
-                    tableView.reloadData()
-                }
-            // if there is 2 character in the array, check the 2 names
-            } else if player1.characters.count == 2 {
-                if player1.characters[0].name.capitalized == newCharacter.name.capitalized {
-                    alert(message: character2Names)
-                } else if player1.characters[1].name.capitalized == newCharacter.name.capitalized {
-                    alert(message: character2Names)
-                } else {
-                    player1.characters.append(newCharacter)
-                    nameCharacterTF.text = ""
-                    // refresh the tableview
-                    tableView.reloadData()
-                    }
-            } else if player1.characters.count > 2 {
-                alert(message: character3Max)
-            }
-        }
+        isPlayer2 ? createCharacterPlayer2(character: newCharacter) : createCharacterPlayer1(character: newCharacter)
     }
 
 // create the player 1 if conditions are respected
     @IBAction func createPlayer(_ sender: Any) {
-        if isPlayer2 {
-            player2.name = namePlayer1TF.text!
-            if player2.characters.count < 3 {
-                alert(message: characterTeamMini)
-            } else if player2.name.count < 3 {
-                alert(message: player3Letters)
-            } else if player2.name.capitalized == player1.name.capitalized {
-                alert(message: player2Names)
-            } else {
-                performSegue(withIdentifier: "goToFight", sender: Any?.self)
-            }
-        } else {
-            player1.name = namePlayer1TF.text!
-            if player1.characters.count < 3 {
-                alert(message: characterTeamMini)
-            } else if player1.name.count < 3 {
-                alert(message: player3Letters)
-            } else {
-                isPlayer2 = true
-                changePlayer()
-                namePlayer1TF.text = ""
-                nameCharacterTF.text = ""
-            }
-        }
+        isPlayer2 ? createPlayer2() : createPlayer1()
     }
 
 // MARK: - PRIVATE FUNC
 
-    func changePlayer() {
-        createPlayerText.text = "Création du joueur 2"
+    private func createCharacterPlayer2(character: Character) {
+        var sameName = 0
+        // verification si le nom du nouveau personnage a minimum 3 caracteres
+        if nameCharacterTF.text!.count < 3 {
+            alert(message: character3Letters)
+        // si c'est le premier perso, verification si il a deja des personnages avec le meme nom chez le player1
+        } else if player2.characters.count == 0 {
+            for index in 0...player1.characters.count-1 where checkName(character, player1, index) {
+                sameName += 1
+            }
+            // si oui faire l'alerte
+            if sameName > 0 {
+                alert(message: characterP2P1)
+                sameName = 0
+            // sinon ajouter le personnage au tableau du joueur 2
+            } else {
+                player2.characters.append(character)
+                nameCharacterTF.text = ""
+                tableView.reloadData()
+            }
+        // si il y a deja 3 perso, alerter le joueur qu'il ne peut pas en avoir plus
+        } else if player2.characters.count > 2 {
+            alert(message: character3Max)
+        // sinon verifier parmis les premiers perso du player2
+        } else {
+            for index in 0...player2.characters.count-1 where checkName(character, player2, index) {
+                sameName += 1
+            }
+            if sameName > 0 {
+                alert(message: character2Names)
+                sameName = 0
+            // puis si il n'a pas de perso identique, verifier chez le player1
+            } else {
+                for index in 0...player1.characters.count-1 where checkName(character, player1, index) {
+                    sameName += 1
+                }
+                if sameName > 0 {
+                    alert(message: characterP2P1)
+                    sameName = 0
+                } else {
+                    // si aucun identique, ajouter le personnage au tableau du joueur 2
+                    player2.characters.append(character)
+                    nameCharacterTF.text = ""
+                    tableView.reloadData()
+                }
+            }
+        }
+    }
+
+    private func createCharacterPlayer1(character: Character) {
+        // check if the character's name have 3 letters
+        if nameCharacterTF.text!.count < 3 {
+            alert(message: character3Letters)
+        // if it's the first character, no other check needed
+        } else if player1.characters.count == 0 {
+            player1.characters.append(character)
+            nameCharacterTF.text = ""
+            // refresh the tableview
+            tableView.reloadData()
+        // if there is 1 character in the array, check the name
+        } else if player1.characters.count == 1 {
+            if player1.characters[0].name.capitalized == character.name.capitalized {
+                alert(message: character2Names)
+            } else {
+                player1.characters.append(character)
+                nameCharacterTF.text = ""
+                // refresh the tableview
+                tableView.reloadData()
+            }
+        // if there is 2 character in the array, check the 2 names
+        } else if player1.characters.count == 2 {
+            if player1.characters[0].name.capitalized == character.name.capitalized {
+                alert(message: character2Names)
+            } else if player1.characters[1].name.capitalized == character.name.capitalized {
+                alert(message: character2Names)
+            } else {
+                player1.characters.append(character)
+                nameCharacterTF.text = ""
+                // refresh the tableview
+                tableView.reloadData()
+                }
+        } else if player1.characters.count > 2 {
+            alert(message: character3Max)
+        }
+    }
+
+    private func createPlayer1() {
+        player1.name = namePlayerTF.text!
+        if player1.characters.count < 3 {
+            alert(message: characterTeamMini)
+        } else if player1.name.count < 3 {
+            alert(message: player3Letters)
+        } else {
+            changePlayer()
+        }
+    }
+
+    private func createPlayer2() {
+        player2.name = namePlayerTF.text!
+        if player2.characters.count < 3 {
+            alert(message: characterTeamMini)
+        } else if player2.name.count < 3 {
+            alert(message: player3Letters)
+        } else if player2.name.capitalized == player1.name.capitalized {
+            alert(message: player2Names)
+        } else {
+            performSegue(withIdentifier: "goToFight", sender: Any?.self)
+        }
+    }
+
+    private func changePlayer() {
+        createPlayerText.text = createPlayer2String
+        isPlayer2 = true
         tableView.reloadData()
+        namePlayerTF.text = ""
+        nameCharacterTF.text = ""
     }
 
 // pop an alert
@@ -177,7 +184,7 @@ class CreatePlayerViewController: UIViewController {
 
 // setup TF, tableView and pickerView
     private func viewSetup() {
-        namePlayer1TF.delegate = self
+        namePlayerTF.delegate = self
         nameCharacterTF.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
@@ -191,11 +198,11 @@ class CreatePlayerViewController: UIViewController {
 extension CreatePlayerViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if isPlayer2 {
-            player2.name = namePlayer1TF.text!
+            player2.name = namePlayerTF.text!
         } else {
-            player1.name = namePlayer1TF.text!
+            player1.name = namePlayerTF.text!
         }
-        if namePlayer1TF.text!.count < 3 {
+        if namePlayerTF.text!.count < 3 {
             alert(message: characterTeamMini)
         }
         view.endEditing(true)
@@ -214,17 +221,18 @@ extension CreatePlayerViewController: UITableViewDataSource, UITableViewDelegate
         }
     }
 
+    func tableviewCell(cell: CharacterTableViewCell, player: Player, indexPath: IndexPath) {
+        cell.characterName.text = player.characters[indexPath.row].name
+        cell.characterRace.text = player.characters[indexPath.row].race.type.rawValue
+    }
+
 // return to the cell the name of the characters and the race
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // swiftlint:disable:next force_cast
         let cell = tableView.dequeueReusableCell(withIdentifier: "character", for: indexPath) as! CharacterTableViewCell
-        if isPlayer2 {
-            cell.characterName.text = player2.characters[indexPath.row].name
-            cell.characterRace.text = player2.characters[indexPath.row].race.type.rawValue
-        } else {
-            cell.characterName.text = player1.characters[indexPath.row].name
-            cell.characterRace.text = player1.characters[indexPath.row].race.type.rawValue
-        }
+        var tableViewPlayer: Player
+        isPlayer2 ? (tableViewPlayer = player2) : (tableViewPlayer = player1)
+        tableviewCell(cell: cell, player: tableViewPlayer, indexPath: indexPath)
         return cell
     }
 

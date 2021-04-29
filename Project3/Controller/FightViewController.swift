@@ -288,7 +288,9 @@ class FightViewController: UIViewController {
     }
 
     func randomChest() {
+        let randomNumber2: Int = .random(in: 0...4)
         let randomNumber: Int = .random(in: 0...2)
+        if randomNumber2 == 2 {
         switch currentC!.race.type {
         case .elf : randomWeapon = arrayBow[randomNumber]
         case .dwarf : randomWeapon = arrayAxe[randomNumber]
@@ -304,42 +306,35 @@ class FightViewController: UIViewController {
         alertController.addAction(presentChest)
         self.present(alertController, animated: true)
         }
+    }
 
-    // perform current action on current target
     func doAction() {
-        let randomNumber2: Int = .random(in: 0...4)
-        if randomNumber2 == 2 {
-            randomChest()
+        randomChest()
+        if currentAction == "attack" {
+            attack()
         }
-        action()
-    }
-
-    private func action() {
-    if currentAction == "attack" {
-       attack()
-    }
-    if currentAction == "heal" {
-        heal()
-    }
-    isGameOver()
+        if currentAction == "heal" {
+            heal()
+        }
+        isGameOver()
         print(game.state)
-    if game.state == .isOver {
-        performSegue(withIdentifier: "winView", sender: Any?.self)
-    } else {
-    currentC!.canPlay = false
-    currentPIndex += 1
-    checkTurn()
-    disableAllButton()
-    // change the index to go to the next character of the array
-    // if the last character play, go back to the first and increase a turn.
-    if currentPArray.count == currentPIndex {
-        currentPIndex = 0
+        if game.state == .isOver {
+            performSegue(withIdentifier: "winView", sender: Any?.self)
+        } else {
+            currentC!.canPlay = false
+            currentPIndex += 1
+            checkTurn()
+            disableAllButton()
+            // change the index to go to the next character of the array
+            // if the last character play, go back to the first and increase a turn.
+        if currentPArray.count == currentPIndex {
+            currentPIndex = 0
+        }
+        currentP = currentPArray[currentPIndex]
+        refresh()
+        turn()
+        }
     }
-    currentP = currentPArray[currentPIndex]
-    refresh()
-    turn()
-    }
-}
 
     // set the current action to heal
     @IBAction func pushHealButton(_ sender: Any) {

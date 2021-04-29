@@ -52,10 +52,6 @@ func heal() {
     }
 }
 
-func checkHealth(_ player: Player, _ index: Int) -> Int {
-    return player.characters[index].race.health
-}
-
 // function for enable/disable a button
 func activeButton(button: UIButton, active: Bool, alpha: Double) {
     button.isEnabled = active
@@ -79,6 +75,10 @@ func convertRace(charac: Character) -> String {
         }
         return race
     }
+
+func checkHealth(_ player: Player, _ index: Int) -> Int {
+    return player.characters[index].race.health
+}
 
 // swiftlint:disable:next line_length function_parameter_count
 func checkHealCharacter(player: Player, indexCurrentCharac: Int, coop1: Int, coop2: Int, currentCharacButton: UIButton, coop1Button: UIButton, coop2Button: UIButton) {

@@ -274,7 +274,7 @@
                         <outlet property="createPlayerButton" destination="Al7-9J-0dG" id="1LL-x3-fPK"/>
                         <outlet property="createPlayerText" destination="Nql-4H-W6P" id="pFs-3J-5G5"/>
                         <outlet property="nameCharacterTF" destination="rA8-w7-h4D" id="mTB-Lv-dtw"/>
-                        <outlet property="namePlayer1TF" destination="dqr-kK-Cyp" id="Ikh-gB-Jgu"/>
+                        <outlet property="namePlayerTF" destination="dqr-kK-Cyp" id="mXZ-mW-fKk"/>
                         <outlet property="pickerView" destination="v1z-vG-UqJ" id="db0-6s-ugL"/>
                         <outlet property="tableView" destination="8PZ-Ls-CHQ" id="d12-0c-a2R"/>
                         <segue destination="L6s-XJ-Zdp" kind="show" identifier="goToFight" id="o6H-0n-UiK"/>
