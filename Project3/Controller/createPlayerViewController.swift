@@ -8,7 +8,7 @@
 import UIKit
 
 class CreatePlayerViewController: UIViewController {
-// MARK: - @IBOUTLET
+// MARK: - @IBOUTLETS
     @IBOutlet weak var namePlayerTF: UITextField!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var pickerView: UIPickerView!
@@ -26,7 +26,7 @@ class CreatePlayerViewController: UIViewController {
         viewSetup()
         characRaceSelected = characRace[0]
     }
-// MARK: - @IBACTION
+// MARK: - @IBACTIONS
 // create character and add it to the player array if conditions are respected
     @IBAction func createCharacter(_ sender: Any) {
         var race: Race?
@@ -49,7 +49,7 @@ class CreatePlayerViewController: UIViewController {
         isPlayer2 ? createPlayer2() : createPlayer1()
     }
 
-// MARK: - PRIVATE FUNC
+// MARK: - PRIVATES FUNCTIONS
 
     private func createCharacterPlayer2(character: Character) {
         var sameName = 0

@@ -8,6 +8,7 @@
 import UIKit
 // swiftlint:disable:next type_body_length
 class FightViewController: UIViewController {
+    // MARK: - @IBOUTLETS
     // initialisation des outlets du player1
     @IBOutlet weak var player1NameLabel: UILabel!
     @IBOutlet weak var player1Charac1NameLabel: UILabel!
@@ -40,6 +41,7 @@ class FightViewController: UIViewController {
     @IBOutlet weak var currentCharacterHealLabel: UILabel!
     @IBOutlet weak var currentCharacterLabel: UILabel!
 
+    // MARK: - VIEWDIDLOAD
     override func viewDidLoad() {
         super.viewDidLoad()
         // hide the navigation bar on this view
@@ -76,6 +78,114 @@ class FightViewController: UIViewController {
         turn()
     }
 
+    // MARK: - @IBACTIONS
+    // set the current target by pushing the characterButton
+    @IBAction func pushP1C1(_ sender: Any) {
+        letsBounce(button: player1Charac1Button)
+        chooseCharacterOrTarget(choice: player1.characters[0])
+    }
+
+    @IBAction func pushP1C2(_ sender: Any) {
+        letsBounce(button: player1Charac2Button)
+        chooseCharacterOrTarget(choice: player1.characters[1])
+    }
+
+    @IBAction func pushP1C3(_ sender: Any) {
+        letsBounce(button: player1Charac3Button)
+        chooseCharacterOrTarget(choice: player1.characters[2])
+    }
+
+    @IBAction func pushP2C1(_ sender: Any) {
+        letsBounce(button: player2Charac1Button)
+        chooseCharacterOrTarget(choice: player2.characters[0])
+    }
+
+    @IBAction func pushP2C2(_ sender: Any) {
+        letsBounce(button: player2Charac2Button)
+        chooseCharacterOrTarget(choice: player2.characters[1])
+    }
+
+    @IBAction func pushP2C3(_ sender: Any) {
+        letsBounce(button: player2Charac3Button)
+        chooseCharacterOrTarget(choice: player2.characters[2])
+    }
+    
+    // set the current action to heal
+    @IBAction func pushHealButton(_ sender: Any) {
+       letsBounce(button: healButton)
+        disableAllButton()
+        healButton.isEnabled = false
+        currentAction = "heal"
+        activeButton(button: cancelButton, active: true, alpha: 1)
+        activeButton(button: attackButton, active: false, alpha: 0.2)
+        // swiftlint:disable line_length
+        checkHealCharacter(player: player1, indexCurrentCharac: 0, coop1: 1, coop2: 2, currentCharacButton: player1Charac1Button, coop1Button: player1Charac2Button, coop2Button: player1Charac3Button)
+        checkHealCharacter(player: player1, indexCurrentCharac: 1, coop1: 0, coop2: 2, currentCharacButton: player1Charac2Button, coop1Button: player1Charac1Button, coop2Button: player1Charac3Button)
+        checkHealCharacter(player: player1, indexCurrentCharac: 2, coop1: 0, coop2: 1, currentCharacButton: player1Charac3Button, coop1Button: player1Charac1Button, coop2Button: player1Charac2Button)
+        checkHealCharacter(player: player2, indexCurrentCharac: 0, coop1: 1, coop2: 2, currentCharacButton: player2Charac1Button, coop1Button: player2Charac2Button, coop2Button: player2Charac3Button)
+        checkHealCharacter(player: player2, indexCurrentCharac: 1, coop1: 0, coop2: 2, currentCharacButton: player2Charac2Button, coop1Button: player2Charac1Button, coop2Button: player2Charac3Button)
+        checkHealCharacter(player: player2, indexCurrentCharac: 2, coop1: 0, coop2: 1, currentCharacButton: player2Charac3Button, coop1Button: player2Charac1Button, coop2Button: player2Charac2Button)
+        // swiftlint:enable line_length
+    }
+
+    @IBAction func pushCancelButton(_ sender: Any) {
+        letsBounce(button: cancelButton)
+        currentAction = ""
+        disableAllButton()
+        activeButton(button: attackButton, active: true, alpha: 1)
+        for character in currentP!.characters where character.race.health > 0 {
+            activateCharacterButton(character: character)
+        }
+        if (currentC?.race.weapon.heal)! > 0 {
+            activeButton(button: healButton, active: true, alpha: 1)
+        }
+        activeButton(button: cancelButton, active: false, alpha: 0.2)
+    }
+
+    // set the currentAction to Attack
+    @IBAction func pushAttackButton(_ sender: Any) {
+        letsBounce(button: attackButton)
+        // disable the button
+        attackButton.isEnabled = false
+        currentAction = "attack"
+        activeButton(button: cancelButton, active: false, alpha: 0.2)
+        // enable cancel button to change the choice
+        activeButton(button: cancelButton, active: true, alpha: 1)
+        // disable healbutton when attack is selected
+        activeButton(button: healButton, active: false, alpha: 0.2)
+        // enable target if health > 0
+        if currentC == player1.characters[0] || currentC == player1.characters[1] || currentC == player1.characters[2] {
+            activeButton(button: player1Charac1Button, active: false, alpha: 0.2)
+            activeButton(button: player1Charac2Button, active: false, alpha: 0.2)
+            activeButton(button: player1Charac3Button, active: false, alpha: 0.2)
+            if player2.characters[0].race.health > 0 {
+                activeButton(button: player2Charac1Button, active: true, alpha: 1)
+            }
+            if player2.characters[1].race.health > 0 {
+                activeButton(button: player2Charac2Button, active: true, alpha: 1)
+            }
+            if player2.characters[2].race.health > 0 {
+                activeButton(button: player2Charac3Button, active: true, alpha: 1)
+            }
+        }
+        // same if it's one character of the player 2 , and check if the character is dead to no target a dead character
+        if currentC == player2.characters[0] || currentC == player2.characters[1] || currentC == player2.characters[2] {
+            activeButton(button: player2Charac1Button, active: false, alpha: 0.2)
+            activeButton(button: player2Charac2Button, active: false, alpha: 0.2)
+            activeButton(button: player2Charac3Button, active: false, alpha: 0.2)
+            if player1.characters[0].race.health > 0 {
+                activeButton(button: player1Charac1Button, active: true, alpha: 1)
+            }
+            if player1.characters[1].race.health > 0 {
+                activeButton(button: player1Charac2Button, active: true, alpha: 1)
+            }
+            if player1.characters[2].race.health > 0 {
+                activeButton(button: player1Charac3Button, active: true, alpha: 1)
+            }
+        }
+    }
+
+    // MARK: - @PRIVATES FUNCTIONS
     private func checkTurn() {
     var characterPlayed = 0
     for character in characterArray where character.canPlay == false {
@@ -150,37 +260,74 @@ class FightViewController: UIViewController {
         turn()
     }
 
-    // set the current target by pushing the characterButton
-    @IBAction func pushP1C1(_ sender: Any) {
-        letsBounce(button: player1Charac1Button)
-        chooseCharacterOrTarget(choice: player1.characters[0])
+    // function for refresh the health of all characters
+    private func refresh() {
+    player1Charac1HPLabel.text = "\(player1.characters[0].race.health)"
+    player1Charac2HPLabel.text = "\(player1.characters[1].race.health)"
+    player1Charac3HPLabel.text = "\(player1.characters[2].race.health)"
+    player2Charac1HPLabel.text = "\(player2.characters[0].race.health)"
+    player2Charac2HPLabel.text = "\(player2.characters[1].race.health)"
+    player2Charac3HPLabel.text = "\(player2.characters[2].race.health)"
+    currentAction = ""
+    currentTarget = nil
+    currentC = nil
+    for index in 0...2 {
+        characterIsDead(character: player1.characters[index])
+        characterIsDead(character: player2.characters[index])
+    }
+}
+
+    private func randomChest() {
+        let randomNumber2: Int = .random(in: 0...4)
+        let randomNumber: Int = .random(in: 0...2)
+        if randomNumber2 == 2 {
+        switch currentC!.race.type {
+        case .elf : randomWeapon = arrayBow[randomNumber]
+        case .dwarf : randomWeapon = arrayAxe[randomNumber]
+        case .human : randomWeapon = arraySword[randomNumber]
+        case .wizzard : randomWeapon = arrayStick[randomNumber]
+        }
+        currentC!.race.weapon = randomWeapon!
+        // probleme affiche les bons dégats dans la console mais pas dans l'alerte
+        print("\(randomWeapon!) + \(randomWeapon!.damage) + \(randomWeapon!.heal)")
+        let alertController = UIAlertController(title: "🎁", message: message, preferredStyle: .alert)
+        let presentChest = UIAlertAction(title: okString, style: .default, handler: { action in
+            isGameOver()
+        })
+        alertController.addAction(presentChest)
+        self.present(alertController, animated: true)
+        }
     }
 
-    @IBAction func pushP1C2(_ sender: Any) {
-        letsBounce(button: player1Charac2Button)
-        chooseCharacterOrTarget(choice: player1.characters[1])
+    private func doAction() {
+        randomChest()
+        if currentAction == "attack" {
+            attack()
+        }
+        if currentAction == "heal" {
+            heal()
+        }
+        isGameOver()
+        print(game.state)
+        if game.state == .isOver {
+            performSegue(withIdentifier: "winView", sender: Any?.self)
+        } else {
+            currentC!.canPlay = false
+            currentPIndex += 1
+            checkTurn()
+            disableAllButton()
+            // change the index to go to the next character of the array
+            // if the last character play, go back to the first and increase a turn.
+        if currentPArray.count == currentPIndex {
+            currentPIndex = 0
+        }
+        currentP = currentPArray[currentPIndex]
+        refresh()
+        turn()
+        }
     }
 
-    @IBAction func pushP1C3(_ sender: Any) {
-        letsBounce(button: player1Charac3Button)
-        chooseCharacterOrTarget(choice: player1.characters[2])
-    }
-
-    @IBAction func pushP2C1(_ sender: Any) {
-        letsBounce(button: player2Charac1Button)
-        chooseCharacterOrTarget(choice: player2.characters[0])
-    }
-
-    @IBAction func pushP2C2(_ sender: Any) {
-        letsBounce(button: player2Charac2Button)
-        chooseCharacterOrTarget(choice: player2.characters[1])
-    }
-
-    @IBAction func pushP2C3(_ sender: Any) {
-        letsBounce(button: player2Charac3Button)
-        chooseCharacterOrTarget(choice: player2.characters[2])
-    }
-
+    // MARK: - FUNCTION
     func turn() {
         if currentPIndex == currentPArray.count {
             currentPIndex = 0
@@ -225,146 +372,5 @@ class FightViewController: UIViewController {
         if currentAction != "" && currentTarget != nil {
             doAction()
         }
-    }
-
-    // function for refresh the health of all characters
-    func refresh() {
-    player1Charac1HPLabel.text = "\(player1.characters[0].race.health)"
-    player1Charac2HPLabel.text = "\(player1.characters[1].race.health)"
-    player1Charac3HPLabel.text = "\(player1.characters[2].race.health)"
-    player2Charac1HPLabel.text = "\(player2.characters[0].race.health)"
-    player2Charac2HPLabel.text = "\(player2.characters[1].race.health)"
-    player2Charac3HPLabel.text = "\(player2.characters[2].race.health)"
-    currentAction = ""
-    currentTarget = nil
-    currentC = nil
-    for index in 0...2 {
-        characterIsDead(character: player1.characters[index])
-        characterIsDead(character: player2.characters[index])
-    }
-}
-
-    // set the currentAction to Attack
-    @IBAction func pushAttackButton(_ sender: Any) {
-        letsBounce(button: attackButton)
-        // disable the button
-        attackButton.isEnabled = false
-        currentAction = "attack"
-        activeButton(button: cancelButton, active: false, alpha: 0.2)
-        // enable cancel button to change the choice
-        activeButton(button: cancelButton, active: true, alpha: 1)
-        // disable healbutton when attack is selected
-        activeButton(button: healButton, active: false, alpha: 0.2)
-        // enable target if health > 0
-        if currentC == player1.characters[0] || currentC == player1.characters[1] || currentC == player1.characters[2] {
-            activeButton(button: player1Charac1Button, active: false, alpha: 0.2)
-            activeButton(button: player1Charac2Button, active: false, alpha: 0.2)
-            activeButton(button: player1Charac3Button, active: false, alpha: 0.2)
-            if player2.characters[0].race.health > 0 {
-                activeButton(button: player2Charac1Button, active: true, alpha: 1)
-            }
-            if player2.characters[1].race.health > 0 {
-                activeButton(button: player2Charac2Button, active: true, alpha: 1)
-            }
-            if player2.characters[2].race.health > 0 {
-                activeButton(button: player2Charac3Button, active: true, alpha: 1)
-            }
-        }
-        // same if it's one character of the player 2 , and check if the character is dead to no target a dead character
-        if currentC == player2.characters[0] || currentC == player2.characters[1] || currentC == player2.characters[2] {
-            activeButton(button: player2Charac1Button, active: false, alpha: 0.2)
-            activeButton(button: player2Charac2Button, active: false, alpha: 0.2)
-            activeButton(button: player2Charac3Button, active: false, alpha: 0.2)
-            if player1.characters[0].race.health > 0 {
-                activeButton(button: player1Charac1Button, active: true, alpha: 1)
-            }
-            if player1.characters[1].race.health > 0 {
-                activeButton(button: player1Charac2Button, active: true, alpha: 1)
-            }
-            if player1.characters[2].race.health > 0 {
-                activeButton(button: player1Charac3Button, active: true, alpha: 1)
-            }
-        }
-    }
-
-    func randomChest() {
-        let randomNumber2: Int = .random(in: 0...4)
-        let randomNumber: Int = .random(in: 0...2)
-        if randomNumber2 == 2 {
-        switch currentC!.race.type {
-        case .elf : randomWeapon = arrayBow[randomNumber]
-        case .dwarf : randomWeapon = arrayAxe[randomNumber]
-        case .human : randomWeapon = arraySword[randomNumber]
-        case .wizzard : randomWeapon = arrayStick[randomNumber]
-        }
-        currentC!.race.weapon = randomWeapon!
-        // probleme affiche les bons dégats dans la console mais pas dans l'alerte
-        print("\(randomWeapon!) + \(randomWeapon!.damage) + \(randomWeapon!.heal)")
-        let alertController = UIAlertController(title: "🎁", message: message, preferredStyle: .alert)
-        let presentChest = UIAlertAction(title: okString, style: .default, handler: { _ in
-        })
-        alertController.addAction(presentChest)
-        self.present(alertController, animated: true)
-        }
-    }
-
-    func doAction() {
-        randomChest()
-        if currentAction == "attack" {
-            attack()
-        }
-        if currentAction == "heal" {
-            heal()
-        }
-        isGameOver()
-        print(game.state)
-        if game.state == .isOver {
-            performSegue(withIdentifier: "winView", sender: Any?.self)
-        } else {
-            currentC!.canPlay = false
-            currentPIndex += 1
-            checkTurn()
-            disableAllButton()
-            // change the index to go to the next character of the array
-            // if the last character play, go back to the first and increase a turn.
-        if currentPArray.count == currentPIndex {
-            currentPIndex = 0
-        }
-        currentP = currentPArray[currentPIndex]
-        refresh()
-        turn()
-        }
-    }
-
-    // set the current action to heal
-    @IBAction func pushHealButton(_ sender: Any) {
-       letsBounce(button: healButton)
-        disableAllButton()
-        healButton.isEnabled = false
-        currentAction = "heal"
-        activeButton(button: cancelButton, active: true, alpha: 1)
-        activeButton(button: attackButton, active: false, alpha: 0.2)
-        // swiftlint:disable line_length
-        checkHealCharacter(player: player1, indexCurrentCharac: 0, coop1: 1, coop2: 2, currentCharacButton: player1Charac1Button, coop1Button: player1Charac2Button, coop2Button: player1Charac3Button)
-        checkHealCharacter(player: player1, indexCurrentCharac: 1, coop1: 0, coop2: 2, currentCharacButton: player1Charac2Button, coop1Button: player1Charac1Button, coop2Button: player1Charac3Button)
-        checkHealCharacter(player: player1, indexCurrentCharac: 2, coop1: 0, coop2: 1, currentCharacButton: player1Charac3Button, coop1Button: player1Charac1Button, coop2Button: player1Charac2Button)
-        checkHealCharacter(player: player2, indexCurrentCharac: 0, coop1: 1, coop2: 2, currentCharacButton: player2Charac1Button, coop1Button: player2Charac2Button, coop2Button: player2Charac3Button)
-        checkHealCharacter(player: player2, indexCurrentCharac: 1, coop1: 0, coop2: 2, currentCharacButton: player2Charac2Button, coop1Button: player2Charac1Button, coop2Button: player2Charac3Button)
-        checkHealCharacter(player: player2, indexCurrentCharac: 2, coop1: 0, coop2: 1, currentCharacButton: player2Charac3Button, coop1Button: player2Charac1Button, coop2Button: player2Charac2Button)
-        // swiftlint:enable line_length
-    }
-
-    @IBAction func pushCancelButton(_ sender: Any) {
-        letsBounce(button: cancelButton)
-        currentAction = ""
-        disableAllButton()
-        activeButton(button: attackButton, active: true, alpha: 1)
-        for character in currentP!.characters where character.race.health > 0 {
-            activateCharacterButton(character: character)
-        }
-        if (currentC?.race.weapon.heal)! > 0 {
-            activeButton(button: healButton, active: true, alpha: 1)
-        }
-        activeButton(button: cancelButton, active: false, alpha: 0.2)
     }
 }
