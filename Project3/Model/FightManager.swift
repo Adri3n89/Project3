@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-// décarations des variables d'action en cours
+// MARK: - VARIABLES
 var currentP: Player?
 var currentPArray: [Player] = [player1, player2]
 let characterArray: [Character] = [player1.characters[0], player1.characters[1], player1.characters[2], player2.characters[0], player2.characters[1], player2.characters[2]]
@@ -21,6 +21,7 @@ let game = Game()
 var player1 = Player()
 var player2 = Player()
 
+// MARK: - FUNCTIONS
 func isGameOver() {
     if checkHealth(player1, 0) == 0 && checkHealth(player1, 1) == 0 && checkHealth(player1, 2) == 0 {
         game.winner = player2
@@ -31,7 +32,6 @@ func isGameOver() {
         game.winner = player1
     }
 }
-
 func attack() {
     currentC!.attack(ennemy: currentTarget!)
     // set life on 0 ( cannot be negative )
@@ -39,7 +39,6 @@ func attack() {
         currentTarget?.race.health = 0
     }
 }
-
 func heal() {
     currentC!.heal(ally: currentTarget!)
     // set life on max even if it heal more
@@ -47,7 +46,6 @@ func heal() {
         currentTarget?.race.health = (currentTarget?.race.healthMax)!
     }
 }
-
 func checkTurn() {
     var characterPlayed = 0
     for character in characterArray where character.canPlay == false {
@@ -61,7 +59,6 @@ func checkTurn() {
         }
     }
 }
-
 func letsBounce(button: UIButton) {
     button.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
     UIView.animate(withDuration: 0.5) {button.transform = CGAffineTransform.identity}
@@ -72,7 +69,6 @@ func activeButton(button: UIButton, active: Bool, alpha: Double) {
     button.isEnabled = active
     button.alpha = CGFloat(alpha)
 }
-
 // convert the type race of characters to an emoji for the label button
 func convertRace(charac: Character) -> String {
         var race = ""
@@ -90,11 +86,9 @@ func convertRace(charac: Character) -> String {
         }
         return race
     }
-
 func checkHealth(_ player: Player, _ index: Int) -> Int {
     return player.characters[index].race.health
 }
-
 func checkHealCharacter(player: Player, indexCurrentCharac: Int, coop1: Int, coop2: Int, currentCharacButton: UIButton, coop1Button: UIButton, coop2Button: UIButton) {
     if currentC == player.characters[indexCurrentCharac] {
         if currentC!.race.health < currentC!.race.healthMax {
@@ -108,7 +102,6 @@ func checkHealCharacter(player: Player, indexCurrentCharac: Int, coop1: Int, coo
         }
     }
 }
-
 func randomChest(view: UIViewController) {
     let randomNumber2: Int = .random(in: 0...4)
     let randomNumber: Int = .random(in: 0...2)
@@ -130,14 +123,12 @@ func randomChest(view: UIViewController) {
     view.present(alertController, animated: true)
     }
 }
-
 // set all the button disable et alpha 0.2 before the current character was enable
 func disableAllButton(buttonArray: [UIButton], index1: Int, index2: Int) {
     for index in index1...index2 {
         activeButton(button: buttonArray[index], active: false, alpha: 0.2)
     }
 }
-
 func setupFightView(characterArray: [Character], nameLabelArray: [UILabel], hpLabelArray: [UILabel], buttonCharacterArray: [UIButton]) {
     for index in 0...5 {
         nameLabelArray[index].text = characterArray[index].name.capitalized
@@ -145,7 +136,6 @@ func setupFightView(characterArray: [Character], nameLabelArray: [UILabel], hpLa
         buttonCharacterArray[index].setTitle(convertRace(charac: characterArray[index]), for: .normal)
     }
 }
-
 func characterIsDead(character: Character, buttonCharacterArray: [UIButton]) {
     if character.race.health == 0 {
         character.canPlay = false
@@ -164,7 +154,6 @@ func characterIsDead(character: Character, buttonCharacterArray: [UIButton]) {
         }
     }
 }
-
 // function for refresh the health of all characters
 func refresh(characterArray: [Character], hpLabelArray: [UILabel], buttonCharacterArray: [UIButton]) {
     for index in 0...5 {
@@ -178,7 +167,6 @@ func refresh(characterArray: [Character], hpLabelArray: [UILabel], buttonCharact
         characterIsDead(character: player2.characters[index], buttonCharacterArray: buttonCharacterArray)
     }
 }
-
 func chooseCharacterOrTarget(choice: Character) {
     if currentAction == "" {
         currentC = choice
@@ -186,7 +174,6 @@ func chooseCharacterOrTarget(choice: Character) {
         currentTarget = choice
     }
 }
-
 func doAction(view: UIViewController, buttonArray: [UIButton], hpLabelArray: [UILabel], currentCLabel: UILabel, currentCHeal: UILabel, currentCAttack: UILabel) {
     randomChest(view: view)
     if currentAction == "attack" {
@@ -214,7 +201,6 @@ func doAction(view: UIViewController, buttonArray: [UIButton], hpLabelArray: [UI
     turn(allButtonArray: buttonArray, currentCLabel: currentCLabel, currentCHeal: currentCHeal, currentCAttack: currentCAttack, view: view, hpLabelArray: hpLabelArray)
     }
 }
-
 func turn(allButtonArray: [UIButton], currentCLabel: UILabel, currentCHeal: UILabel, currentCAttack: UILabel, view: UIViewController, hpLabelArray: [UILabel]) {
     if currentPIndex == currentPArray.count {
         currentPIndex = 0

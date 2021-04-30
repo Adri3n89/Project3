@@ -43,37 +43,32 @@ class FightViewController: UIViewController {
     }
 
     // MARK: - @IBACTIONS
-    // set the current target by pushing the characterButton
+    // set the current target or currentCharacter by pushing the characterButton
     @IBAction func pushP1C1(_ sender: Any) {
         letsBounce(button: allButtons[0])
         chooseCharacterOrTarget(choice: player1.characters[0])
         turn(allButtonArray: allButtons, currentCLabel: currentCharacterLabel, currentCHeal: currentCharacterHealLabel, currentCAttack: currentCharacterAttackLabel, view: self, hpLabelArray: allCharacterHP)
     }
-
     @IBAction func pushP1C2(_ sender: Any) {
         letsBounce(button: allButtons[1])
         chooseCharacterOrTarget(choice: player1.characters[1])
         turn(allButtonArray: allButtons, currentCLabel: currentCharacterLabel, currentCHeal: currentCharacterHealLabel, currentCAttack: currentCharacterAttackLabel, view: self, hpLabelArray: allCharacterHP)
     }
-
     @IBAction func pushP1C3(_ sender: Any) {
         letsBounce(button: allButtons[2])
         chooseCharacterOrTarget(choice: player1.characters[2])
         turn(allButtonArray: allButtons, currentCLabel: currentCharacterLabel, currentCHeal: currentCharacterHealLabel, currentCAttack: currentCharacterAttackLabel, view: self, hpLabelArray: allCharacterHP)
     }
-
     @IBAction func pushP2C1(_ sender: Any) {
         letsBounce(button: allButtons[3])
         chooseCharacterOrTarget(choice: player2.characters[0])
         turn(allButtonArray: allButtons, currentCLabel: currentCharacterLabel, currentCHeal: currentCharacterHealLabel, currentCAttack: currentCharacterAttackLabel, view: self, hpLabelArray: allCharacterHP)
     }
-
     @IBAction func pushP2C2(_ sender: Any) {
         letsBounce(button: allButtons[4])
         chooseCharacterOrTarget(choice: player2.characters[1])
         turn(allButtonArray: allButtons, currentCLabel: currentCharacterLabel, currentCHeal: currentCharacterHealLabel, currentCAttack: currentCharacterAttackLabel, view: self, hpLabelArray: allCharacterHP)
     }
-
     @IBAction func pushP2C3(_ sender: Any) {
         letsBounce(button: allButtons[5])
         chooseCharacterOrTarget(choice: player2.characters[2])
@@ -95,31 +90,6 @@ class FightViewController: UIViewController {
         checkHealCharacter(player: player2, indexCurrentCharac: 1, coop1: 0, coop2: 2, currentCharacButton: allButtons[4], coop1Button: allButtons[3], coop2Button: allButtons[5])
         checkHealCharacter(player: player2, indexCurrentCharac: 2, coop1: 0, coop2: 1, currentCharacButton: allButtons[5], coop1Button: allButtons[3], coop2Button: allButtons[4])
     }
-
-    @IBAction func pushCancelButton(_ sender: Any) {
-        letsBounce(button: allButtons[8])
-        currentAction = ""
-        disableAllButton(buttonArray: allButtons, index1: 0, index2: 5)
-        activeButton(button: allButtons[6], active: true, alpha: 1)
-        if currentPIndex == 1 {
-            for index in 3...5 {
-                if characterArray[index].race.health > 0 && characterArray[index].canPlay == true {
-                    activeButton(button: allButtons[index], active: true, alpha: 1)
-                }
-            }
-        } else {
-            for index in 0...2 {
-                if characterArray[index].race.health > 0 && characterArray[index].canPlay == true {
-                    activeButton(button: allButtons[index], active: true, alpha: 1)
-                }
-            }
-        }
-        if (currentC?.race.weapon.heal)! > 0 {
-            activeButton(button: allButtons[7], active: true, alpha: 1)
-        }
-        activeButton(button: allButtons[8], active: false, alpha: 0.2)
-    }
-
     // set the currentAction to Attack
     @IBAction func pushAttackButton(_ sender: Any) {
         letsBounce(button: allButtons[6])
@@ -151,4 +121,27 @@ class FightViewController: UIViewController {
         }
     }
 
+    @IBAction func pushCancelButton(_ sender: Any) {
+        letsBounce(button: allButtons[8])
+        currentAction = ""
+        disableAllButton(buttonArray: allButtons, index1: 0, index2: 5)
+        activeButton(button: allButtons[6], active: true, alpha: 1)
+        if currentPIndex == 1 {
+            for index in 3...5 {
+                if characterArray[index].race.health > 0 && characterArray[index].canPlay == true {
+                    activeButton(button: allButtons[index], active: true, alpha: 1)
+                }
+            }
+        } else {
+            for index in 0...2 {
+                if characterArray[index].race.health > 0 && characterArray[index].canPlay == true {
+                    activeButton(button: allButtons[index], active: true, alpha: 1)
+                }
+            }
+        }
+        if (currentC?.race.weapon.heal)! > 0 {
+            activeButton(button: allButtons[7], active: true, alpha: 1)
+        }
+        activeButton(button: allButtons[8], active: false, alpha: 0.2)
+    }
 }
