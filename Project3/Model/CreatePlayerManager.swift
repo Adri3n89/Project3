@@ -3,7 +3,7 @@
 //  Project3
 //
 //  Created by Adrien PEREA on 30/04/2021.
-//
+// swiftlint:disable line_length
 
 import Foundation
 import UIKit
@@ -25,7 +25,7 @@ func alert(message: String, view: UIViewController) {
 func checkName(_ newCharac: Character, _ player: Player, _ index: Int) -> Bool {
     return newCharac.name.capitalized == player.characters[index].name.capitalized
 }
-// swiftlint:disable:next line_length
+
 func createCharacterPlayer2(character: Character, textField: UITextField, tableView: UITableView, view: UIViewController) {
     var sameName = 0
     // verification si le nom du nouveau personnage a minimum 3 caracteres
@@ -75,7 +75,6 @@ func createCharacterPlayer2(character: Character, textField: UITextField, tableV
     }
 }
 
-// swiftlint:disable:next line_length
 func createCharacterPlayer1(character: Character, textField: UITextField, tableView: UITableView, view: UIViewController) {
     // check if the character's name have 3 letters
     if textField.text!.count < 3 {
@@ -113,7 +112,6 @@ func createCharacterPlayer1(character: Character, textField: UITextField, tableV
     }
 }
 
-// swiftlint:disable:next line_length
 func createPlayer1(view: UIViewController, textFieldPlayer: UITextField, labelPlayer: UILabel, textFieldCharacter: UITextField, tableView: UITableView) {
     player1.name = textFieldPlayer.text!
     if player1.characters.count < 3 {
