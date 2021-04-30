@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7A146B7326272A5C0057635B /* StringManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A146B7226272A5C0057635B /* StringManager.swift */; };
 		7A146B782628717A0057635B /* FightManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A146B772628717A0057635B /* FightManager.swift */; };
+		7A2DFB88263BE33E0086981D /* CreatePlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2DFB87263BE33E0086981D /* CreatePlayerManager.swift */; };
 		7A49A6B8261F2645006F48AD /* WinViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A49A6B7261F2645006F48AD /* WinViewViewController.swift */; };
 		7A57FA502613ABB200BFC780 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A57FA4F2613ABB200BFC780 /* AppDelegate.swift */; };
 		7A57FA522613ABB200BFC780 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A57FA512613ABB200BFC780 /* SceneDelegate.swift */; };
@@ -17,7 +18,7 @@
 		7A57FA5A2613ABB200BFC780 /* Project3.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7A57FA582613ABB200BFC780 /* Project3.xcdatamodeld */; };
 		7A57FA5C2613ABB200BFC780 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A57FA5B2613ABB200BFC780 /* Assets.xcassets */; };
 		7A57FA5F2613ABB200BFC780 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A57FA5D2613ABB200BFC780 /* LaunchScreen.storyboard */; };
-		7A57FA6F2613B47E00BFC780 /* createPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A57FA6E2613B47E00BFC780 /* createPlayerViewController.swift */; };
+		7A57FA6F2613B47E00BFC780 /* CreatePlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A57FA6E2613B47E00BFC780 /* CreatePlayerViewController.swift */; };
 		7A57FA722613B67100BFC780 /* CharacterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A57FA712613B67100BFC780 /* CharacterTableViewCell.swift */; };
 		7A5FA457262F10A500519843 /* Elf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5FA456262F10A500519843 /* Elf.swift */; };
 		7A5FA45A262F12B000519843 /* Dwarf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A5FA459262F12B000519843 /* Dwarf.swift */; };
@@ -47,6 +48,7 @@
 /* Begin PBXFileReference section */
 		7A146B7226272A5C0057635B /* StringManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringManager.swift; sourceTree = "<group>"; };
 		7A146B772628717A0057635B /* FightManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FightManager.swift; sourceTree = "<group>"; };
+		7A2DFB87263BE33E0086981D /* CreatePlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePlayerManager.swift; sourceTree = "<group>"; };
 		7A49A6B7261F2645006F48AD /* WinViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinViewViewController.swift; sourceTree = "<group>"; };
 		7A57FA4C2613ABB200BFC780 /* Project3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A57FA4F2613ABB200BFC780 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -57,7 +59,7 @@
 		7A57FA5B2613ABB200BFC780 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7A57FA5E2613ABB200BFC780 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7A57FA602613ABB200BFC780 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7A57FA6E2613B47E00BFC780 /* createPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = createPlayerViewController.swift; sourceTree = "<group>"; };
+		7A57FA6E2613B47E00BFC780 /* CreatePlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePlayerViewController.swift; sourceTree = "<group>"; };
 		7A57FA712613B67100BFC780 /* CharacterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTableViewCell.swift; sourceTree = "<group>"; };
 		7A5FA456262F10A500519843 /* Elf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Elf.swift; sourceTree = "<group>"; };
 		7A5FA459262F12B000519843 /* Dwarf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dwarf.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				7A6B77A126149DED00565F71 /* Character.swift */,
 				7A6B779E26149DE000565F71 /* Player.swift */,
 				7A146B7226272A5C0057635B /* StringManager.swift */,
+				7A2DFB87263BE33E0086981D /* CreatePlayerManager.swift */,
 				7A146B772628717A0057635B /* FightManager.swift */,
 			);
 			path = Model;
@@ -152,7 +155,7 @@
 				7A57FA532613ABB200BFC780 /* ViewController.swift */,
 				7A49A6B7261F2645006F48AD /* WinViewViewController.swift */,
 				7A71A64D26298A2400472FE2 /* NavigationController.swift */,
-				7A57FA6E2613B47E00BFC780 /* createPlayerViewController.swift */,
+				7A57FA6E2613B47E00BFC780 /* CreatePlayerViewController.swift */,
 				7A6B77B42615FA1000565F71 /* FightViewController.swift */,
 			);
 			path = Controller;
@@ -311,9 +314,10 @@
 				7A5FA460262F130200519843 /* Wizzard.swift in Sources */,
 				7A5FA48B262F3B7000519843 /* HealSick.swift in Sources */,
 				7A5FA477262F1B2000519843 /* StrongAxe.swift in Sources */,
-				7A57FA6F2613B47E00BFC780 /* createPlayerViewController.swift in Sources */,
+				7A57FA6F2613B47E00BFC780 /* CreatePlayerViewController.swift in Sources */,
 				7A57FA542613ABB200BFC780 /* ViewController.swift in Sources */,
 				7A6B77A526149DF700565F71 /* Weapon.swift in Sources */,
+				7A2DFB88263BE33E0086981D /* CreatePlayerManager.swift in Sources */,
 				7A6B77B52615FA1000565F71 /* FightViewController.swift in Sources */,
 				7A71A64E26298A2400472FE2 /* NavigationController.swift in Sources */,
 				7A5FA457262F10A500519843 /* Elf.swift in Sources */,

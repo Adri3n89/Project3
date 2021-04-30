@@ -21,9 +21,6 @@ var randomWeapon: Weapon?
 let game = Game()
 var player1 = Player()
 var player2 = Player()
-var characRaceSelected: String?
-// creation des 4 race de personnage
-let characRace: [String] = ["Elf", "Human", "Wizzard", "Dwarf"]
 
 func isGameOver() {
     if checkHealth(player1, 0) == 0 && checkHealth(player1, 1) == 0 && checkHealth(player1, 2) == 0 {
@@ -50,6 +47,25 @@ func heal() {
     if (currentTarget?.race.health)! > (currentTarget?.race.healthMax)! {
         currentTarget?.race.health = (currentTarget?.race.healthMax)!
     }
+}
+
+func checkTurn() {
+    var characterPlayed = 0
+    for character in characterArray where character.canPlay == false {
+        characterPlayed += 1
+    }
+    if characterPlayed == 6 {
+        game.totalTurn += 1
+        currentPIndex = 0
+        for character in characterArray where character.race.health > 0 {
+            character.canPlay = true
+        }
+    }
+}
+
+func letsBounce(button: UIButton) {
+    button.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+    UIView.animate(withDuration: 0.5) {button.transform = CGAffineTransform.identity}
 }
 
 // function for enable/disable a button

@@ -109,7 +109,7 @@ class FightViewController: UIViewController {
         letsBounce(button: player2Charac3Button)
         chooseCharacterOrTarget(choice: player2.characters[2])
     }
-    
+
     // set the current action to heal
     @IBAction func pushHealButton(_ sender: Any) {
        letsBounce(button: healButton)
@@ -186,20 +186,6 @@ class FightViewController: UIViewController {
     }
 
     // MARK: - @PRIVATES FUNCTIONS
-    private func checkTurn() {
-    var characterPlayed = 0
-    for character in characterArray where character.canPlay == false {
-        characterPlayed += 1
-    }
-    if characterPlayed == 6 {
-        game.totalTurn += 1
-        currentPIndex = 0
-        for character in characterArray where character.race.health > 0 {
-            character.canPlay = true
-        }
-    }
-}
-
     // set all the button disable et alpha 0.2 before the current character was enable
     private func disableAllButton() {
         activeButton(button: player1Charac1Button, active: false, alpha: 0.2)
@@ -246,12 +232,7 @@ class FightViewController: UIViewController {
         }
     }
 
-    private func letsBounce(button: UIButton) {
-        button.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
-        UIView.animate(withDuration: 0.5) {button.transform = CGAffineTransform.identity}
-    }
-
-    private func chooseCharacterOrTarget(choice: Character) {
+    func chooseCharacterOrTarget(choice: Character) {
         if currentAction == "" {
             currentC = choice
         } else {
@@ -291,7 +272,7 @@ class FightViewController: UIViewController {
         // probleme affiche les bons dégats dans la console mais pas dans l'alerte
         print("\(randomWeapon!) + \(randomWeapon!.damage) + \(randomWeapon!.heal)")
         let alertController = UIAlertController(title: "🎁", message: message, preferredStyle: .alert)
-        let presentChest = UIAlertAction(title: okString, style: .default, handler: { action in
+        let presentChest = UIAlertAction(title: okString, style: .default, handler: { _ in
             isGameOver()
         })
         alertController.addAction(presentChest)
