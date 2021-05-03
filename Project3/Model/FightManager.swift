@@ -119,9 +119,7 @@ func randomChest(view: UIViewController) {
     // probleme affiche les bons dégats dans la console mais pas dans l'alerte
     print("\(randomWeapon!) + \(randomWeapon!.damage) + \(randomWeapon!.heal)")
     let alertController = UIAlertController(title: "🎁", message: "A treasure chest appears with a \(randomWeapon!.name) inside\ndamage : \(randomWeapon!.damage) heal : \(randomWeapon!.heal)", preferredStyle: .alert)
-    let presentChest = UIAlertAction(title: okString, style: .default, handler: { _ in
-        isGameOver()
-    })
+        let presentChest = UIAlertAction(title: okString, style: .default, handler: {_ in })
     alertController.addAction(presentChest)
     view.present(alertController, animated: true)
     }
