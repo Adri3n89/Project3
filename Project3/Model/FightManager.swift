@@ -86,9 +86,11 @@ func convertRace(charac: Character) -> String {
         }
         return race
     }
+
 func checkHealth(_ player: Player, _ index: Int) -> Int {
     return player.characters[index].race.health
 }
+
 func checkHealCharacter(player: Player, indexCurrentCharac: Int, coop1: Int, coop2: Int, currentCharacButton: UIButton, coop1Button: UIButton, coop2Button: UIButton) {
     if currentC == player.characters[indexCurrentCharac] {
         if currentC!.race.health < currentC!.race.healthMax {
@@ -102,6 +104,7 @@ func checkHealCharacter(player: Player, indexCurrentCharac: Int, coop1: Int, coo
         }
     }
 }
+
 func randomChest(view: UIViewController) {
     let randomNumber2: Int = .random(in: 0...4)
     let randomNumber: Int = .random(in: 0...2)
@@ -123,12 +126,14 @@ func randomChest(view: UIViewController) {
     view.present(alertController, animated: true)
     }
 }
+
 // set all the button disable et alpha 0.2 before the current character was enable
 func disableAllButton(buttonArray: [UIButton], index1: Int, index2: Int) {
     for index in index1...index2 {
         activeButton(button: buttonArray[index], active: false, alpha: 0.2)
     }
 }
+
 func setupFightView(characterArray: [Character], nameLabelArray: [UILabel], hpLabelArray: [UILabel], buttonCharacterArray: [UIButton]) {
     for index in 0...5 {
         nameLabelArray[index].text = characterArray[index].name.capitalized
@@ -136,7 +141,8 @@ func setupFightView(characterArray: [Character], nameLabelArray: [UILabel], hpLa
         buttonCharacterArray[index].setTitle(convertRace(charac: characterArray[index]), for: .normal)
     }
 }
-func characterIsDead(character: Character, buttonCharacterArray: [UIButton]) {
+
+private func characterIsDead(character: Character, buttonCharacterArray: [UIButton]) {
     if character.race.health == 0 {
         character.canPlay = false
         if character == player1.characters[0] {
@@ -154,6 +160,7 @@ func characterIsDead(character: Character, buttonCharacterArray: [UIButton]) {
         }
     }
 }
+
 // function for refresh the health of all characters
 func refresh(characterArray: [Character], hpLabelArray: [UILabel], buttonCharacterArray: [UIButton]) {
     for index in 0...5 {
@@ -167,6 +174,7 @@ func refresh(characterArray: [Character], hpLabelArray: [UILabel], buttonCharact
         characterIsDead(character: player2.characters[index], buttonCharacterArray: buttonCharacterArray)
     }
 }
+
 func chooseCharacterOrTarget(choice: Character) {
     if currentAction == "" {
         currentC = choice
@@ -174,6 +182,7 @@ func chooseCharacterOrTarget(choice: Character) {
         currentTarget = choice
     }
 }
+
 func doAction(view: UIViewController, buttonArray: [UIButton], hpLabelArray: [UILabel], currentCLabel: UILabel, currentCHeal: UILabel, currentCAttack: UILabel) {
     randomChest(view: view)
     if currentAction == "attack" {
@@ -201,6 +210,7 @@ func doAction(view: UIViewController, buttonArray: [UIButton], hpLabelArray: [UI
     turn(allButtonArray: buttonArray, currentCLabel: currentCLabel, currentCHeal: currentCHeal, currentCAttack: currentCAttack, view: view, hpLabelArray: hpLabelArray)
     }
 }
+
 func turn(allButtonArray: [UIButton], currentCLabel: UILabel, currentCHeal: UILabel, currentCAttack: UILabel, view: UIViewController, hpLabelArray: [UILabel]) {
     if currentPIndex == currentPArray.count {
         currentPIndex = 0

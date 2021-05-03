@@ -79,10 +79,10 @@ class FightViewController: UIViewController {
     @IBAction func pushHealButton(_ sender: Any) {
        letsBounce(button: allButtons[7])
         disableAllButton(buttonArray: allButtons, index1: 0, index2: 5)
-        allButtons[7].isEnabled = false
         currentAction = "heal"
-        activeButton(button: allButtons[7], active: true, alpha: 1)
+        activeButton(button: allButtons[7], active: false, alpha: 1)
         activeButton(button: allButtons[6], active: false, alpha: 0.2)
+        activeButton(button: allButtons[8], active: true, alpha: 1)
         checkHealCharacter(player: player1, indexCurrentCharac: 0, coop1: 1, coop2: 2, currentCharacButton: allButtons[0], coop1Button: allButtons[1], coop2Button: allButtons[2])
         checkHealCharacter(player: player1, indexCurrentCharac: 1, coop1: 0, coop2: 2, currentCharacButton: allButtons[1], coop1Button: allButtons[0], coop2Button: allButtons[2])
         checkHealCharacter(player: player1, indexCurrentCharac: 2, coop1: 0, coop2: 1, currentCharacButton: allButtons[2], coop1Button: allButtons[0], coop2Button: allButtons[1])
@@ -90,6 +90,7 @@ class FightViewController: UIViewController {
         checkHealCharacter(player: player2, indexCurrentCharac: 1, coop1: 0, coop2: 2, currentCharacButton: allButtons[4], coop1Button: allButtons[3], coop2Button: allButtons[5])
         checkHealCharacter(player: player2, indexCurrentCharac: 2, coop1: 0, coop2: 1, currentCharacButton: allButtons[5], coop1Button: allButtons[3], coop2Button: allButtons[4])
     }
+
     // set the currentAction to Attack
     @IBAction func pushAttackButton(_ sender: Any) {
         letsBounce(button: allButtons[6])
@@ -121,6 +122,7 @@ class FightViewController: UIViewController {
         }
     }
 
+    // cancel the current action
     @IBAction func pushCancelButton(_ sender: Any) {
         letsBounce(button: allButtons[8])
         currentAction = ""
