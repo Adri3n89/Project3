@@ -274,7 +274,7 @@
                         <outlet property="createPlayerButton" destination="Al7-9J-0dG" id="1LL-x3-fPK"/>
                         <outlet property="createPlayerText" destination="Nql-4H-W6P" id="pFs-3J-5G5"/>
                         <outlet property="nameCharacterTF" destination="rA8-w7-h4D" id="mTB-Lv-dtw"/>
-                        <outlet property="namePlayer1TF" destination="dqr-kK-Cyp" id="Ikh-gB-Jgu"/>
+                        <outlet property="namePlayerTF" destination="dqr-kK-Cyp" id="mXZ-mW-fKk"/>
                         <outlet property="pickerView" destination="v1z-vG-UqJ" id="db0-6s-ugL"/>
                         <outlet property="tableView" destination="8PZ-Ls-CHQ" id="d12-0c-a2R"/>
                         <segue destination="L6s-XJ-Zdp" kind="show" identifier="goToFight" id="o6H-0n-UiK"/>
@@ -638,32 +638,32 @@
                         </userDefinedRuntimeAttributes>
                     </navigationItem>
                     <connections>
-                        <outlet property="attackButton" destination="Y8w-6d-W3g" id="ZnW-tE-qUg"/>
-                        <outlet property="cancelButton" destination="5rm-Bd-gY3" id="F7c-ZR-yxm"/>
                         <outlet property="currentCharacterAttackLabel" destination="O7x-qx-d6g" id="zhT-vq-idL"/>
                         <outlet property="currentCharacterHealLabel" destination="fBz-9n-qeq" id="txI-rX-5sy"/>
                         <outlet property="currentCharacterLabel" destination="2s6-tA-Rcl" id="b3z-ds-gob"/>
-                        <outlet property="healButton" destination="yWS-gn-Zgf" id="lUd-uI-B33"/>
-                        <outlet property="player1Charac1Button" destination="5uf-zC-HUg" id="B0j-Rx-14p"/>
-                        <outlet property="player1Charac1HPLabel" destination="rsE-M8-FBq" id="GuT-GG-bvV"/>
-                        <outlet property="player1Charac1NameLabel" destination="4fo-Wx-vEi" id="2vy-fc-qKS"/>
-                        <outlet property="player1Charac2Button" destination="Vlf-s9-Tbw" id="1bR-Nn-2OL"/>
-                        <outlet property="player1Charac2HPLabel" destination="KMQ-hJ-n1Z" id="rOE-2J-oEE"/>
-                        <outlet property="player1Charac2NameLabel" destination="fId-lc-FmF" id="SJz-SX-XPM"/>
-                        <outlet property="player1Charac3Button" destination="BPw-2Y-f6D" id="UsC-pW-Lr8"/>
-                        <outlet property="player1Charac3HPLabel" destination="GDF-4B-o7J" id="6EK-gs-Nqe"/>
-                        <outlet property="player1Charac3NameLabel" destination="sE0-OS-Dbs" id="k8A-lF-fa1"/>
                         <outlet property="player1NameLabel" destination="j3I-su-IeG" id="0zw-U4-qeI"/>
-                        <outlet property="player2Charac1Button" destination="dOt-NF-aiH" id="nVe-LO-J9y"/>
-                        <outlet property="player2Charac1HPLabel" destination="JO1-YO-igP" id="9h2-7G-hnU"/>
-                        <outlet property="player2Charac1NameLabel" destination="p9Q-Er-d7x" id="KEq-vM-Ltw"/>
-                        <outlet property="player2Charac2Button" destination="O4S-tF-qod" id="6Qs-ed-aUb"/>
-                        <outlet property="player2Charac2HPLabel" destination="Jze-Cw-3Xm" id="7Cy-IL-2BL"/>
-                        <outlet property="player2Charac2NameLabel" destination="7t8-lS-IpP" id="uiI-SH-kp4"/>
-                        <outlet property="player2Charac3Button" destination="qHu-oB-k0X" id="0ig-k2-2HP"/>
-                        <outlet property="player2Charac3HPLabel" destination="LwD-N5-few" id="yYk-JL-2wC"/>
-                        <outlet property="player2Charac3NameLabel" destination="nrr-7Q-ME7" id="wEG-KB-9qv"/>
                         <outlet property="player2NameLabel" destination="ytS-31-wXB" id="di0-NE-p6S"/>
+                        <outletCollection property="allCharacterName" destination="4fo-Wx-vEi" collectionClass="NSMutableArray" id="WG0-CQ-9Gs"/>
+                        <outletCollection property="allCharacterHP" destination="rsE-M8-FBq" collectionClass="NSMutableArray" id="TG3-dI-nWg"/>
+                        <outletCollection property="allCharacterName" destination="fId-lc-FmF" collectionClass="NSMutableArray" id="a0V-E0-Mve"/>
+                        <outletCollection property="allCharacterHP" destination="KMQ-hJ-n1Z" collectionClass="NSMutableArray" id="eoG-cE-FYw"/>
+                        <outletCollection property="allCharacterName" destination="sE0-OS-Dbs" collectionClass="NSMutableArray" id="I7c-jp-mbr"/>
+                        <outletCollection property="allCharacterHP" destination="GDF-4B-o7J" collectionClass="NSMutableArray" id="mer-tC-Rwc"/>
+                        <outletCollection property="allCharacterName" destination="p9Q-Er-d7x" collectionClass="NSMutableArray" id="Ceu-D3-Eeh"/>
+                        <outletCollection property="allCharacterHP" destination="JO1-YO-igP" collectionClass="NSMutableArray" id="36d-IH-00w"/>
+                        <outletCollection property="allCharacterName" destination="7t8-lS-IpP" collectionClass="NSMutableArray" id="cFS-Wi-aj1"/>
+                        <outletCollection property="allCharacterHP" destination="Jze-Cw-3Xm" collectionClass="NSMutableArray" id="zf4-c3-Xtv"/>
+                        <outletCollection property="allCharacterName" destination="nrr-7Q-ME7" collectionClass="NSMutableArray" id="wwc-YH-WNy"/>
+                        <outletCollection property="allCharacterHP" destination="LwD-N5-few" collectionClass="NSMutableArray" id="0Wm-kc-SC7"/>
+                        <outletCollection property="allButtons" destination="5uf-zC-HUg" collectionClass="NSMutableArray" id="KI9-2h-oha"/>
+                        <outletCollection property="allButtons" destination="Vlf-s9-Tbw" collectionClass="NSMutableArray" id="wwS-mK-wT0"/>
+                        <outletCollection property="allButtons" destination="BPw-2Y-f6D" collectionClass="NSMutableArray" id="Pup-Fl-1SP"/>
+                        <outletCollection property="allButtons" destination="dOt-NF-aiH" collectionClass="NSMutableArray" id="O4e-mk-H12"/>
+                        <outletCollection property="allButtons" destination="O4S-tF-qod" collectionClass="NSMutableArray" id="mKy-OB-dUM"/>
+                        <outletCollection property="allButtons" destination="qHu-oB-k0X" collectionClass="NSMutableArray" id="NZI-nl-ndg"/>
+                        <outletCollection property="allButtons" destination="Y8w-6d-W3g" collectionClass="NSMutableArray" id="zfV-GU-8vL"/>
+                        <outletCollection property="allButtons" destination="yWS-gn-Zgf" collectionClass="NSMutableArray" id="Yka-BU-OVW"/>
+                        <outletCollection property="allButtons" destination="5rm-Bd-gY3" collectionClass="NSMutableArray" id="3b9-cb-MlR"/>
                         <segue destination="iNp-f2-auc" kind="show" identifier="winView" id="ZqW-pX-bYh"/>
                     </connections>
                 </viewController>

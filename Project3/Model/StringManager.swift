@@ -16,7 +16,14 @@ let characterTeamMini = "Your player must have 3 characters in his team"
 let player3Letters = "your Player's name must have 3 letters mini"
 let player2Names = "Your player can't have the same playerOne's name"
 let characterP2P1 = "You can't have the same character's name that Player 1"
-let message = """
+let createPlayer2String = "Création du joueur 2"
+let victoryString = """
+Congratulations \(game.winner!.name.capitalized) you win the fight in \(game.totalTurn) turns!
+\(game.winner!.characters[0].name) have \(game.winner!.characters[0].race.health) pv left
+\(game.winner!.characters[1].name) have \(game.winner!.characters[1].race.health) pv left
+\(game.winner!.characters[2].name) have \(game.winner!.characters[2].race.health) pv left
+"""
+var message = """
 A treasure chest appears with a \(currentC!.race.weapon.name) inside
 damage : \(currentC!.race.weapon.damage) heal : \(currentC!.race.weapon.heal)
 """
