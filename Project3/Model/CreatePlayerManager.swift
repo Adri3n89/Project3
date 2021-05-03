@@ -22,34 +22,32 @@ func alert(message: String, view: UIViewController) {
 }
 
 // check the newCharacter name
-func checkName(_ newCharac: Character, _ player: Player, _ index: Int) -> Bool {
+private func checkName(_ newCharac: Character, _ player: Player, _ index: Int) -> Bool {
     return newCharac.name.capitalized == player.characters[index].name.capitalized
 }
 
 func createCharacterPlayer2(character: Character, textField: UITextField, tableView: UITableView, view: UIViewController) {
     var sameName = 0
-    // verification si le nom du nouveau personnage a minimum 3 caracteres
+    // check if the character's name have 3 letters
     if textField.text!.count < 3 {
         alert(message: character3Letters, view: view)
-    // si c'est le premier perso, verification si il a deja des personnages avec le meme nom chez le player1
+        // if it's the first character, only check with first player characters
     } else if player2.characters.count == 0 {
         for index in 0...player1.characters.count-1 where checkName(character, player1, index) {
             sameName += 1
         }
-        // si oui faire l'alerte
         if sameName > 0 {
             alert(message: characterP2P1, view: view)
             sameName = 0
-        // sinon ajouter le personnage au tableau du joueur 2
         } else {
             player2.characters.append(character)
             textField.text = ""
             tableView.reloadData()
         }
-    // si il y a deja 3 perso, alerter le joueur qu'il ne peut pas en avoir plus
+    // alert if player want create a 4th character
     } else if player2.characters.count > 2 {
         alert(message: character3Max, view: view)
-    // sinon verifier parmis les premiers perso du player2
+    // check with the player 2 characters
     } else {
         for index in 0...player2.characters.count-1 where checkName(character, player2, index) {
             sameName += 1
@@ -57,7 +55,7 @@ func createCharacterPlayer2(character: Character, textField: UITextField, tableV
         if sameName > 0 {
             alert(message: character2Names, view: view)
             sameName = 0
-        // puis si il n'a pas de perso identique, verifier chez le player1
+        // check with the player 1 characters
         } else {
             for index in 0...player1.characters.count-1 where checkName(character, player1, index) {
                 sameName += 1
@@ -66,7 +64,6 @@ func createCharacterPlayer2(character: Character, textField: UITextField, tableV
                 alert(message: characterP2P1, view: view)
                 sameName = 0
             } else {
-                // si aucun identique, ajouter le personnage au tableau du joueur 2
                 player2.characters.append(character)
                 textField.text = ""
                 tableView.reloadData()
@@ -76,6 +73,7 @@ func createCharacterPlayer2(character: Character, textField: UITextField, tableV
 }
 
 func createCharacterPlayer1(character: Character, textField: UITextField, tableView: UITableView, view: UIViewController) {
+    var sameName = 0
     // check if the character's name have 3 letters
     if textField.text!.count < 3 {
         alert(message: character3Letters, view: view)
@@ -85,30 +83,22 @@ func createCharacterPlayer1(character: Character, textField: UITextField, tableV
         textField.text = ""
         // refresh the tableview
         tableView.reloadData()
-    // if there is 1 character in the array, check the name
-    } else if player1.characters.count == 1 {
-        if player1.characters[0].name.capitalized == character.name.capitalized {
-            alert(message: character2Names, view: view)
-        } else {
-            player1.characters.append(character)
-            textField.text = ""
-            // refresh the tableview
-            tableView.reloadData()
-        }
-    // if there is 2 character in the array, check the 2 names
-    } else if player1.characters.count == 2 {
-        if player1.characters[0].name.capitalized == character.name.capitalized {
-            alert(message: character2Names, view: view)
-        } else if player1.characters[1].name.capitalized == character.name.capitalized {
-            alert(message: character2Names, view: view)
-        } else {
-            player1.characters.append(character)
-            textField.text = ""
-            // refresh the tableview
-            tableView.reloadData()
-            }
+    // alert if player want create a 4th character
     } else if player1.characters.count > 2 {
         alert(message: character3Max, view: view)
+    // check with the firsts characters
+    } else {
+        for index in 0...player1.characters.count-1 where checkName(character, player1, index) {
+            sameName += 1
+        }
+        if sameName > 0 {
+            alert(message: character2Names, view: view)
+            sameName = 0
+        } else {
+            player1.characters.append(character)
+            textField.text = ""
+            tableView.reloadData()
+        }
     }
 }
 

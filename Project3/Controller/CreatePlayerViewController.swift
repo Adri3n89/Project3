@@ -3,7 +3,7 @@
 //  Project3
 //
 //  Created by Adrien PEREA on 30/03/2021.
-//
+// swiftlint:disable line_length
 
 import UIKit
 
@@ -37,13 +37,11 @@ class CreatePlayerViewController: UIViewController {
             race = Elf()
         }
         let newCharacter = Character(name: nameCharacterTF.text!, race: race!)
-        // swiftlint:disable:next line_length
         isPlayer2 ? createCharacterPlayer2(character: newCharacter, textField: nameCharacterTF, tableView: tableView, view: self) : createCharacterPlayer1(character: newCharacter, textField: nameCharacterTF, tableView: tableView, view: self)
     }
 
 // create the player if conditions are respected
     @IBAction func createPlayer(_ sender: Any) {
-        // swiftlint:disable:next line_length
         isPlayer2 ? createPlayer2(view: self, textField: namePlayerTF) : createPlayer1(view: self, textFieldPlayer: namePlayerTF, labelPlayer: createPlayerText, textFieldCharacter: nameCharacterTF, tableView: tableView)
     }
 
