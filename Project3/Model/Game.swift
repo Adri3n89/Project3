@@ -9,8 +9,8 @@ import Foundation
 
 class Game {
     enum State {
-    case isOngoing
-    case isOver
+        case isOngoing
+        case isOver
     }
     var state: State = .isOngoing
     var totalTurn: Int = 1

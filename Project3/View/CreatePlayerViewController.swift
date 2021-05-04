@@ -17,32 +17,34 @@ class CreatePlayerViewController: UIViewController {
     @IBOutlet weak var createCharacterButton: UIButton!
     @IBOutlet weak var createPlayerText: UILabel!
 
+    var playerManager: CreatePlayerManager!
+
 // MARK: - VIEWDIDLOAD
     override func viewDidLoad() {
         super.viewDidLoad()
         viewSetup()
-        characRaceSelected = characRace[0]
+        playerManager = CreatePlayerManager(delegate: self)
+        playerManager.characRaceSelected = playerManager.characRace[0]
     }
 // MARK: - @IBACTIONS
 // create character and add it to the player array if conditions are respected
     @IBAction func createCharacter(_ sender: Any) {
-        switch characRaceSelected {
+        switch playerManager.characRaceSelected {
         case "Human":
-            race = Human()
+            playerManager.race = Human()
         case "Dwarf":
-            race = Dwarf()
+            playerManager.race = Dwarf()
         case "Wizzard":
-            race = Wizzard()
+            playerManager.race = Wizzard()
         default:
-            race = Elf()
+            playerManager.race = Elf()
         }
-        let newCharacter = Character(name: nameCharacterTF.text!, race: race!)
-        isPlayer2 ? createCharacterPlayer2(character: newCharacter, textField: nameCharacterTF, tableView: tableView, view: self) : createCharacterPlayer1(character: newCharacter, textField: nameCharacterTF, tableView: tableView, view: self)
+        playerManager.isPlayer2 ? playerManager.createCharacterPlayer2(name: nameCharacterTF.text!, race: playerManager.race!) : playerManager.createCharacterPlayer1(name: nameCharacterTF.text!, race: playerManager.race!)
     }
 
 // create the player if conditions are respected
     @IBAction func createPlayer(_ sender: Any) {
-        isPlayer2 ? createPlayer2(view: self, textField: namePlayerTF) : createPlayer1(view: self, textFieldPlayer: namePlayerTF, labelPlayer: createPlayerText, textFieldCharacter: nameCharacterTF, tableView: tableView)
+        playerManager.isPlayer2 ? playerManager.createPlayer2(name: namePlayerTF.text!) : playerManager.createPlayer1(name: namePlayerTF.text!)
     }
 
 // MARK: - PRIVATES FUNCTIONS
@@ -55,19 +57,27 @@ class CreatePlayerViewController: UIViewController {
         pickerView.dataSource = self
         pickerView.delegate = self
     }
+
+    // pop an alert
+    private func alert(message: String) {
+        let alertController = UIAlertController(title: titleAlert, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: okString, style: .default, handler: nil)
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
 }
 
 // MARK: - EXTENSIONS
 // close the keyboard when return or alert if player name < 3 letters
 extension CreatePlayerViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if isPlayer2 {
+        if playerManager.isPlayer2 {
             player2.name = namePlayerTF.text!
         } else {
             player1.name = namePlayerTF.text!
         }
         if namePlayerTF.text!.count < 3 {
-            alert(message: characterTeamMini, view: self)
+            alert(message: characterTeamMini)
         }
         view.endEditing(true)
         return true
@@ -78,7 +88,7 @@ extension CreatePlayerViewController: UITextFieldDelegate {
 extension CreatePlayerViewController: UITableViewDataSource, UITableViewDelegate {
 // number of row equal to number of characters of player 1
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isPlayer2 {
+        if playerManager.isPlayer2 {
             return player2.characters.count
         } else {
             return player1.characters.count
@@ -95,7 +105,7 @@ extension CreatePlayerViewController: UITableViewDataSource, UITableViewDelegate
         // swiftlint:disable:next force_cast
         let cell = tableView.dequeueReusableCell(withIdentifier: "character", for: indexPath) as! CharacterTableViewCell
         var tableViewPlayer: Player
-        isPlayer2 ? (tableViewPlayer = player2) : (tableViewPlayer = player1)
+        playerManager.isPlayer2 ? (tableViewPlayer = player2) : (tableViewPlayer = player1)
         tableviewCell(cell: cell, player: tableViewPlayer, indexPath: indexPath)
         return cell
     }
@@ -104,7 +114,7 @@ extension CreatePlayerViewController: UITableViewDataSource, UITableViewDelegate
 // swiftlint:disable:next line_length
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let action = UIContextualAction(style: .destructive, title: "Delete") {(_, _, _) in
-            if isPlayer2 {
+            if self.playerManager.isPlayer2 {
                 player2.characters.remove(at: indexPath.row)
             } else {
                 player1.characters.remove(at: indexPath.row)
@@ -123,16 +133,42 @@ extension CreatePlayerViewController: UIPickerViewDelegate, UIPickerViewDataSour
     }
     // init number of row equal to number of race
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return characRace.count
+        return playerManager.characRace.count
     }
 
 // init title of row with the Race RawValue
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return characRace[row]
+        return playerManager.characRace[row]
     }
 
 // add the race of row to a variable to assign it to the new character
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        characRaceSelected = characRace[row]
+        playerManager.characRaceSelected = playerManager.characRace[row]
     }
+}
+
+// protocol de CreatePlayerManager
+extension CreatePlayerViewController: CreatePlayerManagerDelegate {
+
+    func createPlayer2Success() {
+        performSegue(withIdentifier: "goToFight", sender: Any?.self)
+    }
+
+    func createPlayer1Success() {
+        createPlayerText.text = createPlayer2String
+        tableView.reloadData()
+        namePlayerTF.text = ""
+        nameCharacterTF.text = ""
+    }
+
+    func createError(error: String) {
+        alert(message: error)
+    }
+
+    func createCharacterSuccess() {
+        nameCharacterTF.text = ""
+        // refresh the tableview
+        tableView.reloadData()
+    }
+
 }
