@@ -23,7 +23,3 @@ Congratulations \(game.winner!.name.capitalized) you win the fight in \(game.tot
 \(game.winner!.characters[1].name) have \(game.winner!.characters[1].race.health) pv left
 \(game.winner!.characters[2].name) have \(game.winner!.characters[2].race.health) pv left
 """
-var message = """
-A treasure chest appears with a \(currentC!.race.weapon.name) inside
-damage : \(currentC!.race.weapon.damage) heal : \(currentC!.race.weapon.heal)
-"""
