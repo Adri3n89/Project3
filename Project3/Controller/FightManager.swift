@@ -3,7 +3,7 @@
 //  Project3
 //
 //  Created by Adrien PEREA on 15/04/2021.
-// swiftlint:disable line_length function_parameter_count cyclomatic_complexity
+// swiftlint:disable all
 
 import Foundation
 import UIKit
@@ -16,6 +16,7 @@ protocol FightManagerDelegate {
     func refreshHP()
     func showAttackHeal(currentC: Character?)
     func activeButton(index: Int)
+    func showToDo(currentC: Character?, currentP: Player)
 }
 
 class FightManager {
@@ -70,7 +71,7 @@ func chooseCharacterOrTarget(choice: Character) {
     }
 }
 
-func turn(allButtonArray: [UIButton], currentCLabel: UILabel, currentCHeal: UILabel, currentCAttack: UILabel, view: UIViewController, hpLabelArray: [UILabel]) {
+func turn() {
     if currentPIndex == currentPArray.count {
         currentPIndex = 0
     }
@@ -97,12 +98,8 @@ func turn(allButtonArray: [UIButton], currentCLabel: UILabel, currentCHeal: UILa
             }
         }
     }
-    // show who is the current character by showing his name
-    if currentC == nil {
-        currentCLabel.text = "\(currentP!.name) choose a character"
-    } else {
-        currentCLabel.text = "\(currentC!.name) choose an attack and target"
-    }
+    // show who is the current player and current character by showing his name
+    delegate.showToDo(currentC: currentC, currentP: currentP!)
     // show to the user the damage and heal his player can make"
     if currentC != nil {
         delegate.activeButton(index: 6)
@@ -112,12 +109,12 @@ func turn(allButtonArray: [UIButton], currentCLabel: UILabel, currentCHeal: UILa
     }
     delegate.showAttackHeal(currentC: currentC)
     if currentAction != "" && currentTarget != nil {
-        doAction(view: view, buttonArray: allButtonArray, hpLabelArray: hpLabelArray, currentCLabel: currentCLabel, currentCHeal: currentCHeal, currentCAttack: currentCAttack)
+        doAction()
     }
 }
 
 // MARK: - PRIVATES FUNCTIONS
-func characterIsDead(character: Character) {
+private func characterIsDead(character: Character) {
     if character.race.health == 0 {
         character.canPlay = false
         if character == player1.characters[0] {
@@ -148,7 +145,7 @@ private func refresh(characterArray: [Character]) {
     }
 }
 
-private func doAction(view: UIViewController, buttonArray: [UIButton], hpLabelArray: [UILabel], currentCLabel: UILabel, currentCHeal: UILabel, currentCAttack: UILabel) {
+private func doAction() {
     randomChest()
     if currentAction == "attack" {
         attack()
@@ -172,7 +169,7 @@ private func doAction(view: UIViewController, buttonArray: [UIButton], hpLabelAr
     }
     currentP = currentPArray[currentPIndex]
     refresh(characterArray: characterArray)
-    turn(allButtonArray: buttonArray, currentCLabel: currentCLabel, currentCHeal: currentCHeal, currentCAttack: currentCAttack, view: view, hpLabelArray: hpLabelArray)
+    turn()
     }
 }
 

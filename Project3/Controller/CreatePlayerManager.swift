@@ -3,6 +3,7 @@
 //  Project3
 //
 //  Created by Adrien PEREA on 30/04/2021.
+// swiftlint:disable all
 
 import Foundation
 import UIKit

@@ -35,7 +35,7 @@ class FightViewController: UIViewController {
         player2NameLabel.text = "⚔️ \(player2.name.capitalized) ⚔️"
         setupFightView(characterArray: fightManager.characterArray, nameLabelArray: allCharacterName, hpLabelArray: allCharacterHP, buttonCharacterArray: allButtons)
         // launch the game
-        fightManager.turn(allButtonArray: allButtons, currentCLabel: currentCharacterLabel, currentCHeal: currentCharacterHealLabel, currentCAttack: currentCharacterAttackLabel, view: self, hpLabelArray: allCharacterHP)
+        fightManager.turn()
         }
 
     // MARK: - @IBACTIONS
@@ -43,32 +43,32 @@ class FightViewController: UIViewController {
     @IBAction func pushP1C1(_ sender: Any) {
         letsBounce(button: allButtons[0])
         fightManager.chooseCharacterOrTarget(choice: player1.characters[0])
-        fightManager.turn(allButtonArray: allButtons, currentCLabel: currentCharacterLabel, currentCHeal: currentCharacterHealLabel, currentCAttack: currentCharacterAttackLabel, view: self, hpLabelArray: allCharacterHP)
+        fightManager.turn()
     }
     @IBAction func pushP1C2(_ sender: Any) {
         letsBounce(button: allButtons[1])
         fightManager.chooseCharacterOrTarget(choice: player1.characters[1])
-        fightManager.turn(allButtonArray: allButtons, currentCLabel: currentCharacterLabel, currentCHeal: currentCharacterHealLabel, currentCAttack: currentCharacterAttackLabel, view: self, hpLabelArray: allCharacterHP)
+        fightManager.turn()
     }
     @IBAction func pushP1C3(_ sender: Any) {
         letsBounce(button: allButtons[2])
         fightManager.chooseCharacterOrTarget(choice: player1.characters[2])
-        fightManager.turn(allButtonArray: allButtons, currentCLabel: currentCharacterLabel, currentCHeal: currentCharacterHealLabel, currentCAttack: currentCharacterAttackLabel, view: self, hpLabelArray: allCharacterHP)
+        fightManager.turn()
     }
     @IBAction func pushP2C1(_ sender: Any) {
         letsBounce(button: allButtons[3])
         fightManager.chooseCharacterOrTarget(choice: player2.characters[0])
-        fightManager.turn(allButtonArray: allButtons, currentCLabel: currentCharacterLabel, currentCHeal: currentCharacterHealLabel, currentCAttack: currentCharacterAttackLabel, view: self, hpLabelArray: allCharacterHP)
+        fightManager.turn()
     }
     @IBAction func pushP2C2(_ sender: Any) {
         letsBounce(button: allButtons[4])
         fightManager.chooseCharacterOrTarget(choice: player2.characters[1])
-        fightManager.turn(allButtonArray: allButtons, currentCLabel: currentCharacterLabel, currentCHeal: currentCharacterHealLabel, currentCAttack: currentCharacterAttackLabel, view: self, hpLabelArray: allCharacterHP)
+        fightManager.turn()
     }
     @IBAction func pushP2C3(_ sender: Any) {
         letsBounce(button: allButtons[5])
         fightManager.chooseCharacterOrTarget(choice: player2.characters[2])
-        fightManager.turn(allButtonArray: allButtons, currentCLabel: currentCharacterLabel, currentCHeal: currentCharacterHealLabel, currentCAttack: currentCharacterAttackLabel, view: self, hpLabelArray: allCharacterHP)
+        fightManager.turn()
     }
 
     // set the current action to heal
@@ -189,6 +189,14 @@ class FightViewController: UIViewController {
 }
 
 extension FightViewController: FightManagerDelegate {
+    func showToDo(currentC: Character?, currentP: Player) {
+        guard currentC != nil else {
+            currentCharacterLabel.text = "\(currentP.name) choose a character"
+            return
+        }
+        currentCharacterLabel.text = "\(currentC!.name) choose an attack and a target"
+    }
+
     func activeButton(index: Int) {
         activeButton(button: allButtons[index], active: true, alpha: 1)
     }
@@ -225,7 +233,7 @@ extension FightViewController: FightManagerDelegate {
         let alertController = UIAlertController(title: "🎁", message: "A treasure chest appears with a \(fightManager.randomWeapon!.name) inside\ndamage : \(fightManager.randomWeapon!.damage) heal : \(fightManager.randomWeapon!.heal)", preferredStyle: .alert)
         let presentChest = UIAlertAction(title: okString, style: .default, handler: {_ in
             if self.fightManager.game.state == .isOver {
-                self.performSegue(withIdentifier: "winView", sender: Any?.self)
+                self.goToWinView()
                 }
             })
         alertController.addAction(presentChest)
