@@ -186,9 +186,17 @@ class FightViewController: UIViewController {
         button.isEnabled = active
         button.alpha = CGFloat(alpha)
     }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "winView" {
+            let next = segue.destination as? WinViewViewController
+            next!.game = sender as? Game
+        }
+    }
 }
 
 extension FightViewController: FightManagerDelegate {
+
     func showToDo(currentC: Character?, currentP: Player) {
         guard currentC != nil else {
             currentCharacterLabel.text = "\(currentP.name) choose a character"
@@ -218,7 +226,8 @@ extension FightViewController: FightManagerDelegate {
     }
 
     func goToWinView() {
-        self.performSegue(withIdentifier: "winView", sender: Any?.self)
+        let item = fightManager.game
+        self.performSegue(withIdentifier: "winView", sender: item)
     }
 
     func disableButton(index1: Int, index2: Int) {
