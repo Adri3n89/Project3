@@ -24,7 +24,7 @@ class FightManager {
 var delegate: FightManagerDelegate
 var currentP: Player?
 var currentPArray: [Player] = [player1, player2]
-let characterArray: [Character] = [player1.characters[0], player1.characters[1], player1.characters[2], player2.characters[0], player2.characters[1], player2.characters[2]]
+let characterArray: [Character] = player1.characters + player2.characters
 var currentPIndex = 0
 var currentC: Character?
 var currentTarget: Character?
@@ -117,18 +117,10 @@ func turn() {
 private func characterIsDead(character: Character) {
     if character.race.health == 0 {
         character.canPlay = false
-        if character == player1.characters[0] {
-            delegate.putSkull(index: 0)
-        } else if character == player1.characters[1] {
-            delegate.putSkull(index: 1)
-        } else if character == player1.characters[2] {
-            delegate.putSkull(index: 2)
-        } else if character == player2.characters[0] {
-            delegate.putSkull(index: 3)
-        } else if character == player2.characters[1] {
-            delegate.putSkull(index: 4)
-        } else if character == player2.characters[2] {
-            delegate.putSkull(index: 5)
+        for index in 0...5 {
+            if character == characterArray[index] {
+                delegate.putSkull(index: index)
+            }
         }
     }
 }

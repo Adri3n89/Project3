@@ -40,35 +40,29 @@ class FightViewController: UIViewController {
 
     // MARK: - @IBACTIONS
     // set the current target or currentCharacter by pushing the characterButton
-    @IBAction func pushP1C1(_ sender: Any) {
-        letsBounce(button: allButtons[0])
-        fightManager.chooseCharacterOrTarget(choice: player1.characters[0])
+    private func pushCharacterButton(index: Int) {
+        letsBounce(button: allButtons[index])
+        fightManager.chooseCharacterOrTarget(choice: fightManager.characterArray[index])
         fightManager.turn()
+    }
+
+    @IBAction func pushP1C1(_ sender: Any) {
+        pushCharacterButton(index: 0)
     }
     @IBAction func pushP1C2(_ sender: Any) {
-        letsBounce(button: allButtons[1])
-        fightManager.chooseCharacterOrTarget(choice: player1.characters[1])
-        fightManager.turn()
+        pushCharacterButton(index: 1)
     }
     @IBAction func pushP1C3(_ sender: Any) {
-        letsBounce(button: allButtons[2])
-        fightManager.chooseCharacterOrTarget(choice: player1.characters[2])
-        fightManager.turn()
+        pushCharacterButton(index: 2)
     }
     @IBAction func pushP2C1(_ sender: Any) {
-        letsBounce(button: allButtons[3])
-        fightManager.chooseCharacterOrTarget(choice: player2.characters[0])
-        fightManager.turn()
+        pushCharacterButton(index: 3)
     }
     @IBAction func pushP2C2(_ sender: Any) {
-        letsBounce(button: allButtons[4])
-        fightManager.chooseCharacterOrTarget(choice: player2.characters[1])
-        fightManager.turn()
+        pushCharacterButton(index: 4)
     }
     @IBAction func pushP2C3(_ sender: Any) {
-        letsBounce(button: allButtons[5])
-        fightManager.chooseCharacterOrTarget(choice: player2.characters[2])
-        fightManager.turn()
+        pushCharacterButton(index: 5)
     }
 
     // set the current action to heal
@@ -215,9 +209,9 @@ extension FightViewController: FightManagerDelegate {
             currentCharacterAttackLabel.text = "-"
             return
         }
-            currentCharacterHealLabel.text = "+ \(currentC!.race.weapon.heal)"
-            currentCharacterAttackLabel.text = " - \(currentC!.race.weapon.damage)"
-        }
+        currentCharacterHealLabel.text = "+ \(currentC!.race.weapon.heal)"
+        currentCharacterAttackLabel.text = " - \(currentC!.race.weapon.damage)"
+    }
 
     func refreshHP() {
         for index in 0...5 {
