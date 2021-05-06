@@ -46,23 +46,8 @@ class FightViewController: UIViewController {
         fightManager.turn()
     }
 
-    @IBAction func pushP1C1(_ sender: Any) {
-        pushCharacterButton(index: 0)
-    }
-    @IBAction func pushP1C2(_ sender: Any) {
-        pushCharacterButton(index: 1)
-    }
-    @IBAction func pushP1C3(_ sender: Any) {
-        pushCharacterButton(index: 2)
-    }
-    @IBAction func pushP2C1(_ sender: Any) {
-        pushCharacterButton(index: 3)
-    }
-    @IBAction func pushP2C2(_ sender: Any) {
-        pushCharacterButton(index: 4)
-    }
-    @IBAction func pushP2C3(_ sender: Any) {
-        pushCharacterButton(index: 5)
+    @IBAction func characterButtonPushed(_ sender: UIButton) {
+        pushCharacterButton(index: sender.tag)
     }
 
     // set the current action to heal
