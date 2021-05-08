@@ -58,13 +58,6 @@ class CreatePlayerViewController: UIViewController {
         pickerView.delegate = self
     }
 
-    // pop an alert
-    private func alert(message: String) {
-        let alertController = UIAlertController(title: titleAlert, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: okString, style: .default, handler: nil)
-        alertController.addAction(okAction)
-        self.present(alertController, animated: true, completion: nil)
-    }
 }
 
 // MARK: - EXTENSIONS
@@ -77,7 +70,7 @@ extension CreatePlayerViewController: UITextFieldDelegate {
             player1.name = namePlayerTF.text!
         }
         if namePlayerTF.text!.count < 3 {
-            alert(message: characterTeamMini)
+            playerManager.delegate.createError(error: characterTeamMini)
         }
         view.endEditing(true)
         return true
@@ -162,7 +155,10 @@ extension CreatePlayerViewController: CreatePlayerManagerDelegate {
     }
 
     func createError(error: String) {
-        alert(message: error)
+        let alertController = UIAlertController(title: titleAlert, message: error, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: okString, style: .default, handler: nil)
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
     }
 
     func createCharacterSuccess() {
