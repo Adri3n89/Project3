@@ -24,6 +24,5 @@ class WinViewViewController: UIViewController {
         victoryLabel.text = victoryString
         self.navigationItem.hidesBackButton = true
         self.navigationController?.isNavigationBarHidden = true
-
     }
 }

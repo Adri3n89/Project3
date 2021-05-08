@@ -8,7 +8,7 @@
 import Foundation
 
 class Character: Equatable {
-    // ajout de la fonction pour pouvoir comparer les noms des characters
+    // add protocol Equatable to compare Character's name
     static func == (lhs: Character, rhs: Character) -> Bool {
         return lhs.name == rhs.name
     }

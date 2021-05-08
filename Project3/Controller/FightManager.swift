@@ -37,6 +37,8 @@ let game = Game()
     }
 
 // MARK: - FUNCTIONS
+    
+// check health of all character of a player to enable the button for a heal
 func checkHealCharacter(player: Player, indexCurrentCharac: Int, coop1: Int, coop2: Int) {
     if currentC == player.characters[indexCurrentCharac] {
         if currentP?.name == player1.name {
@@ -165,6 +167,7 @@ private func doAction() {
     }
 }
 
+// set the game on isOver and a winner
 private func isGameOver() {
     if checkHealth(player1, 0) == 0 && checkHealth(player1, 1) == 0 && checkHealth(player1, 2) == 0 {
         game.winner = player2
@@ -192,6 +195,7 @@ private func heal() {
     }
 }
 
+// increase totalTurn after all alive's character played
 private func checkTurn() {
     var characterPlayed = 0
     for character in characterArray where character.canPlay == false {
@@ -206,10 +210,12 @@ private func checkTurn() {
     }
 }
 
+// return health of a character
 private func checkHealth(_ player: Player, _ index: Int) -> Int {
     return player.characters[index].race.health
 }
 
+// pop a Weapon and equip it to the currentCharacter
 private func randomChest() {
     let randomNumber2: Int = .random(in: 0...4)
     let randomNumber: Int = .random(in: 0...2)

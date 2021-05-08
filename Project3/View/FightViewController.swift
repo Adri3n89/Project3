@@ -50,7 +50,7 @@ class FightViewController: UIViewController {
         pushCharacterButton(index: sender.tag)
     }
 
-    // set the current action to heal
+    // set the current action to heal and set the buttons
     @IBAction func pushHealButton(_ sender: Any) {
        letsBounce(button: allButtons[7])
         disableAllButton(buttonArray: allButtons, index1: 0, index2: 5)
@@ -122,12 +122,14 @@ class FightViewController: UIViewController {
         activeButton(button: allButtons[8], active: false, alpha: 0.2)
     }
 
-    func letsBounce(button: UIButton) {
+    // add a boing animation when button is pressed
+    private func letsBounce(button: UIButton) {
         button.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
         UIView.animate(withDuration: 0.5) {button.transform = CGAffineTransform.identity}
     }
 
-    func setupFightView(characterArray: [Character], nameLabelArray: [UILabel], hpLabelArray: [UILabel], buttonCharacterArray: [UIButton]) {
+    // set all name, race and HP on the view
+    private func setupFightView(characterArray: [Character], nameLabelArray: [UILabel], hpLabelArray: [UILabel], buttonCharacterArray: [UIButton]) {
         for index in 0...5 {
             nameLabelArray[index].text = characterArray[index].name.capitalized
             hpLabelArray[index].text = String(characterArray[index].race.health)
@@ -153,19 +155,20 @@ class FightViewController: UIViewController {
             return race
         }
 
-    // set all the button disable et alpha 0.2 before the current character was enable
+    // disable all the buttons into a range
     func disableAllButton(buttonArray: [UIButton], index1: Int, index2: Int) {
         for index in index1...index2 {
             activeButton(button: buttonArray[index], active: false, alpha: 0.2)
         }
     }
 
-    // function for enable/disable a button
+    // function for enable/disable one button
     func activeButton(button: UIButton, active: Bool, alpha: Double) {
         button.isEnabled = active
         button.alpha = CGFloat(alpha)
     }
 
+    // prepare segue and the information to send
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "winView" {
             let next = segue.destination as? WinViewViewController
@@ -176,6 +179,7 @@ class FightViewController: UIViewController {
 
 extension FightViewController: FightManagerDelegate {
 
+    // actu the label to know the currentPlayer and the currentCharacter
     func showToDo(currentC: Character?, currentP: Player) {
         guard currentC != nil else {
             currentCharacterLabel.text = "\(currentP.name) choose a character"
@@ -184,10 +188,12 @@ extension FightViewController: FightManagerDelegate {
         currentCharacterLabel.text = "\(currentC!.name) choose an attack and a target"
     }
 
+    // active on button
     func activeButton(index: Int) {
         activeButton(button: allButtons[index], active: true, alpha: 1)
     }
 
+    // actu label to know the damage and heal of the current Character
     func showAttackHeal(currentC: Character?) {
         guard currentC != nil else {
             currentCharacterHealLabel.text = "-"
@@ -209,10 +215,12 @@ extension FightViewController: FightManagerDelegate {
         self.performSegue(withIdentifier: "winView", sender: item)
     }
 
+    // disable buttons into a range
     func disableButton(index1: Int, index2: Int) {
         disableAllButton(buttonArray: allButtons, index1: index1, index2: index2)
     }
 
+    // if a character is dead put a skull on the button
     func putSkull(index: Int) {
         allButtons[index].setTitle("💀", for: .normal)
     }
