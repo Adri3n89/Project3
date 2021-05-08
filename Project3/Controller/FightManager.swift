@@ -217,7 +217,7 @@ private func checkHealth(_ player: Player, _ index: Int) -> Int {
 
 // pop a Weapon and equip it to the currentCharacter
 private func randomChest() {
-    let randomNumber2: Int = .random(in: 0...4)
+    let randomNumber2: Int = .random(in: 0...3)
     let randomNumber: Int = .random(in: 0...2)
     if randomNumber2 == 2 {
     switch currentC!.race.type {
