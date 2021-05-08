@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="h4w-t2-YXa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="h4w-t2-YXa">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -95,7 +95,7 @@
                                                 </constraints>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="character" rowHeight="105" id="tXx-jw-NRb" customClass="CharacterTableViewCell" customModule="Project3" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="28" width="374" height="105"/>
+                                                        <rect key="frame" x="0.0" y="24.5" width="374" height="105"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tXx-jw-NRb" id="ADm-dG-Ubi">
                                                             <rect key="frame" x="0.0" y="0.0" width="374" height="105"/>
@@ -390,7 +390,7 @@
                                                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                                                 <state key="normal" title="🎅"/>
                                                                 <connections>
-                                                                    <action selector="pushP1C1:" destination="L6s-XJ-Zdp" eventType="touchUpInside" id="JsH-P6-oGb"/>
+                                                                    <action selector="characterButtonPushed:" destination="L6s-XJ-Zdp" eventType="touchUpInside" id="Fiy-BR-dtp"/>
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rsE-M8-FBq">
@@ -414,7 +414,7 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vlf-s9-Tbw">
+                                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vlf-s9-Tbw">
                                                                 <rect key="frame" x="0.0" y="50" width="111" height="100"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="100" id="eBW-03-cKH"/>
@@ -422,7 +422,7 @@
                                                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                                                 <state key="normal" title="🧝"/>
                                                                 <connections>
-                                                                    <action selector="pushP1C2:" destination="L6s-XJ-Zdp" eventType="touchUpInside" id="nW8-EW-iIo"/>
+                                                                    <action selector="characterButtonPushed:" destination="L6s-XJ-Zdp" eventType="touchUpInside" id="s4B-3F-T9m"/>
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KMQ-hJ-n1Z">
@@ -445,7 +445,7 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BPw-2Y-f6D">
+                                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BPw-2Y-f6D">
                                                                 <rect key="frame" x="0.0" y="50" width="111.5" height="100"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="100" id="r5i-kB-wdA"/>
@@ -453,7 +453,7 @@
                                                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                                                 <state key="normal" title="🧙‍♂️"/>
                                                                 <connections>
-                                                                    <action selector="pushP1C3:" destination="L6s-XJ-Zdp" eventType="touchUpInside" id="4Z5-Li-U3e"/>
+                                                                    <action selector="characterButtonPushed:" destination="L6s-XJ-Zdp" eventType="touchUpInside" id="nKU-mN-00M"/>
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GDF-4B-o7J">
@@ -490,7 +490,7 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dOt-NF-aiH">
+                                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dOt-NF-aiH">
                                                                 <rect key="frame" x="0.0" y="50" width="111.5" height="100"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="100" id="nUB-ZG-KRw"/>
@@ -498,7 +498,7 @@
                                                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                                                 <state key="normal" title="🎅"/>
                                                                 <connections>
-                                                                    <action selector="pushP2C1:" destination="L6s-XJ-Zdp" eventType="touchUpInside" id="3ie-Gc-CEz"/>
+                                                                    <action selector="characterButtonPushed:" destination="L6s-XJ-Zdp" eventType="touchUpInside" id="VH2-Ty-pOn"/>
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JO1-YO-igP">
@@ -522,7 +522,7 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O4S-tF-qod">
+                                                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O4S-tF-qod">
                                                                 <rect key="frame" x="0.0" y="50" width="111" height="100"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="100" id="KdV-Wr-aXc"/>
@@ -530,7 +530,7 @@
                                                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                                                 <state key="normal" title="🧝"/>
                                                                 <connections>
-                                                                    <action selector="pushP2C2:" destination="L6s-XJ-Zdp" eventType="touchUpInside" id="6Uk-3E-AHo"/>
+                                                                    <action selector="characterButtonPushed:" destination="L6s-XJ-Zdp" eventType="touchUpInside" id="MWO-ib-2o0"/>
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jze-Cw-3Xm">
@@ -553,7 +553,7 @@
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qHu-oB-k0X">
+                                                            <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qHu-oB-k0X">
                                                                 <rect key="frame" x="0.0" y="50" width="111.5" height="100"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="100" id="mT3-sw-qPl"/>
@@ -561,7 +561,7 @@
                                                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                                                 <state key="normal" title="🧙‍♂️"/>
                                                                 <connections>
-                                                                    <action selector="pushP2C3:" destination="L6s-XJ-Zdp" eventType="touchUpInside" id="hdf-2M-st0"/>
+                                                                    <action selector="characterButtonPushed:" destination="L6s-XJ-Zdp" eventType="touchUpInside" id="sf9-MH-dhD"/>
                                                                 </connections>
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LwD-N5-few">

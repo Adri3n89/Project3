@@ -17,9 +17,3 @@ let player3Letters = "your Player's name must have 3 letters mini"
 let player2Names = "Your player can't have the same playerOne's name"
 let characterP2P1 = "You can't have the same character's name that Player 1"
 let createPlayer2String = "Création du joueur 2"
-let victoryString = """
-Congratulations \(game.winner!.name.capitalized) you win the fight in \(game.totalTurn) turns!
-\(game.winner!.characters[0].name) have \(game.winner!.characters[0].race.health) pv left
-\(game.winner!.characters[1].name) have \(game.winner!.characters[1].race.health) pv left
-\(game.winner!.characters[2].name) have \(game.winner!.characters[2].race.health) pv left
-"""
