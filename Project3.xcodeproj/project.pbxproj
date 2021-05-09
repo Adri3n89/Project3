@@ -133,6 +133,8 @@
 				7A6B77B92617158E00565F71 /* Game.swift */,
 				7A6B77A126149DED00565F71 /* Character.swift */,
 				7A6B779E26149DE000565F71 /* Player.swift */,
+				7A146B772628717A0057635B /* FightManager.swift */,
+				7A2DFB87263BE33E0086981D /* CreatePlayerManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -140,14 +142,9 @@
 		7A57FA6B2613ACE900BFC780 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				7A57FA6E2613B47E00BFC780 /* CreatePlayerViewController.swift */,
-				7A6B77B42615FA1000565F71 /* FightViewController.swift */,
-				7A49A6B7261F2645006F48AD /* WinViewViewController.swift */,
 				7A57FA552613ABB200BFC780 /* Main.storyboard */,
 				7A57FA5D2613ABB200BFC780 /* LaunchScreen.storyboard */,
 				7A57FA712613B67100BFC780 /* CharacterTableViewCell.swift */,
-				7A57FA532613ABB200BFC780 /* ViewController.swift */,
-				7A71A64D26298A2400472FE2 /* NavigationController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -155,8 +152,11 @@
 		7A57FA6C2613ACF900BFC780 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				7A2DFB87263BE33E0086981D /* CreatePlayerManager.swift */,
-				7A146B772628717A0057635B /* FightManager.swift */,
+				7A57FA6E2613B47E00BFC780 /* CreatePlayerViewController.swift */,
+				7A6B77B42615FA1000565F71 /* FightViewController.swift */,
+				7A49A6B7261F2645006F48AD /* WinViewViewController.swift */,
+				7A57FA532613ABB200BFC780 /* ViewController.swift */,
+				7A71A64D26298A2400472FE2 /* NavigationController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
