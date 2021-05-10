@@ -39,13 +39,6 @@ class FightViewController: UIViewController {
         }
 
     // MARK: - @IBACTIONS
-    // set the current target or currentCharacter by pushing the characterButton
-    private func pushCharacterButton(index: Int) {
-        letsBounce(button: allButtons[index])
-        fightManager.chooseCharacterOrTarget(choice: fightManager.characterArray[index])
-        fightManager.turn()
-    }
-
     @IBAction func characterButtonPushed(_ sender: UIButton) {
         pushCharacterButton(index: sender.tag)
     }
@@ -122,7 +115,15 @@ class FightViewController: UIViewController {
         activeButton(button: allButtons[8], active: false, alpha: 0.2)
     }
 
-    // add a boing animation when button is pressed
+    // MARK: - PRIVATE FUNCS
+    // set the current target or currentCharacter by pushing the characterButton
+    private func pushCharacterButton(index: Int) {
+        letsBounce(button: allButtons[index])
+        fightManager.chooseCharacterOrTarget(choice: fightManager.characterArray[index])
+        fightManager.turn()
+    }
+
+    // add a bounce animation when button is pressed
     private func letsBounce(button: UIButton) {
         button.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
         UIView.animate(withDuration: 0.5) {button.transform = CGAffineTransform.identity}
@@ -156,14 +157,14 @@ class FightViewController: UIViewController {
         }
 
     // disable all the buttons into a range
-    func disableAllButton(buttonArray: [UIButton], index1: Int, index2: Int) {
+    private func disableAllButton(buttonArray: [UIButton], index1: Int, index2: Int) {
         for index in index1...index2 {
             activeButton(button: buttonArray[index], active: false, alpha: 0.2)
         }
     }
 
     // function for enable/disable one button
-    func activeButton(button: UIButton, active: Bool, alpha: Double) {
+    private func activeButton(button: UIButton, active: Bool, alpha: Double) {
         button.isEnabled = active
         button.alpha = CGFloat(alpha)
     }
@@ -177,6 +178,7 @@ class FightViewController: UIViewController {
     }
 }
 
+// MARK: - EXTENSIONS
 extension FightViewController: FightManagerDelegate {
 
     // actu the label to know the currentPlayer and the currentCharacter

@@ -140,7 +140,7 @@ extension CreatePlayerViewController: UIPickerViewDelegate, UIPickerViewDataSour
     }
 }
 
-// protocol de CreatePlayerManager
+// definition of methods of CreatePlayerManager
 extension CreatePlayerViewController: CreatePlayerManagerDelegate {
 
     func createPlayer2Success() {

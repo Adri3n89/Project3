@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+// déclaration of protocol
 protocol CreatePlayerManagerDelegate {
     func createCharacterSuccess()
     func createError(error: String)
@@ -16,6 +17,7 @@ protocol CreatePlayerManagerDelegate {
 }
 
 class CreatePlayerManager {
+    // MARK: VARIABLES
     var delegate: CreatePlayerManagerDelegate
     var race: Race?
     var characRaceSelected: String?
@@ -26,11 +28,7 @@ class CreatePlayerManager {
         self.delegate = delegate
     }
 
-    // check the newCharacter name
-    private func checkName(_ newCharac: Character, _ player: Player, _ index: Int) -> Bool {
-        return newCharac.name.capitalized == player.characters[index].name.capitalized
-    }
-
+    // MARK: FUNCTIONS
     func createCharacterPlayer1(name: String, race: Race) {
         var sameName = 0
         let character = Character(name: name, race: race)
@@ -127,6 +125,12 @@ class CreatePlayerManager {
         } else {
             delegate.createPlayer2Success()
         }
+    }
+    
+    // MARK: PRIVATE FUNC
+    // check the newCharacter name
+    private func checkName(_ newCharac: Character, _ player: Player, _ index: Int) -> Bool {
+        return newCharac.name.capitalized == player.characters[index].name.capitalized
     }
 
 }

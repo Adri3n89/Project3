@@ -706,7 +706,7 @@
         <!--Navigation Controller-->
         <scene sceneID="vyS-ds-w4w">
             <objects>
-                <navigationController storyboardIdentifier="mainMenu" automaticallyAdjustsScrollViewInsets="NO" id="h4w-t2-YXa" customClass="NavigationController" customModule="Project3" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="mainMenu" automaticallyAdjustsScrollViewInsets="NO" id="h4w-t2-YXa" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="9xx-lg-HvO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="i7C-42-8mg">
