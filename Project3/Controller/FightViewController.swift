@@ -65,7 +65,6 @@ class FightViewController: UIViewController {
         // disable the button
         allButtons[6].isEnabled = false
         fightManager.currentAction = "attack"
-        activeButton(button: allButtons[6], active: false, alpha: 0.2)
         // enable cancel button to change the choice
         activeButton(button: allButtons[8], active: true, alpha: 1)
         // disable healbutton when attack is selected

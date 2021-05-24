@@ -77,10 +77,9 @@ class FightManager {
         if currentPIndex == currentPArray.count {
             currentPIndex = 0
         }
-        currentP = currentPArray[currentPIndex]
-        delegate.disableButton(index1: 0, index2: 8)
         // set the current player
         currentP = currentPArray[currentPIndex]
+        delegate.disableButton(index1: 0, index2: 8)
         if currentP?.characters[0].canPlay == false && currentP?.characters[1].canPlay == false && currentP?.characters[2].canPlay == false {
             currentPIndex += 1
             if currentPArray.count == currentPIndex {
