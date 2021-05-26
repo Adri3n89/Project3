@@ -2,7 +2,7 @@
 
 # Project3
 
-First real game project during my IOS Dev Formation
+First real game project during my IOS Dev Formation.
 A turn by turn Fight Game.
 
 ## Technologies
